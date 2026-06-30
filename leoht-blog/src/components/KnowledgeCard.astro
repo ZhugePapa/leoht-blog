@@ -35,12 +35,26 @@ const typeTopLine = card.data.type === "effect" || card.data.type === "principle
     background: transparent;
     padding: 0;
     transition: background 140ms ease;
+    position: relative;
   }
   .card[data-top="gold"] {
     border-top-color: var(--color-muted-gold);
   }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 24px;
+    width: 2px;
+    height: 0;
+    background: var(--color-vintage-red);
+    transition: height 140ms ease;
+  }
   .card:hover {
     background: var(--color-vellum);
+  }
+  .card:hover::before {
+    height: 24px;
   }
   .card-head {
     display: flex;

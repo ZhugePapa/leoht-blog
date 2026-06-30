@@ -183,6 +183,7 @@ hr, .rule {
   padding: 1px 6px;
   color: var(--color-charcoal);
   background: transparent;
+  transform: rotate(-1.5deg);
 }
 .status-stamp.solid {
   background: var(--color-charcoal);
