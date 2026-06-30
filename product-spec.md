@@ -1,0 +1,440 @@
+# Leoht 产品规格 v0.2 — 实施版
+
+> 这版替代 v0.1 的论证性文档。本版只保留"能指导动手做"的内容，砍掉背景论证。
+>
+> v0.1 → v0.2 的关键变更：
+> 1. 知识结构从"Domain / Topic / Card 三层强分类"降级为"扁平标签 + 可选 Domain"。标签是主线，Domain 是后加的视图。
+> 2. 对象模型从 10 个对象 / 5 张表精简到 3 张表（Card / Tag / Link）。Source / Concept / Collection 全部降为字段或标签。
+> 3. 知识图谱移出 MVP，挪到 Phase 3。"相关文章 + 标签聚合 + 相关标签"足以传达 80% 的知识网络感。
+> 4. 路线图重排 4 个 Phase：发布型 → 知识化 → 图谱化 → 开放化。删除原 Phase 3"设计决策辅助版"——那是产品化后才考虑的事。
+> 5. 内容策略删除"每周 / 每月 / 每季度"的节奏，改为"低频高质量 + 卡片优先"。
+> 6. 新增三节 v0.1 完全没有的关键内容：写作工作流、冷启动策略、技术选型。
+
+---
+
+## 1. 产品定位（一句话）
+
+一个面向体验设计师的个人知识系统：用扁平标签和双向链接组织 UX / 心理学 / 增长 / 产品 / 方法论 / 案例知识，对外是杂志型博客，对内是可检索的卡片库。
+
+**不是**：传统博客时间线、收藏夹、SaaS 协作工具、AI 自动写作平台。
+
+**先个人用，打磨好了再考虑产品化。**
+
+---
+
+## 2. 核心用户
+
+**第一用户：你自己。** 一个长期阅读、摘录、写作、复盘的体验设计师，需要一个把零散输入变成可复用认知资产的地方。
+
+**第二用户：同行设计师 / PM / 研究者。** 他们带着具体问题来（"用户为什么不点这个按钮""免费试用该怎么设计"），要的是可检索、可对照的依据，不是按时间倒序的随笔。
+
+**暂不服务**：设计学生 / 初级设计师。等系统有 50+ 条结构化内容后再考虑他们的路径。
+
+---
+
+## 3. 内容模型
+
+### 3.1 三张表（MVP 全部）
+
+```
+Card ── Tag (多对多，通过 CardTag)
+  └── Link (自引用，source_card_id → target_card_id)
+```
+
+#### Card
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `id` | string | 主键 |
+| `title` | string | 标题 |
+| `slug` | string | URL 友好 |
+| `summary` | string | 一句话核心观点 |
+| `content` | markdown | 正文 |
+| `type` | enum | `article / note / highlight / principle / effect / case / retro / reading / spark` |
+| `status` | enum | `inbox / draft / published / archived`（5 状态精简为 4） |
+| `domain` | string? | 可选。MVP 阶段不强求，等文章过 50 篇再补 |
+| `tags` | Tag[] | 多标签 |
+| `source_title` | string? | 来源标题（替代 Source 表） |
+| `source_author` | string? | 来源作者 |
+| `source_url` | string? | 来源链接 |
+| `published_at` | date? | 发布日期 |
+| `created_at` | datetime | |
+| `updated_at` | datetime | |
+
+**砍掉的表**：Source（降为 Card 字段）、Concept（用 Tag 替代）、Collection（用标签搜索模拟）、Topic（用 Tag 替代）、Article / Note / Highlight（合并到 Card，用 `type` 区分）。
+
+#### Tag
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `id` | string | |
+| `name` | string | 标签名 |
+| `slug` | string | |
+| `group` | enum | `type / stage / behavior / scene`（见 §4） |
+| `description` | string? | 标签页展示用 |
+| `usage_count` | int | 自动统计 |
+
+#### Link
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `id` | string | |
+| `source_card_id` | string | |
+| `target_card_id` | string | |
+| `relation_type` | enum? | `explains / applies_to / contrasts_with / example_of / expands / references`（MVP 可全留 null，先支持"相关"这一种关系） |
+
+### 3.2 frontmatter 模板
+
+MVP 阶段写一篇文章只要填这些：
+
+```yaml
+---
+title: 损失厌恶
+slug: loss-aversion
+summary: 人对同等损失的痛苦感受约是同等收益的两倍
+type: effect           # article / note / effect / principle / case / ...
+status: published      # inbox / draft / published / archived
+tags: [决策, 订阅转化, 增长, 心理学]
+source_title: 思考，快与慢
+source_author: 卡尼曼
+source_url: https://...
+published_at: 2026-06-12
+related: [cognitive-load, price-anchoring]  # slug 列表，自动生成 Link
+---
+```
+
+**最低填写门槛**：`title / slug / status: inbox`。其它全可选，后补。这是"先记录，再整理"原则的落地——写不完 frontmatter 不该成为发布的障碍。
+
+---
+
+## 4. 标签体系
+
+标签是本系统**唯一的横向组织机制**。MVP 不做 Domain/Topic 强分类。
+
+### 4.1 四个标签分组
+
+| 分组 | 含义 | 示例 |
+| --- | --- | --- |
+| `type` | 内容是什么 | 心理学、案例、方法论、框架、原则、数据、复盘 |
+| `stage` | 设计阶段 | 研究、定义、设计、验证、评估、增长 |
+| `behavior` | 行为层级 | 认知、决策、行为、情绪、注意力、动机 |
+| `scene` | 应用场景 | 注册登录、Onboarding、订阅转化、信息架构、表单设计、空状态、AI 对话、数据看板 |
+
+### 4.2 标签规则
+
+- 一篇内容必须有 ≥1 个标签，建议 3-7 个。
+- 标签优先表达"可复用场景"，不只是文章表面主题。
+- 标签可点击进入标签聚合页。
+- 标签支持合并、改名、分组（管理后台 P1 功能）。
+
+### 4.3 标签聚合页
+
+每个标签有独立页面，展示：标签名 / 描述 / 所属分组 / 内容数量 / 该标签下所有 Card / 相关标签 / 按最新 / 最热排序。
+
+支持标签组合筛选：`#信息架构 + #Onboarding` 查交集。
+
+### 4.4 Domain / Topic 何时引入
+
+**MVP 不做。** 等文章过 50 篇、你感觉到"扁平标签不够用了"再加。提前定 6 个领域反而会限制写作方向——你现在未必能准确预测自己会写什么。
+
+如果后期要加，Domain 就是"一组大标签的视图"，Topic 就是"标签的父子关系"，都不需要改数据模型，只是 UI 层的聚合。
+
+---
+
+## 5. 信息架构
+
+### 5.1 一级导航（MVP）
+
+```
+Home 首页
+Library 内容库
+Tag 标签
+Search 搜索
+About 关于
+Subscribe 订阅
+```
+
+**MVP 不做**：知识图谱（Phase 3）、专题（Phase 2）、内容管理后台（用本地 Markdown + git 替代，见 §8）。
+
+### 5.2 页面清单
+
+| 页面 | MVP | 说明 |
+| --- | --- | --- |
+| Home | ✅ | 定位 + 最新内容 + 标签入口 + 订阅 |
+| Library | ✅ | 全部条目列表 + 筛选 |
+| Article | ✅ | 文章页 + 相关条目 + 标签 |
+| Tag | ✅ | 标签聚合页 + 相关标签 |
+| Search | ✅ | 全站搜索 + 过滤 |
+| About | ✅ | 个人简介 |
+| Subscribe | ✅ | RSS + 邮件订阅入口 |
+| Collection | Phase 2 | 专题集子 |
+| Knowledge Graph | Phase 3 | 局部图谱 |
+| Admin | 不做 | 用本地编辑器 + git 替代 |
+
+---
+
+## 6. 核心页面需求
+
+### 6.1 Home
+
+- Hero：站点定位一句话（Cormorant 大标）
+- 最新内容：3-6 张知识卡
+- 标签入口：热门标签 chip
+- 订阅入口：RSS + 邮件
+- **不做** Domain 入口（MVP 没有 Domain）
+
+### 6.2 Library
+
+- 默认列表视图（不是网格）
+- 筛选：标签 / 类型 / 状态
+- 每行：编号 / 标题 / 标签 / 日期 / 状态印迹
+- 支持按最新 / 最热排序
+
+### 6.3 Article
+
+- 左：目录（如果有 H2）
+- 中：正文（680px，Source Serif 4，dropcap 首段）
+- 右：印迹签名 + 相关条目 + 标签
+- 底部：相关卡片（手动 related + 同标签推荐）
+- **不做** 局部知识图谱（Phase 3）
+
+### 6.4 Tag
+
+- 标签名 / 描述 / 所属分组 / 内容数量
+- 该标签下所有 Card 列表
+- 相关标签（基于共现统计）
+- 标签组合筛选
+
+### 6.5 Search
+
+- 全站搜索：标题 / 正文 / 标签 / 来源
+- 结果按类型分组
+- 过滤：标签 / 类型 / 时间
+
+---
+
+## 7. 用户流程
+
+### 7.1 写作流程（最重要）
+
+```
+本地 Obsidian / iA Writer 写 Markdown
+  → frontmatter 填 title + status: inbox（最低门槛）
+  → git push 到仓库
+  → 自动构建部署
+  → 后续补充 tags / summary / related，status 改 draft
+  → 完善后 status 改 published
+```
+
+**关键**：写作在本地完成，不在浏览器后台编辑器里。这降低门槛、提高产量。见 §8。
+
+### 7.2 阅读流程
+
+```
+进入 Home
+  → 看最新内容 / 点标签
+  → 进入 Article
+  → 看相关条目 / 点标签
+  → 进入 Tag 聚合页
+  → 继续探索
+```
+
+### 7.3 检索流程
+
+```
+带问题来
+  → Search 关键词
+  → 筛选标签 / 类型
+  → 找到相关原则 / 案例
+  → 复用
+```
+
+---
+
+## 8. 技术选型
+
+### 8.1 推荐：Astro + Markdown / MDX + Tailwind
+
+**为什么是 Astro**：
+
+- 内容就是文件，天然兼容 Obsidian / iA Writer 等本地写作工具
+- 部署到 Cloudflare Pages / Vercel 基本免费
+- 性能极好，SEO 友好
+- 已有成稿直接丢 `content/` 目录配 frontmatter 就能跑
+- 后期要做交互（评论、收藏、图谱），都在它之上增量加，不必推翻
+
+**为什么不用现有 React + Vite**：
+
+- React SPA 对内容站过重，SEO 需要额外配置
+- Vite 没有内容集合（content collections）这种内容站核心能力
+- 现有项目是 SPA 思路，迁 Astro 比改造成本低
+
+**为什么不自建全栈 + 数据库后台**：
+
+- 单人维护一个后台编辑器是精力黑洞
+- 先用 Markdown + git，等"产品化"信号出现（多用户、移动端记录需求）再上
+
+### 8.2 内容存储
+
+- MVP：Markdown 文件 + frontmatter，git 版本控制
+- 标签和关联通过 frontmatter 的 `tags` 和 `related` 字段表达
+- 构建时 Astro 解析 frontmatter 生成 Tag 页、Search 索引、Related 关系
+- **不需要数据库**。等需要评论 / 收藏 / 全文搜索时再加
+
+### 8.3 部署
+
+- Cloudflare Pages（首选，免费额度大）或 Vercel
+- git push 自动构建部署
+- 自定义域名
+
+### 8.4 字体加载
+
+- Cormorant Garamond + Source Serif 4 + IBM Plex Mono，用 Fontsource 自托管
+- `preload` 关键字体，`font-display: swap`
+- 中文用思源宋体按需子集化
+
+---
+
+## 9. 冷启动策略
+
+### 9.1 第一批内容
+
+你已有一些成稿文章。处理原则：
+
+- **直接迁入，不重写**。重写是放弃的开始。
+- 旧文原样丢进 `content/`，补最小 frontmatter（title / slug / status: published / 1-3 个标签）
+- 后续逐步补 summary / related / 更多标签
+- 旧文不强行套新的 Domain/Topic——MVP 没有 Domain
+
+### 9.2 冷启动目标
+
+- 第一周：迁入 5-10 篇成稿，跑通发布流程
+- 第二周：验证 frontmatter 字段是否够用、标签是否顺手
+- 第三周：开始用本地 Markdown 写新内容，测试写作工作流
+- **不要**在冷启动阶段搭后台、做图谱、做评论
+
+---
+
+## 10. 内容策略
+
+### 10.1 低频高质量，不强求节奏
+
+**删除 v0.1 的"每周卡片 / 每月长文 / 每季度专题"节奏。** 对在职设计师不可持续，是"三个月后断更"的常见陷阱。
+
+改成：
+
+- 鼓励只发卡片 / 摘录 / 一句话观点，不强求长文
+- 长文是积攒了几张相关卡片后**自然合并**出来的，不是排期排出来的
+- 对外说"低频高质量"，不说"每周更新"
+
+### 10.2 内容质量标准
+
+每篇公开内容至少满足：
+
+- 有明确观点
+- 有来源或案例支撑
+- 有个人理解，不是搬运
+- 至少 1 个标签（MVP 阶段，v0.1 的"至少关联 2 个内容"移到 Phase 2）
+
+### 10.3 公开 / 私人边界
+
+- `status: inbox / draft` 的内容不对外可见
+- `status: published` 对外可见
+- **暂不支持**同一篇文章里"公开正文 + 私人批注"——这是 P2 才考虑的边界
+- 想记私人东西就单独建一个 `status: draft` 的 Card
+
+---
+
+## 11. 路线图
+
+### Phase 1：发布型博客（MVP）
+
+- Astro 项目初始化
+- 设计系统 token + 字体 + 核心组件（KnowledgeCard / TagChip / StatusStamp）
+- Home / Library / Article / Tag / Search / About / Subscribe
+- Markdown + frontmatter 内容流
+- RSS
+- 部署到 Cloudflare Pages
+
+**验收**：能发布一篇结构化文章，读者能从首页进入文章、标签页、搜索到内容。
+
+### Phase 2：知识化
+
+- 双向链接（`related` 字段自动生成反向关联）
+- 文章页"相关条目"区块
+- 标签聚合页"相关标签"（基于共现）
+- 收藏 / 稍后读（本地 localStorage 即可）
+- Collection 专题集子
+- 内容状态流转可视化
+
+### Phase 3：图谱化
+
+- 文章页局部知识图谱（不是全站图谱）
+- LocalGraph 组件（节点 = Cormorant 单字母方块）
+- 基础数据统计（访问 / 标签热度 / 内容增长）
+- 导出备份（Markdown / JSON）
+
+### Phase 4：开放化
+
+- 评论 / 反馈收集
+- 邮件订阅系统（不只是 RSS）
+- 移动端快速摘录
+- AI 标签建议 / 摘要建议（可选）
+- 公开知识图谱展示
+
+**删除的 v0.1 Phase 3"设计决策辅助版"**：按设计问题检索、案例与原则绑定、场景标签——这些是专用工具产品功能，远超个人博客。如果产品化验证后再考虑，不在当前路线图里。
+
+---
+
+## 12. 成功指标
+
+### 12.1 创作者侧
+
+- 已发布内容数（不看"每周新增"，看累计）
+- 从 inbox 到 published 的转化率
+- 平均每篇内容标签数
+- 平均每篇内容关联数（Phase 2 起）
+
+### 12.2 读者侧
+
+- 平均阅读时长
+- 相关文章点击率
+- 搜索使用率
+- 标签页访问率
+- RSS 订阅数
+- 回访率
+
+### 12.3 知识系统健康度
+
+- 无标签内容比例（越低越好）
+- 孤立内容比例（无 related 的内容，Phase 2 起）
+- 高频标签增长趋势
+
+**删除 v0.1 的"每周新增 Card 数 / 每月发布文章数"**——节奏指标会变成压力，与 §10 低频高质量策略矛盾。
+
+---
+
+## 13. 风险与对策
+
+| 风险 | 表现 | 对策 |
+| --- | --- | --- |
+| 填字段负担重 | 写每篇都要填一堆元数据 | frontmatter 最低只要 title + status，其它后补 |
+| 标签失控 | 标签越来越多但不可用 | Phase 2 加标签合并 / 改名 / 分组管理 |
+| 图谱噱头化 | 好看但不实用 | Phase 3 才做，且只做局部相关图，不做全站图谱 |
+| 内容断更 | 只想发完整长文 | 鼓励卡片 / 摘录 / 札记等轻内容，不强求长文 |
+| 读者不知道怎么逛 | 首页只有文章列表 | Home 提供标签入口、最新内容、订阅入口 |
+| 重写旧文导致放弃 | 迁移时想顺手重写 | 冷启动原则：旧文原样迁入，不重写 |
+
+---
+
+## 14. 下一步
+
+```text
+1. 确认这版 spec 的内容模型与路线图
+2. 初始化 Astro 项目，落 design-system.md 的 token 与字体
+3. 迁入 2-3 篇成稿，跑通发布流程
+4. 实现 Home + Article 两个页面，套设计系统
+5. 对比新旧两个站的感觉，决定是否全量迁
+```
+
+**不做的事**：写信息架构文档、内容模型字段文档、页面规格文档（v0.1 建议的三份子文档）。本 spec + design-system.md 已经覆盖这些信息，再拆三份会把过度设计固化下来。

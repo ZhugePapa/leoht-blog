@@ -1,0 +1,37 @@
+# 远程 OSS 本地挂载点（大体积二进制资源，通过同步工具管理）
+_oss/
+
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+.next/
+.out/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 编辑器
+.vscode/
+.idea/
+
+# 不进仓库的大目录
+# 旧 React 项目,保留本地参考,新版可用后删
+ux-blog-glm/
+# 548 篇 Obsidian 原素材库,只读参考,迁移另写脚本
+UX 知识库/
+
+# 工作过程参考图,非内容资产
+架构.png
+首页设计参考.png
+
+# Claude Code 本地配置(含本地预览脚本与权限,不进仓库)
+.claude/
+leoht-blog/.claude/

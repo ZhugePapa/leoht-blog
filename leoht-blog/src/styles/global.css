@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/400-italic.css";
+@import "@fontsource/source-serif-4/400.css";
+@import "@fontsource/source-serif-4/600-italic.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+
+@theme {
+  --color-bone: #f9f7f2;
+  --color-vellum: #ebe8e0;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-soft: #3a3a38;
+  --color-charcoal-faint: #7a7873;
+  --color-ink-blue: #0d1b2a;
+  --color-vintage-red: #8c1c13;
+  --color-muted-gold: #b08d57;
+
+  --font-display: "Cormorant Garamond", "Source Han Serif SC", "Songti SC", serif;
+  --font-body: "Source Serif 4", "Source Han Serif SC", "Songti SC", serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", monospace;
+}
+
+:root {
+  --rule: rgb(26 26 26 / 22%);
+  --rule-strong: rgb(26 26 26 / 48%);
+  --rule-gold: rgb(176 141 87 / 60%);
+  --ink-blue-soft: rgb(13 27 42 / 12%);
+  --vintage-red-soft: rgb(140 28 19 / 10%);
+
+  --container-text: 680px;
+  --container: 1100px;
+  --container-wide: 1380px;
+}
+
+html {
+  background-color: var(--color-bone);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--vintage-red-soft);
+  color: var(--color-charcoal);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+a {
+  color: var(--color-ink-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgb(13 27 42 / 60%);
+  text-decoration-thickness: 1px;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+a:hover {
+  color: var(--color-vintage-red);
+  text-decoration-color: var(--color-vintage-red);
+}
+
+hr, .rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+.rule-strong {
+  border-top: 1px solid var(--rule-strong);
+}
+.rule-gold {
+  border-top: 1px solid var(--rule-gold);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--color-charcoal-soft);
+  text-transform: lowercase;
+}
+.meta-s {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.display-xxl {
+  font-family: var(--font-display);
+  font-size: 4.2rem;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+.display-xl {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.display-l {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+}
+.display-m {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.display-s {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-vintage-red);
+  float: left;
+  font-size: 4.6rem;
+  line-height: 0.85;
+  margin-right: 0.08em;
+  margin-top: 0.04em;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  color: var(--color-charcoal);
+  background: var(--color-vellum);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2px 8px;
+  text-decoration: none;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.tag-chip:hover {
+  background: var(--ink-blue-soft);
+  border-color: var(--rule-strong);
+  color: var(--color-ink-blue);
+  text-decoration: none;
+}
+
+.status-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  border: 1px solid var(--color-charcoal);
+  box-shadow: inset 1px 1px 0 rgb(26 26 26 / 20%);
+  padding: 1px 6px;
+  color: var(--color-charcoal);
+  background: transparent;
+}
+.status-stamp.solid {
+  background: var(--color-charcoal);
+  color: var(--color-bone);
+  position: relative;
+}
+.status-stamp.solid.published::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 4px;
+  height: 4px;
+  background: var(--color-muted-gold);
+}
+.status-stamp.faint {
+  border-color: var(--color-charcoal-faint);
+  color: var(--color-charcoal-faint);
+}
+
+.signature-stamp {
+  background: var(--color-vellum);
+  border: 1px solid var(--rule);
+  box-shadow: inset 1px 1px 0 rgb(26 26 26 / 20%);
+  padding: 16px 20px;
+  transform: rotate(-1.5deg);
+}

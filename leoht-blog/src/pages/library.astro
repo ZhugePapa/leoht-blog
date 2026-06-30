@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/Base.astro";
+import { getPublishedNumbered, cardSlug, volNo } from "../lib/cards";
+
+const cards = await getPublishedNumbered();
+const base = import.meta.env.BASE_URL;
+const domains = [...new Set(cards.map((c) => c.data.domain ?? "general"))].sort();
+const types = [...new Set(cards.map((c) => c.data.type))].sort();
+---
+
+<Base title="library — leoht" section="lib" no="index">
+  <section class="lib-head">
+    <h1 class="display-xl">library — 全部条目</h1>
+    <p class="meta">№ {cards.length} entries</p>
+  </section>
+
+  <div class="filters meta">
+    <div class="filter-row">
+      <span class="filter-label">filter ·</span>
+      <span class="filter-opt" data-filter="all">all</span>
+      {domains.map((d) => <span class="filter-opt" data-filter={d}>{d}</span>)}
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">type ·</span>
+      <span class="filter-opt" data-type="all">all</span>
+      {types.map((t) => <span class="filter-opt" data-type={t}>{t}</span>)}
+    </div>
+  </div>
+
+  <hr class="rule" />
+
+  <ul class="entry-list">
+    {cards.map((card) => (
+      <li class="entry" data-domain={card.data.domain ?? "general"} data-type={card.data.type}>
+        <span class="entry-num meta">№ {card.number.global}.{card.number.domain}.{card.number.domainSeq}</span>
+        <div class="entry-body">
+          <a class="entry-title" href={`${base}c/${cardSlug(card)}`}>{card.data.title}</a>
+          <span class="entry-meta meta">
+            {card.data.domain ?? "general"} · {(card.data.tags ?? []).slice(0, 3).join(" / ")}
+          </span>
+        </div>
+        <span class="entry-vol meta">{volNo(card.data.published_at)}</span>
+        <span class="status-stamp solid published">pub</span>
+      </li>
+    ))}
+  </ul>
+
+  {cards.length === 0 && <p class="meta empty">尚无已发布条目。把 content/ 下的文章 status 改为 published 即可显示。</p>}
+</Base>
+
+<style>
+  .lib-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 24px; }
+
+  .filters { padding: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
+  .filter-label { color: var(--color-charcoal-faint); }
+  .filter-opt { cursor: pointer; color: var(--color-charcoal-soft); }
+  .filter-opt:hover { color: var(--color-vintage-red); }
+  .filter-opt.active { color: var(--color-charcoal); border-bottom: 1px solid var(--color-muted-gold); }
+
+  .entry-list { list-style: none; margin: 0; padding: 0; }
+  .entry {
+    display: grid;
+    grid-template-columns: 160px 1fr auto auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry-num { color: var(--color-charcoal-faint); }
+  .entry-body { display: flex; flex-direction: column; gap: 4px; }
+  .entry-title { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; text-decoration: none; }
+  .entry-title:hover { color: var(--color-vintage-red); }
+  .entry-meta { color: var(--color-charcoal-faint); }
+  .entry-vol { color: var(--color-charcoal-faint); }
+  .empty { padding: 48px 0; }
+
+  @media (max-width: 720px) {
+    .entry { grid-template-columns: 1fr auto; row-gap: 4px; }
+    .entry-num { grid-column: 1; }
+    .entry-body { grid-column: 1 / -1; }
+    .entry-vol { grid-column: 2; }
+  }
+</style>
+
+<script>
+  const rows = document.querySelectorAll<HTMLElement>(".entry");
+  const domainOpts = document.querySelectorAll<HTMLElement>(".filter-opt[data-filter]");
+  const typeOpts = document.querySelectorAll<HTMLElement>(".filter-opt[data-type]");
+  let activeDomain = "all";
+  let activeType = "all";
+
+  function apply() {
+    rows.forEach((r) => {
+      const okD = activeDomain === "all" || r.dataset.domain === activeDomain;
+      const okT = activeType === "all" || r.dataset.type === activeType;
+      r.style.display = okD && okT ? "" : "none";
+    });
+  }
+  domainOpts.forEach((o) => o.addEventListener("click", () => {
+    activeDomain = o.dataset.filter!;
+    domainOpts.forEach((x) => x.classList.toggle("active", x === o));
+    apply();
+  }));
+  typeOpts.forEach((o) => o.addEventListener("click", () => {
+    activeType = o.dataset.type!;
+    typeOpts.forEach((x) => x.classList.toggle("active", x === o));
+    apply();
+  }));
+</script>

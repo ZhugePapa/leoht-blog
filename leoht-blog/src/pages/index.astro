@@ -1,0 +1,107 @@
+---
+import Base from "../layouts/Base.astro";
+import KnowledgeCard from "../components/KnowledgeCard.astro";
+import { getPublishedNumbered } from "../lib/cards";
+
+const cards = await getPublishedNumbered();
+const latest = cards.slice(0, 6);
+
+const tagCount = new Map<string, number>();
+for (const c of cards) {
+  for (const t of c.data.tags) {
+    tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+  }
+}
+const topTags = [...tagCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+
+const domainCount = new Map<string, number>();
+for (const c of cards) {
+  const d = c.data.domain ?? "general";
+  domainCount.set(d, (domainCount.get(d) ?? 0) + 1);
+}
+const domains = [...domainCount.entries()].sort((a, b) => b[1] - a[1]);
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="leoht — revue" section="home" no="ⅰ">
+  <section class="hero">
+    <h1 class="display-xxl hero-title">
+      revue for the<br />experience designer
+    </h1>
+    <p class="hero-lede meta">
+      一本被反复翻阅的 ux 知识手册 · 沉淀心理学、增长、产品、方法论与案例
+      {cards.length > 0 && ` · 已收录 № ${cards.length} 条`}
+    </p>
+    <nav class="hero-cta meta">
+      <a href={`${base}library`}>→ enter the library</a>
+      <a href={`${base}library`}>→ browse index</a>
+    </nav>
+  </section>
+
+  <hr class="rule" />
+
+  {latest.length > 0 && (
+    <section class="issue">
+      <h2 class="display-l section-title"><em>in this issue</em></h2>
+      <div class="card-grid">
+        {latest.map((card) => <KnowledgeCard card={card} />)}
+      </div>
+    </section>
+  )}
+
+  {domains.length > 0 && (
+    <section class="domain-index">
+      <h2 class="display-l section-title"><em>index by domain</em></h2>
+      <ul class="domain-list meta">
+        {domains.map(([d, n]) => (
+          <li><span class="dm">{d}</span><span class="dots" aria-hidden="true"> ──── </span><span class="cnt">№ {n}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {topTags.length > 0 && (
+    <section class="tag-cloud">
+      <h2 class="display-l section-title"><em>tags most used</em></h2>
+      <div class="chips">
+        {topTags.map(([t, n]) => (
+          <span class="tag-chip">{t} · {n}</span>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .hero { padding: 32px 0 48px; }
+  .hero-title { margin: 0 0 24px; }
+  .hero-lede { max-width: 560px; line-height: 1.6; color: var(--color-charcoal-soft); }
+  .hero-cta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .hero-cta a { text-decoration: none; font-style: italic; font-family: var(--font-display); font-size: 1.1rem; }
+
+  .section-title { margin: 48px 0 24px; }
+  .section-title em { font-style: italic; font-weight: 400; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .domain-list { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 48px; }
+  .domain-list li {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 6px 0; break-inside: avoid;
+  }
+  .domain-list .dm { min-width: 110px; }
+  .domain-list .dots { color: var(--color-charcoal-faint); flex: 1; }
+  .domain-list .cnt { color: var(--color-charcoal-soft); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 640px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .domain-list { columns: 1; }
+  }
+</style>

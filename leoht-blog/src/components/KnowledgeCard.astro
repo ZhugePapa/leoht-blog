@@ -1,0 +1,81 @@
+---
+import type { NumberedCard } from "../lib/cards";
+import { cardSlug } from "../lib/cards";
+
+interface Props {
+  card: NumberedCard;
+  showSummary?: boolean;
+}
+
+const { card, showSummary = true } = Astro.props;
+const slug = cardSlug(card);
+const href = `${import.meta.env.BASE_URL}c/${slug}`;
+const num = `№ ${card.number.global}`;
+const typeTopLine = card.data.type === "effect" || card.data.type === "principle" ? "gold" : "charcoal";
+---
+
+<article class="card" data-top={typeTopLine}>
+  <div class="card-head meta">
+    <span>{num} · {card.data.type}</span>
+    <span class="status-stamp solid published">pub</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title"><a href={href}>{card.data.title}</a></h3>
+    {card.data.summary && <p class="card-sub">{card.data.summary}</p>}
+  </div>
+  <div class="card-foot meta">
+    <span>{card.data.domain ?? "general"}{card.data.tags.length ? ` · ${card.data.tags.slice(0,3).join(" / ")}` : ""}</span>
+  </div>
+</article>
+
+<style>
+  .card {
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--color-charcoal);
+    background: transparent;
+    padding: 0;
+    transition: background 140ms ease;
+  }
+  .card[data-top="gold"] {
+    border-top-color: var(--color-muted-gold);
+  }
+  .card:hover {
+    background: var(--color-vellum);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .card-body {
+    padding: 16px 16px 18px;
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.375rem;
+    line-height: 1.25;
+    margin: 0;
+  }
+  .card-title a {
+    color: var(--color-charcoal);
+    text-decoration: none;
+  }
+  .card-title a:hover {
+    color: var(--color-vintage-red);
+  }
+  .card-sub {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.0625rem;
+    line-height: 1.45;
+    color: var(--color-charcoal-soft);
+    margin: 8px 0 0;
+  }
+  .card-foot {
+    padding: 10px 16px;
+    border-top: 1px solid var(--rule);
+  }
+</style>

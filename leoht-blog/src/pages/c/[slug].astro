@@ -1,0 +1,157 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { cardSlug, toRoman, formatStamp, volNo } from "../../lib/cards";
+
+export async function getStaticPaths() {
+  const all = await getCollection("cards");
+  return all
+    .filter((c) => c.data.status === "published")
+    .map((card) => ({ params: { slug: cardSlug(card) }, props: { card } }));
+}
+
+interface Props { card: CollectionEntry<"cards">; }
+const { card } = Astro.props;
+const slug = cardSlug(card);
+
+const all = await getCollection("cards");
+const published = all.filter((c) => c.data.status === "published");
+const total = published.length;
+const idx = published.findIndex((c) => cardSlug(c) === slug);
+const globalNo = toRoman(total - idx);
+
+const related = (card.data.related ?? [])
+  .map((r) => published.find((c) => cardSlug(c) === r))
+  .filter((c): c is CollectionEntry<"cards"> => Boolean(c));
+
+const sameTag = published
+  .filter((c) => cardSlug(c) !== slug)
+  .map((c) => ({
+    card: c,
+    shared: (c.data.tags ?? []).filter((t) => (card.data.tags ?? []).includes(t)).length,
+  }))
+  .filter((x) => x.shared > 0)
+  .sort((a, b) => b.shared - a.shared)
+  .slice(0, 3);
+
+const { Content } = await render(card);
+const base = import.meta.env.BASE_URL;
+const domainAbbr = (card.data.domain ?? "gen").slice(0, 3).toUpperCase();
+const domainSeq = idx >= 0 ? idx + 1 : 0;
+---
+
+<Base title={`${card.data.title} — leoht`} section="lib" no={`${globalNo}.${domainAbbr}.${domainSeq}`}>
+  <article class="article">
+    <div class="article-main">
+      <p class="meta crumb">index / {card.data.domain ?? "general"}{card.data.type ? ` / ${card.data.type}` : ""}</p>
+      <p class="meta num-line">№ {globalNo} · {domainAbbr} · {domainSeq}</p>
+      <h1 class="display-xl title">{card.data.title}</h1>
+      {card.data.summary && <p class="display-m sub"><em>{card.data.summary}</em></p>}
+
+      <hr class="rule" />
+
+      {(card.data.source_title || card.data.source_author) && (
+        <p class="meta source">
+          source ─ {card.data.source_title}{card.data.source_author ? ` · ${card.data.source_author}` : ""}
+        </p>
+      )}
+      <p class="meta stamp">stamp ─ {card.data.status} · {formatStamp(card.data.published_at)} · {volNo(card.data.published_at)}</p>
+
+      <hr class="rule" />
+
+      <div class="prose dropcap">
+        <Content />
+      </div>
+
+      <hr class="rule" />
+
+      {card.data.tags.length > 0 && (
+        <div class="tags-row">
+          <span class="meta">tags ·</span>
+          {card.data.tags.map((t) => <span class="tag-chip">{t}</span>)}
+        </div>
+      )}
+    </div>
+
+    <aside class="article-side">
+      <div class="signature-stamp">
+        <p class="display-s sig-num">№ {globalNo} · {domainAbbr} · {domainSeq}</p>
+        <p class="meta sig-slug">{slug}</p>
+        <p class="meta sig-vol">revue · {volNo(card.data.published_at)}</p>
+      </div>
+
+      {(related.length > 0 || sameTag.length > 0) && (
+        <div class="related">
+          <p class="meta related-h">related entries</p>
+          <ul>
+            {related.map((r) => (
+              <li><a href={`${base}c/${cardSlug(r)}`}>→ {r.data.title}</a><span class="meta related-k">related · explicit</span></li>
+            ))}
+            {sameTag.map(({ card: c, shared }) => (
+              <li><a href={`${base}c/${cardSlug(c)}`}>→ {c.data.title}</a><span class="meta related-k">shares · {shared}</span></li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </aside>
+  </article>
+</Base>
+
+<style>
+  .article {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 48px;
+    align-items: start;
+  }
+  .article-main { max-width: var(--container-text); }
+  .crumb { margin: 0 0 8px; color: var(--color-charcoal-faint); }
+  .num-line { margin: 0 0 16px; color: var(--color-charcoal-soft); }
+  .title { margin: 0 0 12px; }
+  .sub { color: var(--color-charcoal-soft); margin: 0; }
+  .source, .stamp { margin: 8px 0; color: var(--color-charcoal-soft); }
+
+  .prose { margin-top: 24px; }
+  .prose :global(p) { margin: 0 0 1.25em; }
+  .prose :global(h2) {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 1.75rem; line-height: 1.2; margin: 2em 0 0.6em;
+  }
+  .prose :global(h3) {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 1.375rem; margin: 1.5em 0 0.5em;
+  }
+  .prose :global(ul), .prose :global(ol) { margin: 0 0 1.25em; padding-left: 1.4em; }
+  .prose :global(li) { margin: 0.3em 0; }
+  .prose :global(blockquote) {
+    margin: 1.5em 0; padding-left: 1rem;
+    border-left: 2px solid var(--color-vintage-red);
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.5rem; line-height: 1.55; color: var(--color-charcoal-soft);
+  }
+  .prose :global(a) { color: var(--color-ink-blue); }
+  .prose :global(code) {
+    font-family: var(--font-mono); font-size: 0.9em;
+    background: var(--color-vellum); padding: 1px 5px; border-radius: 2px;
+  }
+
+  .tags-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 16px 0; }
+
+  .article-side { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 32px; }
+  .sig-num { margin: 0; }
+  .sig-slug { margin: 6px 0 0; word-break: break-all; }
+  .sig-vol { margin: 2px 0 0; color: var(--color-charcoal-faint); }
+
+  .related ul { list-style: none; margin: 12px 0 0; padding: 0; }
+  .related li {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 12px 0; border-top: 1px solid var(--rule);
+  }
+  .related li a { font-family: var(--font-display); font-size: 1.125rem; text-decoration: none; }
+  .related-k { color: var(--color-charcoal-faint); }
+
+  @media (max-width: 900px) {
+    .article { grid-template-columns: 1fr; }
+    .article-side { position: static; }
+  }
+</style>

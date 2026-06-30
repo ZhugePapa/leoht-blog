@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  section?: string;
+  no?: string;
+}
+
+const { title, section = "home", no = "ⅰ" } = Astro.props;
+const year = 2026;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+        <div class="rule-strong"></div>
+        <div class="meta head-row">
+          <span><a href={`${import.meta.env.BASE_URL}`}>leoht</a> — revue</span>
+          <span>{section} / no {no}</span>
+        </div>
+      </header>
+
+      <main class="page-main">
+        <slot />
+      </main>
+
+      <footer class="page-foot">
+        <div class="rule-strong"></div>
+        <div class="meta head-row">
+          <span>leoht v0.2 · printed {year}</span>
+          <span>fin / no {no}</span>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      .page {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 24px 32px 48px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .page-main {
+        flex: 1;
+        padding-top: 48px;
+      }
+      .head-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-top: 12px;
+        gap: 16px;
+      }
+      .head-row a {
+        color: var(--color-charcoal-soft);
+        text-decoration: none;
+      }
+      .head-row a:hover {
+        color: var(--color-vintage-red);
+      }
+      @media (max-width: 640px) {
+        .page { padding: 16px 20px 32px; }
+        .page-main { padding-top: 32px; }
+      }
+    </style>
+  </body>
+</html>
