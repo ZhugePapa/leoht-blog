@@ -4,7 +4,7 @@ slug: 少即是好效应-less-is-better-effect
 summary: 少即是好效应（Less-is-better Effect）是指人们在单独选择时倾向于选择较小或较次的选项，但在共同评估时不倾向于如此的现象。
 type: effect
 status: published
-tags: [锚定, 定价, 消费行为, 行为经济学, 认知偏差, 决策]
+tags: [行为经济学, 认知偏差, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
