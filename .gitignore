@@ -35,3 +35,6 @@ UX 知识库/
 # Claude Code 本地配置(含本地预览脚本与权限,不进仓库)
 .claude/
 leoht-blog/.claude/
+
+# Astro dev cache
+.astro/
