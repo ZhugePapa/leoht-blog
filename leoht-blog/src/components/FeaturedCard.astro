@@ -1,0 +1,243 @@
+---
+import type { NumberedCard } from "../lib/cards";
+import { cardSlug, formatStamp, volNo } from "../lib/cards";
+import { getDomain } from "../lib/domains";
+import { base } from "../lib/base";
+
+interface Props {
+  cards: NumberedCard[];
+}
+
+const { cards } = Astro.props;
+---
+
+<div class="featured-carousel" data-count={cards.length}>
+  <div class="featured-track">
+    {cards.map((card, i) => {
+      const slug = cardSlug(card);
+      const href = `${base}c/${slug}`;
+      const domain = getDomain(card.data.domain);
+      const domainName = domain?.name ?? card.data.domain ?? "general";
+      return (
+        <a class="featured-slide" data-index={i} href={href} aria-hidden={i === 0 ? "false" : "true"}>
+          <div class="featured-main">
+            <div class="featured-head meta">
+              <span class="featured-flag">置顶推荐</span>
+              <span>{domainName}{card.data.type ? ` · ${card.data.type}` : ""}</span>
+            </div>
+            <h2 class="featured-title">{card.data.title}</h2>
+            {card.data.summary && <p class="featured-sub">{card.data.summary}</p>}
+            <div class="featured-foot meta">
+              <span>{card.number.global} · {formatStamp(card.data.published_at)} · {volNo(card.data.published_at)}</span>
+              <span class="featured-read">阅读全文 →</span>
+            </div>
+          </div>
+          <div class="featured-aside" style={`--domain-soft: ${domain?.soft ?? "var(--vellum)"}; --domain-color: ${domain?.color ?? "var(--color-charcoal)"}`}>
+            <div class="featured-num">{card.number.global}</div>
+            <div class="featured-domain">{domain?.enName ?? card.data.domain}</div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+
+  {cards.length > 1 && (
+    <div class="featured-nav">
+      <button class="nav-btn" data-dir="prev" aria-label="上一篇">←</button>
+      <span class="nav-pos meta"><span data-current>1</span> / {cards.length}</span>
+      <button class="nav-btn" data-dir="next" aria-label="下一篇">→</button>
+    </div>
+  )}
+</div>
+
+<script>
+  function initFeaturedCarousel(root: HTMLElement) {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>(".featured-slide"));
+    if (slides.length <= 1) return;
+    const currentEl = root.querySelector<HTMLElement>("[data-current]");
+    let idx = 0;
+
+    function show(n: number) {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const active = i === idx;
+        s.setAttribute("aria-hidden", active ? "false" : "true");
+        s.style.transform = `translateX(${(i - idx) * 100}%)`;
+        s.style.opacity = active ? "1" : "0";
+        s.style.pointerEvents = active ? "auto" : "none";
+      });
+      if (currentEl) currentEl.textContent = String(idx + 1);
+    }
+
+    root.querySelectorAll<HTMLButtonElement>("[data-dir]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        show(idx + (btn.dataset.dir === "next" ? 1 : -1));
+      });
+    });
+
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(idx - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); show(idx + 1); }
+    });
+
+    let startX = 0;
+    root.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+
+    show(0);
+  }
+
+  document.querySelectorAll<HTMLElement>(".featured-carousel").forEach(initFeaturedCarousel);
+</script>
+
+<style>
+  .featured-carousel {
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--color-charcoal);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-carousel:hover { background: var(--color-vellum); }
+  .featured-track {
+    position: relative;
+    width: 100%;
+  }
+  .featured-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    text-decoration: none;
+  }
+  .featured-slide[data-index="0"] {
+    position: relative;
+  }
+  .featured-main { padding: 32px 36px; }
+  .featured-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .featured-flag {
+    font-family: var(--font-display);
+    font-size: var(--size-meta);
+    letter-spacing: 0.04em;
+    color: var(--color-vintage-red);
+    border: 1px solid var(--color-vintage-red);
+    padding: 1px 8px;
+  }
+  .featured-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-l);
+    line-height: 1.15;
+    margin: 0;
+    color: var(--color-charcoal);
+  }
+  .featured-carousel:hover .featured-slide[aria-hidden="false"] .featured-title {
+    color: var(--color-vintage-red);
+  }
+  .featured-sub {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: var(--size-body);
+    line-height: 1.5;
+    color: var(--color-charcoal-soft);
+    margin: 16px 0 0;
+  }
+  .featured-foot {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .featured-read {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: var(--size-meta);
+    color: var(--color-ink-blue);
+  }
+  .featured-aside {
+    background: var(--domain-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-left: 1px solid var(--rule);
+    color: var(--domain-color);
+  }
+  .featured-num {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--domain-color);
+    opacity: 0.85;
+  }
+  .featured-domain {
+    font-family: var(--font-meta);
+    font-size: var(--size-meta);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--domain-color);
+    opacity: 0.7;
+  }
+
+  .featured-nav {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+  }
+  .nav-btn {
+    font-family: var(--font-meta);
+    font-size: var(--size-meta);
+    line-height: 1;
+    color: var(--color-charcoal);
+    background: var(--color-bone);
+    border: 1px solid var(--rule-strong);
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  }
+  .nav-btn:hover {
+    background: var(--color-charcoal);
+    color: var(--color-bone);
+    border-color: var(--color-charcoal);
+  }
+  .nav-pos {
+    font-family: var(--font-meta);
+    color: var(--color-charcoal-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 760px) {
+    .featured-slide { grid-template-columns: 1fr; }
+    .featured-aside {
+      border-left: 0;
+      border-top: 1px solid var(--rule);
+      flex-direction: row;
+      padding: 16px;
+      min-height: 64px;
+    }
+    .featured-num { font-size: 2rem; }
+    .featured-nav { right: 16px; bottom: 12px; }
+  }
+</style>

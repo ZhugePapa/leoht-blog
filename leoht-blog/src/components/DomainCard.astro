@@ -1,0 +1,104 @@
+---
+import type { Domain } from "../lib/domains";
+import { base } from "../lib/base";
+
+interface Props {
+  domain: Domain;
+  count: number;
+}
+
+const { domain, count } = Astro.props;
+const href = `${base}library?domain=${domain.slug}`;
+---
+
+<a class="dcard" href={href} style={`--dcolor: ${domain.color}; --dsoft: ${domain.soft}`}>
+  <div class="dcard-corner" aria-hidden="true"></div>
+  <div class="dcard-head">
+    <span class="dcard-num meta">{domain.enName}</span>
+    <span class="dcard-arrow" aria-hidden="true">→</span>
+  </div>
+  <h3 class="dcard-name">{domain.name}</h3>
+  <p class="dcard-question meta">{domain.question}</p>
+  <p class="dcard-desc">{domain.description}</p>
+  <div class="dcard-foot meta">
+    <span>{count} 篇</span>
+  </div>
+</a>
+
+<style>
+  .dcard {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 20px 22px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: background 140ms ease;
+  }
+  .dcard:hover {
+    background: var(--color-vellum);
+  }
+  .dcard-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--dsoft);
+    transform: translate(20px, -20px) rotate(45deg);
+    transition: transform 160ms ease;
+  }
+  .dcard:hover .dcard-corner {
+    transform: translate(16px, -16px) rotate(45deg);
+  }
+  .dcard-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .dcard-num {
+    color: var(--dcolor);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .dcard-arrow {
+    font-family: var(--font-display);
+    color: var(--color-charcoal-faint);
+    font-size: var(--size-meta);
+    transition: transform 160ms ease, color 160ms ease;
+  }
+  .dcard:hover .dcard-arrow {
+    color: var(--color-vintage-red);
+    transform: translateX(3px);
+  }
+  .dcard-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-s);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-charcoal);
+  }
+  .dcard-question {
+    margin: 4px 0 10px;
+    color: var(--color-charcoal-soft);
+  }
+  .dcard-desc {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.5;
+    color: var(--color-charcoal-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .dcard-foot {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    color: var(--color-charcoal-faint);
+  }
+</style>

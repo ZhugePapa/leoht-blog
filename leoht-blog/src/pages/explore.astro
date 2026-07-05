@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { base } from "../lib/base";
+---
+
+<Base title="探索 — leoht" section="explore" no="ⅲ">
+  <section class="placeholder">
+    <p class="meta crumb">index / explore</p>
+    <p class="meta num-line">ⅲ · 探索</p>
+    <h1 class="display-xl title">知识图谱</h1>
+    <p class="display-m sub"><em>探索卡片之间的关联,以图谱视角重新审视知识。</em></p>
+
+    <hr class="rule" />
+
+    <div class="placeholder-body">
+      <div class="placeholder-stamp">
+        <p class="display-s">待上线</p>
+        <p class="meta">forthcoming · vol ⅲ</p>
+      </div>
+      <p class="placeholder-text">
+        知识图谱模块正在规划中。待卡片收录过 50 篇、关联关系沉淀到一定密度,这里将以局部图谱呈现领域、标签与卡片之间的结构。
+      </p>
+      <p class="meta placeholder-back"><a href={base}>← 回到首页</a> · <a href={`${base}library`}>浏览内容库 →</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .placeholder { max-width: var(--container-text); margin: 0 auto; }
+  .crumb { margin: 0 0 8px; color: var(--color-charcoal-faint); }
+  .num-line { margin: 0 0 16px; color: var(--color-charcoal-soft); }
+  .title { margin: 0 0 12px; }
+  .sub { color: var(--color-charcoal-soft); margin: 0; }
+  .rule { margin: 32px 0; }
+  .placeholder-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding: 32px 0;
+  }
+  .placeholder-stamp {
+    border: 1px solid var(--rule-strong);
+    padding: 20px 28px;
+    background: var(--color-vellum);
+    box-shadow: inset 1px 1px 0 var(--rule);
+    transform: rotate(-1.5deg);
+  }
+  .placeholder-stamp .display-s { margin: 0; font-size: var(--size-m); }
+  .placeholder-stamp .meta { margin: 6px 0 0; color: var(--color-charcoal-faint); }
+  .placeholder-text {
+    max-width: var(--container-text);
+    font-family: var(--font-body);
+    font-style: normal;
+    color: var(--color-charcoal-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .placeholder-back { margin: 8px 0 0; }
+  .placeholder-back a { color: var(--color-ink-blue); text-decoration: none; }
+  .placeholder-back a:hover { color: var(--color-vintage-red); }
+</style>

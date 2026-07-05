@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leoht Library - Revue for the Experience Designer</title>
+    <script>
+        window.tailwind = window.tailwind || {};
+        window.tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#f3efe8',
+                        ink: '#2a2826',
+                        'ink-light': '#66635e',
+                        accent: '#7a312a',
+                        line: '#d6d2c4',
+                        'card-bg': 'rgba(255, 255, 255, 0.3)',
+                        'feature-bg': '#eadecf'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3efe8;
+            color: #2a2826;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+        .border-line { border-color: #d6d2c4; }
+        .text-accent { color: #7a312a; }
+        .bg-accent { background-color: #7a312a; }
+        
+        /* Custom underline for nav */
+        .nav-link.active {
+            border-bottom: 2px solid #7a312a;
+            padding-bottom: 2px;
+            color: #7a312a;
+        }
+
+        .torn-paper {
+            background: #eeeadd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .torn-paper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid rgba(0,0,0,0.1);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-ink min-h-screen">
+
+    <!-- Container -->
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 relative overflow-hidden">
+
+        <!-- Issue Badge (Top Right) -->
+        <div class="absolute top-24 right-16 md:right-24 rotate-3 torn-paper p-4 text-center z-10 w-24 hidden md:block border border-line">
+            <div class="text-xs text-ink-light mb-1">issue</div>
+            <div class="font-serif text-lg leading-none mb-1">No. i</div>
+            <div class="text-[10px] text-ink-light uppercase">jun 2026</div>
+        </div>
+
+        <!-- Header -->
+        <header class="flex justify-between items-center py-8 border-b border-line">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path>
+                </svg>
+                <span class="font-serif text-2xl tracking-wide">Leoht Library</span>
+            </div>
+
+            <!-- Nav & Actions -->
+            <div class="flex items-center gap-8 text-sm">
+                <nav class="hidden md:flex gap-6 font-medium">
+                    <a href="#" class="nav-link active">首页</a>
+                    <a href="#" class="nav-link text-ink-light hover:text-ink transition-colors">内容库</a>
+                    <a href="#" class="nav-link text-ink-light hover:text-ink transition-colors">探索</a>
+                    <a href="#" class="nav-link text-ink-light hover:text-ink transition-colors">关于</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="text-ink-light hover:text-ink">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <button class="border border-line px-4 py-1.5 rounded-sm hover:bg-black hover:text-white transition-colors">登录</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="py-20 flex flex-col lg:flex-row relative">
+            <!-- Left Content -->
+            <div class="w-full lg:w-5/12 pr-8 relative z-10">
+                <h1 class="font-serif text-[4rem] md:text-[5.5rem] leading-[1.1] mb-8">
+                    Revue for the<br>
+                    Experience<br>
+                    Designer
+                </h1>
+                
+                <div class="text-ink-light leading-relaxed mb-8 max-w-sm">
+                    <p class="mb-2">一本被反复翻阅的 UX 知识手册，</p>
+                    <p>沉淀心理学、增长、产品、方法论与案例。</p>
+                </div>
+
+                <div class="text-ink mb-12">
+                    已收录 <span class="font-serif text-xl mx-1">356</span> 篇文章
+                </div>
+
+                <div class="flex gap-8 text-accent font-serif italic text-lg">
+                    <a href="#" class="hover:underline flex items-center gap-2">
+                        <span>&rarr;</span> enter the library
+                    </a>
+                    <a href="#" class="hover:underline flex items-center gap-2">
+                        <span>&rarr;</span> about
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Illustration (Stylized Placeholder based on original) -->
+            <div class="w-full lg:w-7/12 mt-12 lg:mt-0 relative h-[400px] lg:h-auto hidden md:block">
+                <!-- Abstract representations of the desk elements -->
+                <div class="absolute top-10 right-20 text-accent font-serif text-3xl rotate-[-5deg] opacity-60">UX知识库</div>
+                
+                <!-- Coffee cup -->
+                <div class="absolute bottom-16 left-12 border-2 border-ink rounded-b-3xl rounded-t-lg w-20 h-16 flex flex-col items-center justify-center bg-paper rotate-[-10deg]">
+                    <span class="text-[10px] font-bold">FOCUS</span>
+                    <span class="text-[8px]">&</span>
+                    <span class="text-[10px] font-bold">THINK</span>
+                </div>
+
+                <!-- Filing Cabinet abstract -->
+                <div class="absolute top-1/3 left-1/4 flex items-end">
+                    <!-- Character -->
+                    <div class="w-16 h-16 rounded-full bg-[#fbd485] border-2 border-ink absolute -top-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center justify-center">
+                        <div class="flex gap-2 mb-1"><div class="w-1.5 h-1.5 bg-ink rounded-full"></div><div class="w-1.5 h-1.5 bg-ink rounded-full"></div></div>
+                        <div class="w-3 h-1 border-b-2 border-ink rounded-full"></div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="border-2 border-ink bg-paper w-24 h-28 p-2 relative flex flex-col justify-end translate-y-4">
+                            <div class="text-xs text-center border-t border-ink pt-1">用户研究</div>
+                        </div>
+                        <div class="border-2 border-ink bg-paper w-24 h-32 p-2 relative flex flex-col justify-end -ml-1">
+                            <div class="text-xs text-center border-t border-ink pt-1">信息架构</div>
+                        </div>
+                        <div class="border-2 border-ink bg-paper w-24 h-28 p-2 relative flex flex-col justify-end -ml-1 translate-y-4">
+                            <div class="text-xs text-center border-t border-ink pt-1">交互模式</div>
+                        </div>
+                        <div class="border-2 border-ink bg-paper w-24 h-32 p-2 relative flex flex-col justify-end -ml-1">
+                            <div class="text-xs text-center border-t border-ink pt-1">视觉语言</div>
+                        </div>
+                         <div class="border-2 border-ink bg-paper w-24 h-28 p-2 relative flex flex-col justify-end -ml-1 translate-y-4">
+                            <div class="text-xs text-center border-t border-ink pt-1">案例参考</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Notebook abstract -->
+                <div class="absolute bottom-0 left-1/3 border-2 border-ink bg-paper w-64 h-32 rotate-[5deg] flex shadow-sm">
+                    <div class="w-1/2 border-r border-ink p-4 flex flex-col gap-2">
+                        <div class="h-1 bg-line w-full rounded"></div>
+                        <div class="h-1 bg-line w-3/4 rounded"></div>
+                        <div class="h-1 bg-line w-5/6 rounded"></div>
+                        <div class="mt-auto text-xs italic text-ink-light">更少选择，<br>更高质量的决策。</div>
+                    </div>
+                    <div class="w-1/2 p-4 flex flex-col gap-2">
+                        <div class="h-1 bg-line w-full rounded"></div>
+                        <div class="h-1 bg-line w-full rounded"></div>
+                        <div class="h-1 bg-line w-1/2 rounded"></div>
+                    </div>
+                </div>
+                
+                <!-- Lamp abstract -->
+                <div class="absolute top-10 right-0 w-32 h-48">
+                    <div class="w-16 h-12 bg-ink rounded-t-full absolute top-0 right-4 rotate-45"></div>
+                    <div class="w-2 h-32 bg-ink absolute top-8 right-16 rotate-[20deg]"></div>
+                    <div class="w-2 h-16 bg-ink absolute bottom-0 right-20 rotate-[-10deg]"></div>
+                    <div class="w-16 h-4 bg-ink rounded-full absolute bottom-[-4px] right-16"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <hr class="border-line my-12">
+
+        <!-- Latest Articles Section -->
+        <section class="mb-20">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-3xl font-bold tracking-wide">最新文章</h2>
+                <a href="#" class="text-sm text-ink-light hover:text-ink flex items-center gap-1">
+                    查看全部 <span class="font-serif">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Articles Grid (Left) -->
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Article Card 1 -->
+                    <article class="border border-line p-6 flex flex-col h-full bg-card-bg hover:bg-white transition-colors cursor-pointer">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs text-ink-light tracking-widest font-serif">I · essay</span>
+                            <span class="text-[10px] bg-accent text-white px-2 py-0.5 uppercase tracking-wider">published</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 leading-tight">设计评审不是审稿，是对齐</h3>
+                        <p class="text-sm text-ink-light leading-relaxed flex-grow">设计评审的价值不在于挑错，而在于让团队对“什么是好体验”达成共同判断。</p>
+                        <div class="border-t border-line mt-6 pt-4 text-xs text-ink-light tracking-wide">
+                            method / review / decision
+                        </div>
+                    </article>
+
+                    <!-- Article Card 2 -->
+                    <article class="border border-line p-6 flex flex-col h-full bg-card-bg hover:bg-white transition-colors cursor-pointer">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs text-ink-light tracking-widest font-serif">II · note</span>
+                            <span class="text-[10px] bg-accent text-white px-2 py-0.5 uppercase tracking-wider">published</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 leading-tight">排版的层级感对比，不靠大小</h3>
+                        <p class="text-sm text-ink-light leading-relaxed flex-grow">视觉层级不是靠调整大正文字那么那物——字号、字重、字距、色块、间距五个维度的对比组合才构成可信的层级。</p>
+                        <div class="border-t border-line mt-6 pt-4 text-xs text-ink-light tracking-wide">
+                            visual / typography / layout
+                        </div>
+                    </article>
+
+                    <!-- Article Card 3 -->
+                    <article class="border border-line p-6 flex flex-col h-full bg-card-bg hover:bg-white transition-colors cursor-pointer">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs text-ink-light tracking-widest font-serif">III · essay</span>
+                            <span class="text-[10px] bg-accent text-white px-2 py-0.5 uppercase tracking-wider">published</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 leading-tight">AI 交互的三种基本模式</h3>
+                        <p class="text-sm text-ink-light leading-relaxed flex-grow">AI 产品的交互模式正在收敛为三种——指令式、代理式、协作式，每种对应不同的用户控制感受与信任设计。</p>
+                        <div class="border-t border-line mt-6 pt-4 text-xs text-ink-light tracking-wide">
+                            ai-product / pattern / trust
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Sidebar (Right) -->
+                <div class="lg:col-span-4 flex flex-col gap-6">
+                    
+                    <!-- Index Box -->
+                    <div class="border border-line p-6 bg-card-bg">
+                        <div class="flex items-end gap-2 mb-6">
+                            <h3 class="text-xl font-bold">索引</h3>
+                            <span class="text-xs text-ink-light tracking-widest uppercase font-serif pb-0.5">Index</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">设计评审</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">协作</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">方法论</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">洞察</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">信息架构</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">视觉</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">测量</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">增长</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">AI 对话</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">决策</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">表单设计</span>
+                            <span class="bg-[#e6e2d6] px-3 py-1 text-sm text-ink-light">可用性</span>
+                        </div>
+                        <a href="#" class="text-accent text-sm flex items-center gap-1 hover:underline">
+                            进入索引 <span class="font-serif">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Map Box -->
+                    <div class="border border-line p-6 bg-card-bg relative overflow-hidden">
+                        <div class="flex items-end gap-2 mb-4 relative z-10">
+                            <h3 class="text-xl font-bold">知识图谱</h3>
+                            <span class="text-xs text-ink-light tracking-widest uppercase font-serif pb-0.5">Map</span>
+                        </div>
+                        <p class="text-sm text-ink-light mb-6 max-w-[160px] relative z-10">探索卡片之间的关联结构，发现知识的连接与路径。</p>
+                        <a href="#" class="text-accent text-sm flex items-center gap-1 hover:underline relative z-10">
+                            进入图谱 <span class="font-serif">&rarr;</span>
+                        </a>
+                        
+                        <!-- Network Graphic SVG -->
+                        <div class="absolute bottom-4 right-2 opacity-50 pointer-events-none">
+                            <svg width="120" height="100" viewBox="0 0 120 100" stroke="#d6d2c4" stroke-width="1.5" fill="#f3efe8">
+                                <circle cx="30" cy="20" r="4"></circle>
+                                <circle cx="80" cy="15" r="4"></circle>
+                                <circle cx="100" cy="50" r="4"></circle>
+                                <circle cx="60" cy="80" r="4"></circle>
+                                <circle cx="20" cy="70" r="4"></circle>
+                                <circle cx="50" cy="45" r="4"></circle>
+                                
+                                <line x1="30" y1="20" x2="80" y2="15"></line>
+                                <line x1="80" y1="15" x2="100" y2="50"></line>
+                                <line x1="100" y1="50" x2="60" y2="80"></line>
+                                <line x1="60" y1="80" x2="20" y2="70"></line>
+                                <line x1="20" y1="70" x2="30" y2="20"></line>
+                                
+                                <line x1="50" y1="45" x2="30" y2="20"></line>
+                                <line x1="50" y1="45" x2="80" y2="15"></line>
+                                <line x1="50" y1="45" x2="100" y2="50"></line>
+                                <line x1="50" y1="45" x2="60" y2="80"></line>
+                                <line x1="50" y1="45" x2="20" y2="70"></line>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <hr class="border-line my-12">
+
+        <!-- Feature Collections Section -->
+        <section class="mb-20">
+             <div class="flex justify-between items-end mb-8">
+                <div class="flex items-end gap-3">
+                    <h2 class="text-3xl font-bold tracking-wide">专题合集</h2>
+                    <span class="text-xs text-ink-light tracking-widest uppercase font-serif pb-1">Feature Collections</span>
+                </div>
+                <a href="#" class="text-sm text-ink-light hover:text-ink flex items-center gap-1">
+                    查看全部 <span class="font-serif">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Main Feature (Left) -->
+                <div class="lg:col-span-7 bg-feature-bg border border-line p-8 md:p-12 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+                    <div class="flex justify-between items-start mb-12">
+                        <div class="font-serif text-3xl text-ink-light border-b border-ink pb-2">01</div>
+                        <div class="font-serif text-xl">Behavior</div>
+                    </div>
+                    
+                    <div class="relative z-10 w-2/3">
+                        <h3 class="text-5xl md:text-6xl font-bold mb-6">人与行为</h3>
+                        <p class="text-ink-light leading-relaxed mb-12">行为经济学、决策理论、认知与情绪如何驱动人的行为。</p>
+                        <a href="#" class="text-accent text-sm flex items-center gap-1 hover:underline">
+                            进入专题 <span class="font-serif">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Placeholder for cute illustration -->
+                    <div class="absolute bottom-4 right-4 w-64 h-64 opacity-80 pointer-events-none flex items-end justify-end">
+                         <!-- Simplified CSS Character -->
+                         <div class="relative w-32 h-32 mr-8 mb-8">
+                            <div class="w-24 h-24 bg-[#fbd485] rounded-full border-2 border-ink absolute right-0 top-0 flex flex-col items-center justify-center">
+                                <div class="flex gap-2 mb-1"><div class="w-1.5 h-1.5 bg-ink rounded-full"></div><div class="w-1.5 h-1.5 bg-ink rounded-full"></div></div>
+                                <div class="w-2 h-2 border-b-2 border-ink rounded-full"></div>
+                            </div>
+                            <!-- Magnifying glass line -->
+                            <div class="w-16 h-0.5 bg-ink absolute bottom-8 -left-8 rotate-45"></div>
+                            <div class="w-8 h-8 rounded-full border-2 border-ink absolute bottom-0 -left-12"></div>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Feature List (Right) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <!-- Item 2 -->
+                    <div class="border border-line p-5 bg-card-bg flex gap-6 hover:bg-white transition-colors cursor-pointer group">
+                        <div class="font-serif text-xl text-ink-light border-b border-ink h-fit pb-1 shrink-0">02</div>
+                        <div class="flex-grow">
+                            <h4 class="text-xl font-bold mb-2">体验设计</h4>
+                            <p class="text-xs text-ink-light leading-relaxed mb-4 max-w-[200px]">交互、信息架构、可用性、可访问性与内容设计。</p>
+                        </div>
+                        <div class="w-28 h-20 bg-paper border border-line shrink-0 flex items-center justify-center relative overflow-hidden grayscale group-hover:grayscale-0 transition-all opacity-70">
+                             <div class="w-16 h-12 border border-line absolute rotate-6 bg-white"></div>
+                             <div class="w-16 h-12 border border-line absolute -rotate-3 bg-white left-2 top-2"></div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="border border-line p-5 bg-card-bg flex gap-6 hover:bg-white transition-colors cursor-pointer group">
+                        <div class="font-serif text-xl text-ink-light border-b border-ink h-fit pb-1 shrink-0">03</div>
+                        <div class="flex-grow">
+                            <h4 class="text-xl font-bold mb-2">产品增长</h4>
+                            <p class="text-xs text-ink-light leading-relaxed mb-4 max-w-[200px]">激活、留存、转化与习惯养成，设计如何驱动增长。</p>
+                        </div>
+                         <div class="w-28 h-20 bg-paper border border-line shrink-0 flex items-center justify-center p-2 opacity-70">
+                             <svg width="100%" height="100%" viewBox="0 0 100 50" fill="none" stroke="#2a2826" stroke-width="1">
+                                 <polyline points="0,50 20,40 40,45 60,20 80,25 100,5"></polyline>
+                                 <line x1="0" y1="0" x2="0" y2="50"></line>
+                                 <line x1="0" y1="50" x2="100" y2="50"></line>
+                             </svg>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="border border-line p-5 bg-card-bg flex gap-6 hover:bg-white transition-colors cursor-pointer group">
+                        <div class="font-serif text-xl text-ink-light border-b border-ink h-fit pb-1 shrink-0">04</div>
+                        <div class="flex-grow">
+                            <h4 class="text-xl font-bold mb-2">产品系统</h4>
+                            <p class="text-xs text-ink-light leading-relaxed mb-4 max-w-[200px]">产品架构、数据分析、A/B 测试与 API 设计理解。</p>
+                        </div>
+                         <div class="w-28 h-20 bg-paper border border-line shrink-0 flex items-center justify-center relative opacity-70 p-2">
+                             <div class="w-full h-full border border-line flex flex-col gap-1 p-1">
+                                 <div class="h-2 bg-line w-1/2"></div>
+                                 <div class="h-2 bg-line w-3/4"></div>
+                                 <div class="h-2 bg-line w-full"></div>
+                                 <div class="h-2 bg-line w-2/3"></div>
+                             </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="border-y border-line py-12 px-6 flex flex-col md:flex-row items-center justify-between bg-[#f0ebd9] mb-12">
+            <div class="flex items-center gap-6 mb-6 md:mb-0">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-ink-light">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <div>
+                    <h3 class="text-lg font-bold">每周一封设计笔记</h3>
+                    <p class="text-sm text-ink-light mt-1">精选文章、方法与灵感，直接发送到你的邮箱。</p>
+                </div>
+            </div>
+            
+            <form class="flex w-full md:w-auto">
+                <input type="email" placeholder="输入你的邮箱地址" class="bg-transparent border border-line border-r-0 px-4 py-2 w-full md:w-64 focus:outline-none focus:border-ink transition-colors text-sm placeholder:text-ink-light">
+                <button type="submit" class="bg-accent text-white px-8 py-2 text-sm tracking-wide hover:bg-opacity-90 transition-opacity">订阅</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 flex flex-col md:flex-row justify-between gap-12 text-sm text-ink-light relative">
+            
+            <div class="w-full md:w-1/3">
+                <div class="font-serif text-xl text-ink mb-1">Leoht Library</div>
+                <div class="font-serif text-xs mb-6">Revue for the Experience Designer</div>
+                <p class="mb-8 leading-relaxed max-w-xs">一本被反复翻阅的 UX 知识手册，沉淀心理学、增长、产品、方法论与案例。</p>
+                <div>&copy; 2026 Leoht · 体验设计师的个人知识系统</div>
+            </div>
+
+            <div class="w-full md:w-1/6 flex flex-col gap-3">
+                <div class="text-ink font-bold tracking-widest uppercase mb-2">Index <span class="text-xs font-normal ml-1 text-ink-light font-serif">索引</span></div>
+                <a href="#" class="hover:text-ink">首页</a>
+                <a href="#" class="hover:text-ink">内容库</a>
+                <a href="#" class="hover:text-ink">探索</a>
+                <a href="#" class="hover:text-ink">关于</a>
+            </div>
+
+            <div class="w-full md:w-1/6 flex flex-col gap-3">
+                <div class="text-ink font-bold tracking-widest uppercase mb-2">Links <span class="text-xs font-normal ml-1 text-ink-light font-serif">链接</span></div>
+                <a href="#" class="hover:text-ink">友情链接一</a>
+                <a href="#" class="hover:text-ink">友情链接二</a>
+                <a href="#" class="hover:text-ink">友情链接三</a>
+                <a href="#" class="hover:text-ink">RSS</a>
+            </div>
+
+            <!-- Bottom Right Tag -->
+            <div class="w-full md:w-auto flex flex-col items-end justify-between">
+                <div class="torn-paper p-4 text-center border border-line w-24">
+                    <div class="font-serif text-xl mb-1 text-ink">i</div>
+                    <div class="text-[10px] uppercase tracking-widest">vol · 2026</div>
+                </div>
+                <div class="text-xs italic font-serif mt-8">fin / no end</div>
+            </div>
+            
+        </footer>
+
+    </div>
+
+</body>
+</html>

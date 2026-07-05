@@ -1,48 +1,112 @@
 @import "tailwindcss";
 
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/cormorant-garamond/400-italic.css";
-@import "@fontsource/source-serif-4/400.css";
-@import "@fontsource/source-serif-4/600-italic.css";
-@import "@fontsource/ibm-plex-mono/400.css";
+/* Display + Body: Noto Serif SC 400/500/600 — 标题与正文同族衬线（CJK 兼容） */
+@import "@fontsource/noto-serif-sc/400.css";
+@import "@fontsource/noto-serif-sc/500.css";
+@import "@fontsource/noto-serif-sc/600.css";
+/* Meta: Noto Sans SC 400/500 — 小写 + 字间距 + 灰阶 机构感（不再等宽） */
+@import "@fontsource/noto-sans-sc/400.css";
+@import "@fontsource/noto-sans-sc/500.css";
 
 @theme {
   --color-bone: #f9f7f2;
-  --color-vellum: #ebe8e0;
-  --color-charcoal: #1a1a1a;
-  --color-charcoal-soft: #3a3a38;
+  --color-card: #fcfaf5;
+  --color-vellum: #f7f1e6;
+  --color-charcoal: #1a1a19;
+  --color-charcoal-soft: #545450;
   --color-charcoal-faint: #7a7873;
-  --color-ink-blue: #0d1b2a;
-  --color-vintage-red: #8c1c13;
+  --color-ink-blue: #094280;
+  --color-vintage-red: #A82E2A;
   --color-muted-gold: #b08d57;
 
-  --font-display: "Cormorant Garamond", "Source Han Serif SC", "Songti SC", serif;
-  --font-body: "Source Serif 4", "Source Han Serif SC", "Songti SC", serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", monospace;
+  --font-display: "Noto Serif SC", "Songti SC", serif;
+  --font-body: "Noto Serif SC", "Songti SC", serif;
+  --font-meta: "Noto Sans SC", "Songti SC", sans-serif;
+  /* 覆盖 Tailwind v4 默认 --font-mono，使其跟踪 meta token（不再等宽） */
+  --font-mono: "Noto Sans SC", "Songti SC", sans-serif;
 }
 
 :root {
   --rule: rgb(26 26 26 / 22%);
   --rule-strong: rgb(26 26 26 / 48%);
   --rule-gold: rgb(176 141 87 / 60%);
-  --ink-blue-soft: rgb(13 27 42 / 12%);
-  --vintage-red-soft: rgb(140 28 19 / 10%);
+  --ink-blue-soft: rgb(9 66 128 / 12%);
+  --vintage-red-soft: rgb(168 46 42 / 10%);
 
   --container-text: 680px;
-  --container: 1100px;
-  --container-wide: 1380px;
+  --container: 1440px;
+  --container-wide: 1600px;
+
+  --bg: var(--color-bone);
+  --bg-soft: var(--color-vellum);
+  --fg: var(--color-charcoal);
+  --fg-soft: var(--color-charcoal-soft);
+  --fg-faint: var(--color-charcoal-faint);
+
+  /* 字号阶梯 — design-system.md §2.2，1rem=16px */
+  --size-xxl: 4.2rem;      /* 67px Display XXL — Home Hero、章节首页 */
+  --size-xl: 3.2rem;       /* 51px Display XL — 文章 H1 */
+  --size-l: 2.4rem;        /* 38px Display L — H2、区块标题 */
+  --size-m: 1.75rem;       /* 28px Display M — H3、目录条主语 */
+  --size-s: 1.4375rem;     /* 23px Display S — H4、卡片标题 */
+  --size-body: 1.1875rem;  /* 19px Body L — 正文（杂志型偏大） */
+  --size-body-sm: 1rem;    /* 16px Body — 次级正文、callout */
+  --size-meta: 0.875rem;   /* 14px Meta — 等宽元数据 */
+
+  /* 间距阶 — design-system.md §3.1，8 倍数 + 4 微调 */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+
+  /* 圆角 — design-system.md §3.2 */
+  --radius-0: 0;
+  --radius-2: 2px;
+  --radius-4: 4px;
 }
 
+:root[data-theme="dark"] {
+  --bg: #16140f;
+  --bg-soft: #221f19;
+  --fg: #ece6d8;
+  --fg-soft: #b8b1a1;
+  --fg-faint: #807a6c;
+
+  --rule: rgb(236 230 216 / 18%);
+  --rule-strong: rgb(236 230 216 / 36%);
+  --rule-gold: rgb(176 141 87 / 50%);
+  --ink-blue-soft: rgb(9 66 128 / 40%);
+  --vintage-red-soft: rgb(168 46 42 / 22%);
+
+  --color-charcoal: var(--fg);
+  --color-charcoal-soft: var(--fg-soft);
+  --color-charcoal-faint: var(--fg-faint);
+  --color-bone: var(--bg);
+  --color-vellum: #2c2820;
+  --color-card: var(--bg-soft);
+  --color-ink-blue: #6ba8d8;
+  --color-vintage-red: #A82E2A;
+}
+:root[data-theme="dark"] .brand-logo { filter: invert(1); }
+:root[data-theme="dark"] .newsletter-icon { filter: invert(1); }
+
 html {
-  background-color: var(--color-bone);
-  color: var(--color-charcoal);
+  background-color: var(--bg);
+  color: var(--fg);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.65;
   letter-spacing: 0.005em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -52,13 +116,13 @@ body {
 
 ::selection {
   background: var(--vintage-red-soft);
-  color: var(--color-charcoal);
+  color: var(--fg);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
-  color: var(--color-charcoal);
+  font-weight: 600;
+  color: var(--fg);
   margin: 0;
 }
 
@@ -66,7 +130,7 @@ a {
   color: var(--color-ink-blue);
   text-decoration: underline;
   text-underline-offset: 2px;
-  text-decoration-color: rgb(13 27 42 / 60%);
+  text-decoration-color: color-mix(in srgb, var(--color-ink-blue) 60%, transparent);
   text-decoration-thickness: 1px;
   transition: color 120ms ease, text-decoration-color 120ms ease;
 }
@@ -88,53 +152,65 @@ hr, .rule {
 }
 
 .meta {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-family: var(--font-meta);
+  font-weight: 400;
+  font-size: var(--size-meta);
   letter-spacing: 0.04em;
   line-height: 1.4;
   color: var(--color-charcoal-soft);
-  text-transform: lowercase;
 }
-.meta-s {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
-  text-transform: lowercase;
+.body-l {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--size-body);
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+}
+.body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--size-body-sm);
+  line-height: 1.6;
 }
 
 .display-xxl {
   font-family: var(--font-display);
-  font-size: 4.2rem;
-  line-height: 1.02;
+  font-size: var(--size-xxl);
+  line-height: 1.1;
   letter-spacing: -0.015em;
-  font-weight: 400;
+  font-weight: 600;
 }
 .display-xl {
   font-family: var(--font-display);
-  font-size: 3.2rem;
-  line-height: 1.05;
+  font-size: var(--size-xl);
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  font-weight: 400;
+  font-weight: 600;
 }
 .display-l {
   font-family: var(--font-display);
-  font-size: 2.4rem;
+  font-size: var(--size-l);
   line-height: 1.12;
   letter-spacing: -0.005em;
-  font-weight: 400;
+  font-weight: 600;
 }
 .display-m {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: var(--size-m);
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 600;
 }
 .display-s {
   font-family: var(--font-display);
-  font-size: 1.375rem;
+  font-size: var(--size-s);
   line-height: 1.25;
-  font-weight: 500;
+  font-weight: 600;
+}
+.display-xs {
+  font-family: var(--font-display);
+  font-size: var(--size-body-sm);
+  line-height: 1.25;
+  font-weight: 600;
 }
 
 .dropcap::first-letter {
@@ -142,7 +218,7 @@ hr, .rule {
   font-weight: 500;
   color: var(--color-vintage-red);
   float: left;
-  font-size: 4.6rem;
+  font-size: var(--size-xxl);
   line-height: 0.85;
   margin-right: 0.08em;
   margin-top: 0.04em;
@@ -151,23 +227,27 @@ hr, .rule {
 .tag-chip {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-family: var(--font-meta);
+  font-size: var(--size-meta);
   letter-spacing: 0.04em;
   text-transform: lowercase;
-  color: var(--color-charcoal);
+  color: var(--color-charcoal-soft);
   background: var(--color-vellum);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: var(--radius-2);
   padding: 2px 8px;
   text-decoration: none;
   transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 .tag-chip:hover {
-  background: var(--ink-blue-soft);
   border-color: var(--rule-strong);
-  color: var(--color-ink-blue);
+  color: var(--color-vintage-red);
   text-decoration: none;
+}
+.tag-chip.active {
+  background: var(--color-vintage-red);
+  color: #f9f7f2;
+  border-color: transparent;
 }
 
 .status-stamp {
@@ -175,11 +255,11 @@ hr, .rule {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: var(--size-meta);
   letter-spacing: 0.06em;
   text-transform: lowercase;
   border: 1px solid var(--color-charcoal);
-  box-shadow: inset 1px 1px 0 rgb(26 26 26 / 20%);
+  box-shadow: inset 1px 1px 0 var(--rule);
   padding: 1px 6px;
   color: var(--color-charcoal);
   background: transparent;
@@ -207,7 +287,7 @@ hr, .rule {
 .signature-stamp {
   background: var(--color-vellum);
   border: 1px solid var(--rule);
-  box-shadow: inset 1px 1px 0 rgb(26 26 26 / 20%);
+  box-shadow: inset 1px 1px 0 var(--rule);
   padding: 16px 20px;
   transform: rotate(-1.5deg);
 }

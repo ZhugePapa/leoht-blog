@@ -1,11 +1,21 @@
 ---
 import Base from "../layouts/Base.astro";
 import KnowledgeCard from "../components/KnowledgeCard.astro";
+import FeaturedCard from "../components/FeaturedCard.astro";
+import DomainCard from "../components/DomainCard.astro";
 import { getPublishedNumbered, cardSlug } from "../lib/cards";
+import { DOMAINS } from "../lib/domains";
+import { base } from "../lib/base";
 
 const cards = await getPublishedNumbered();
 const latest = cards.slice(0, 6);
-const featured = cards[0];
+const issueCount = cards.length;
+
+const domainCount = new Map<string, number>();
+for (const c of cards) {
+  const d = c.data.domain ?? "general";
+  domainCount.set(d, (domainCount.get(d) ?? 0) + 1);
+}
 
 const tagCount = new Map<string, number>();
 for (const c of cards) {
@@ -13,107 +23,555 @@ for (const c of cards) {
     tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
   }
 }
-const topTags = [...tagCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+const topTags = [...tagCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
 
-const domainCount = new Map<string, number>();
-for (const c of cards) {
-  const d = c.data.domain ?? "general";
-  domainCount.set(d, (domainCount.get(d) ?? 0) + 1);
-}
-const domains = [...domainCount.entries()].sort((a, b) => b[1] - a[1]);
-const year = new Date().getFullYear();
-const base = import.meta.env.BASE_URL;
-
-const showCount = cards.length >= 3;
-const showDomains = domains.length >= 2;
-const showTags = topTags.length >= 4;
+const showCount = issueCount >= 3;
+const showLatest = latest.length > 0;
+const showTags = topTags.length >= 3;
 ---
 
 <Base title="leoht — revue" section="home" no="ⅰ">
+  {/* 1. Hero - 左 5 / 右 7 */}
   <section class="hero">
-    <h1 class="display-xxl hero-title">
-      revue for the<br />experience designer
-    </h1>
-    <p class="hero-lede meta">
-      一本被反复翻阅的 ux 知识手册 · 沉淀心理学、增长、产品、方法论与案例
-      {showCount && ` · 已收录 № ${cards.length} 条`}
-    </p>
-    <nav class="hero-cta meta">
-      <a href={`${base}library`}>→ enter the library</a>
-      {featured && <a href={`${base}c/${cardSlug(featured)}`}>→ read the latest</a>}
-    </nav>
+    <div class="hero-image"></div>
+    <div class="hero-left">
+      <h1 class="display-xxl hero-title">
+        Revue for the<br />Experience<br />Designer
+      </h1>
+      <div class="hero-lede">
+        <p>一本被反复翻阅的 UX 知识手册，</p>
+        <p>沉淀心理学、增长、产品、方法论与案例。</p>
+      </div>
+      <div class="hero-count">
+        已收录 <span class="count-num">{issueCount}</span> 篇文章
+      </div>
+      <div class="hero-seal" aria-hidden="true"></div>
+      <nav class="hero-cta">
+        <a href={`${base}library`}>→ 查看内容</a>
+        <a href={`${base}about`}>→ 关于</a>
+      </nav>
+    </div>
   </section>
 
   <hr class="rule" />
 
-  {latest.length > 0 && (
-    <section class="issue">
-      <h2 class="display-l section-title"><em>in this issue</em></h2>
-      <div class="card-grid">
-        {latest.map((card) => <KnowledgeCard card={card} />)}
+  {/* 2. 最新文章 + 侧栏 - 8 / 4 */}
+  {showLatest && (
+    <section class="content-with-sidebar">
+      <div class="main-column">
+        <div class="section-head">
+          <div class="section-title-group">
+            <h2 class="section-title">最新文章</h2>
+            <span class="section-sub">LATEST ARTICLES</span>
+          </div>
+          <a class="section-link" href={`${base}library`}>查看全部 →</a>
+        </div>
+        <div class="card-grid">
+          {latest.map((card) => <KnowledgeCard card={card} />)}
+        </div>
       </div>
+      <aside class="sidebar">
+        <div class="sidebar-block">
+          <div class="sidebar-head">
+            <h3 class="sidebar-title">索引</h3>
+            <span class="sidebar-sub">INDEX</span>
+          </div>
+          <div class="chips">
+            {topTags.length > 0 ? (
+              topTags.map(([t]) => <span class="tag-chip">{t}</span>)
+            ) : (
+              <span class="meta">暂无标签</span>
+            )}
+          </div>
+          <a class="sidebar-link" href={`${base}library`}>进入索引 →</a>
+        </div>
+        <div class="sidebar-block sidebar-map">
+          <div class="sidebar-head">
+            <h3 class="sidebar-title">知识图谱</h3>
+            <span class="sidebar-sub">MAP</span>
+          </div>
+          <p class="sidebar-desc">探索卡片之间的关联结构，发现知识的连接与路径。</p>
+          <a class="sidebar-link" href={`${base}explore`}>进入图谱 →</a>
+        </div>
+      </aside>
     </section>
   )}
 
-  {showDomains && (
-    <section class="domain-index">
-      <h2 class="display-l section-title"><em>index by domain</em></h2>
-      <ul class="domain-list meta">
-        {domains.map(([d, n]) => (
-          <li><span class="dm">{d}</span><span class="dots" aria-hidden="true"></span><span class="cnt">№ {n}</span></li>
-        ))}
-      </ul>
-    </section>
-  )}
+  <hr class="rule" />
 
-  {showTags && (
-    <section class="tag-cloud">
-      <h2 class="display-l section-title"><em>tags most used</em></h2>
-      <div class="chips">
-        {topTags.map(([t, n]) => (
-          <span class="tag-chip">{t} · {n}</span>
+  {/* 3. 专题合集 - 7 / 5 */}
+  <section class="collections-section">
+    <div class="section-head">
+      <div class="section-title-group">
+        <h2 class="section-title">专题合集</h2>
+        <span class="section-sub">FEATURE COLLECTIONS</span>
+      </div>
+      <a class="section-link" href={`${base}library`}>查看全部 →</a>
+    </div>
+    <div class="collections-layout">
+      {DOMAINS[0] && (
+        <a class="collection-large" href={`${base}library?domain=${DOMAINS[0].slug}`}>
+          <div class="coll-large-image"></div>
+          <div class="coll-large-top">
+            <span class="coll-large-num">01</span>
+            <span class="coll-large-en">{DOMAINS[0].enName}</span>
+          </div>
+          <div class="coll-large-body">
+            <h3 class="coll-large-title">{DOMAINS[0].name}</h3>
+            <p class="coll-large-desc">{DOMAINS[0].description}</p>
+            <span class="coll-large-link">进入专题 →</span>
+          </div>
+        </a>
+      )}
+      <div class="collection-list">
+        {DOMAINS.slice(1, 4).map((d, i) => (
+          <a class="collection-item" href={`${base}library?domain=${d.slug}`}>
+            <span class="coll-item-num">0{i + 2}</span>
+            <div class="coll-item-body">
+              <h4 class="coll-item-title">{d.name}</h4>
+              <p class="coll-item-desc">{d.description}</p>
+            </div>
+            <div class="coll-item-thumb" style={`background-image: var(--img-${d.slug})`}></div>
+          </a>
         ))}
       </div>
-    </section>
-  )}
+    </div>
+  </section>
+
+  {/* 4. Newsletter */}
+  <section class="newsletter">
+    <div class="newsletter-left">
+      <img class="newsletter-icon" src={`${base}images/newsletter-icon.svg`} alt="" />
+      <div>
+        <h3 class="newsletter-title">每周一封设计笔记</h3>
+        <p class="newsletter-desc">精选文章、方法与灵感,直接发送到你的邮箱。</p>
+      </div>
+    </div>
+    <form class="newsletter-form" onsubmit="return false">
+      <input type="email" placeholder="输入你的邮箱地址" class="newsletter-input" />
+      <button type="submit" class="newsletter-btn">订阅</button>
+    </form>
+  </section>
 </Base>
 
 <style>
-  .hero { padding: 32px 0 48px; }
-  .hero-title { margin: 0 0 24px; }
-  .hero-lede { max-width: 560px; line-height: 1.6; color: var(--color-charcoal-soft); }
-  .hero-cta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
-  .hero-cta a { text-decoration: none; font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: 0.02em; }
-  .hero-cta a:hover { color: var(--color-vintage-red); }
-
-  .section-title { margin: 48px 0 24px; }
-  .section-title em { font-style: italic; font-weight: 400; }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* 1. Hero */
+  .hero {
+    position: relative;
+    margin: 0 -48px;
+    padding: 64px 48px;
+    overflow: visible;
+  }
+  .hero-image {
+    position: absolute;
+    left: 484px;
+    top: 33px;
+    width: 925px;
+    height: 521px;
+    background-image: var(--img-hero);
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: darken;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-left {
+    width: 540px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
     gap: 24px;
   }
-
-  .domain-list { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 48px; }
-  .domain-list li {
-    display: flex; align-items: baseline; gap: 8px;
-    padding: 6px 0; break-inside: avoid;
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-xxl);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.015em;
   }
-  .domain-list .dm { min-width: 110px; }
-  .domain-list .dots {
+  .hero-lede {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    color: var(--color-charcoal-soft);
+    margin: 0;
+    max-width: 24rem;
+  }
+  .hero-lede p { margin: 0 0 4px; }
+  .hero-lede p:last-child { margin-bottom: 0; }
+  .hero-count {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    color: var(--color-charcoal);
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .count-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-m);
+  }
+  .hero-seal {
+    width: 67px;
+    height: 24px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-cta a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-body);
+    line-height: 1.25;
+    color: var(--color-vintage-red);
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+  .hero-cta a:hover { text-decoration: underline; }
+
+  /* 2. Content + Sidebar - 8 / 4 */
+  .content-with-sidebar {
+    display: grid;
+    grid-template-columns: 8fr 3fr;
+    gap: 24px;
+    padding: 48px 0;
+  }
+  .main-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sidebar-block {
+    border: 1px solid var(--rule);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--color-card);
+    transition: background 140ms ease;
+  }
+  .sidebar-block:hover { background: var(--color-vellum); }
+  .sidebar-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0;
+  }
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-m);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-charcoal);
+  }
+  .sidebar-sub {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    color: var(--color-charcoal-faint);
+  }
+  .sidebar-desc {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    color: var(--color-charcoal-soft);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 13rem;
+  }
+  .sidebar-block .chips { margin-bottom: 0; }
+  .sidebar-link {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    color: var(--color-vintage-red);
+    text-decoration: none;
+  }
+  .sidebar-link:hover { text-decoration: underline; }
+
+  /* 3. Collections - 7 / 5 */
+  .collections-section { padding: 48px 0; }
+  .collections-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .collection-large {
+    background: var(--color-card);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 140ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .collection-large:hover { background: var(--color-vellum); }
+  .collection-large:hover .coll-large-link { text-decoration: underline; }
+  .coll-large-image {
+    position: absolute;
+    left: 160px;
+    top: 38px;
+    width: 511px;
+    height: 341px;
+    background-image: var(--img-behavior);
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: darken;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .coll-large-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+  .coll-large-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-m);
+    line-height: 1.2;
+    color: var(--color-charcoal-soft);
+    border-bottom: 1px solid var(--color-charcoal-soft);
+    padding-bottom: 4px;
+  }
+  .coll-large-en {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-s);
+    line-height: 1.25;
+    color: var(--color-charcoal-soft);
+  }
+  .coll-large-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .coll-large-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-l);
+    margin: 0;
+    line-height: 1.12;
+    color: var(--color-charcoal);
+  }
+  .coll-large-desc {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    color: var(--color-charcoal-soft);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 273px;
+  }
+  .coll-large-link {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    color: var(--color-vintage-red);
+  }
+  .collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .collection-item {
+    display: flex;
+    gap: 20px;
+    border: 1px solid var(--rule);
+    padding: 20px;
+    text-decoration: none;
+    background: var(--color-card);
+    transition: background 140ms ease;
+    align-items: flex-start;
+    position: relative;
+  }
+  .collection-item:hover { background: var(--color-vellum); }
+  .collection-item:hover .coll-item-title { color: var(--color-vintage-red); text-decoration: underline; }
+  .coll-item-num {
+    font-family: var(--font-display);
+    font-size: var(--size-m);
+    color: var(--color-charcoal-soft);
+    border-bottom: 1px solid var(--color-charcoal-soft);
+    padding-bottom: 4px;
+    flex-shrink: 0;
+    height: fit-content;
+  }
+  .coll-item-body { flex: 1; min-width: 0; padding-right: 140px; }
+  .coll-item-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-m);
+    margin: 0 0 8px;
+    color: var(--color-charcoal);
+  }
+  .coll-item-desc {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    color: var(--color-charcoal-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .coll-item-thumb {
+    position: absolute;
+    right: 20px;
+    top: 21px;
+    width: 120px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: darken;
+    flex-shrink: 0;
+  }
+  :root[data-theme="dark"] .hero-image,
+  :root[data-theme="dark"] .coll-large-image,
+  :root[data-theme="dark"] .coll-item-thumb {
+    mix-blend-mode: lighten;
+  }
+
+  /* 4. Newsletter */
+  .newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 48px;
+    margin: 48px 0;
+    border: 1px solid var(--rule);
+    background: var(--color-vellum);
+    flex-wrap: wrap;
+  }
+  .newsletter-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .newsletter-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-charcoal-soft);
+  }
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-s);
+    line-height: 1.25;
+    margin: 0 0 4px;
+    color: var(--color-charcoal);
+  }
+  .newsletter-desc {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    color: var(--color-charcoal-soft);
+    margin: 0;
+  }
+  .newsletter-form { display: flex; }
+  .newsletter-input {
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 8px 16px;
+    width: 256px;
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    color: var(--color-charcoal);
+    outline: none;
+  }
+  .newsletter-input::placeholder { color: var(--color-charcoal-faint); }
+  .newsletter-input:focus { border-color: var(--color-charcoal); }
+  .newsletter-btn {
+    background: var(--color-vintage-red);
+    color: var(--color-bone);
+    border: 0;
+    padding: 8px 32px;
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    cursor: pointer;
+    transition: opacity 120ms ease;
+  }
+  .newsletter-btn:hover { opacity: 0.9; }
+
+  /* Common */
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 0 32px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .section-title-group { display: flex; align-items: baseline; gap: 12px; }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--size-m);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .section-sub {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    color: var(--color-charcoal-faint);
+  }
+  .section-link {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    color: var(--color-charcoal-soft);
+    text-decoration: none;
+    transition: color 120ms ease;
+  }
+  .section-link:hover { color: var(--color-charcoal); }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
     flex: 1;
-    align-self: center;
-    border-top: 1px dotted var(--rule-strong);
-    height: 0;
-    margin: 0 6px;
   }
-  .domain-list .cnt { color: var(--color-charcoal-soft); }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
 
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-
+  @media (max-width: 900px) {
+    .hero { margin: 0 -48px; padding: 48px 48px; }
+    .hero-image { position: relative; left: 0; top: 0; width: 100%; height: 320px; margin-bottom: 24px; }
+    .hero-left { width: 100%; }
+    .content-with-sidebar { grid-template-columns: 1fr; }
+    .collections-layout { grid-template-columns: 1fr; }
+    .newsletter { flex-direction: column; align-items: flex-start; }
+    .newsletter-form { width: 100%; }
+    .newsletter-input { flex: 1; width: auto; }
+  }
   @media (max-width: 640px) {
     .card-grid { grid-template-columns: 1fr; }
-    .domain-list { columns: 1; }
+    .hero-title { font-size: 3.5rem; }
+    .hero { margin: 0 -20px; padding: 32px 20px; }
+    .newsletter { margin: 32px 0; padding: 32px 20px; }
+    .coll-large-image { display: none; }
   }
 </style>

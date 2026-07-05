@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { cardSlug, toRoman, formatStamp, volNo } from "../../lib/cards";
+import { base } from "../../lib/base";
 
 export async function getStaticPaths() {
   const all = await getCollection("cards");
@@ -35,7 +36,6 @@ const sameTag = published
   .slice(0, 3);
 
 const { Content } = await render(card);
-const base = import.meta.env.BASE_URL;
 const domainAbbr = (card.data.domain ?? "gen").slice(0, 3).toUpperCase();
 const domainSeq = idx >= 0 ? idx + 1 : 0;
 ---
@@ -44,7 +44,7 @@ const domainSeq = idx >= 0 ? idx + 1 : 0;
   <article class="article">
     <div class="article-main">
       <p class="meta crumb">index / {card.data.domain ?? "general"}{card.data.type ? ` / ${card.data.type}` : ""}</p>
-      <p class="meta num-line">№ {globalNo} · {domainAbbr} · {domainSeq}</p>
+      <p class="meta num-line">{globalNo} · {domainAbbr} · {domainSeq}</p>
       <h1 class="display-xl title">{card.data.title}</h1>
       {card.data.summary && <p class="display-m sub"><em>{card.data.summary}</em></p>}
 
@@ -75,7 +75,7 @@ const domainSeq = idx >= 0 ? idx + 1 : 0;
 
     <aside class="article-side">
       <div class="signature-stamp">
-        <p class="display-s sig-num">№ {globalNo} · {domainAbbr} · {domainSeq}</p>
+        <p class="display-s sig-num">{globalNo} · {domainAbbr} · {domainSeq}</p>
         <p class="meta sig-slug">{slug}</p>
         <p class="meta sig-vol">revue · {volNo(card.data.published_at)}</p>
       </div>
@@ -100,44 +100,45 @@ const domainSeq = idx >= 0 ? idx + 1 : 0;
 <style>
   .article {
     display: grid;
-    grid-template-columns: 1fr 260px;
-    gap: 48px;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
+    position: relative;
   }
-  .article-main { max-width: var(--container-text); }
+  .article-main { min-width: 0; }
   .crumb { margin: 0 0 8px; color: var(--color-charcoal-faint); }
   .num-line { margin: 0 0 16px; color: var(--color-charcoal-soft); }
   .title { margin: 0 0 12px; }
-  .sub { color: var(--color-charcoal-soft); margin: 0; }
+  .sub { color: var(--color-charcoal-soft); margin: 0 0 24px; }
+  .sub em { font-style: normal; }
   .source, .stamp { margin: 8px 0; color: var(--color-charcoal-soft); }
 
-  .prose { margin-top: 24px; }
+  .prose { margin-top: 24px; font-size: 1.0625rem; line-height: 1.75; }
   .prose :global(p) { margin: 0 0 1.25em; }
   .prose :global(h2) {
-    font-family: var(--font-display); font-weight: 500;
-    font-size: 1.75rem; line-height: 1.2; margin: 2em 0 0.6em;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: var(--size-m); line-height: 1.2; margin: 2em 0 0.6em;
   }
   .prose :global(h3) {
-    font-family: var(--font-display); font-weight: 500;
-    font-size: 1.375rem; margin: 1.5em 0 0.5em;
+    font-family: var(--font-display); font-weight: 600;
+    font-size: var(--size-s); margin: 1.5em 0 0.5em;
   }
   .prose :global(ul), .prose :global(ol) { margin: 0 0 1.25em; padding-left: 1.4em; }
   .prose :global(li) { margin: 0.3em 0; }
   .prose :global(blockquote) {
     margin: 1.5em 0; padding-left: 1rem;
     border-left: 2px solid var(--color-vintage-red);
-    font-family: var(--font-display); font-style: italic;
-    font-size: 1.5rem; line-height: 1.55; color: var(--color-charcoal-soft);
+    font-family: var(--font-display); font-style: normal;
+    font-size: var(--size-s); line-height: 1.55; color: var(--color-charcoal-soft);
   }
   .prose :global(a) { color: var(--color-ink-blue); }
   .prose :global(code) {
-    font-family: var(--font-mono); font-size: 0.9em;
+    font-family: var(--font-meta); font-size: 0.9em;
     background: var(--color-vellum); padding: 1px 5px; border-radius: 2px;
   }
 
   .tags-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 16px 0; }
 
-  .article-side { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 32px; }
+  .article-side { position: absolute; top: 0; right: 0; width: 260px; display: flex; flex-direction: column; gap: 32px; }
   .sig-num { margin: 0; }
   .sig-slug { margin: 6px 0 0; word-break: break-all; }
   .sig-vol { margin: 2px 0 0; color: var(--color-charcoal-faint); }
@@ -147,11 +148,11 @@ const domainSeq = idx >= 0 ? idx + 1 : 0;
     display: flex; flex-direction: column; gap: 2px;
     padding: 12px 0; border-top: 1px solid var(--rule);
   }
-  .related li a { font-family: var(--font-display); font-size: 1.125rem; text-decoration: none; }
+  .related li a { font-family: var(--font-display); font-size: var(--size-body); text-decoration: none; }
   .related-k { color: var(--color-charcoal-faint); }
 
   @media (max-width: 900px) {
-    .article { grid-template-columns: 1fr; }
-    .article-side { position: static; }
+    .article { grid-template-columns: 1fr; padding-right: 0; }
+    .article-side { position: static; width: auto; }
   }
 </style>

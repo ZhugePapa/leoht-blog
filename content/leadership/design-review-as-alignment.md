@@ -3,13 +3,13 @@ title: 设计评审不是审稿，是对齐
 slug: design-review-as-alignment
 summary: 设计评审的价值不在于挑错,而在于让团队对"什么是好"达成共识——评审失败多半是标准未对齐,不是方案不够好
 type: article
-status: inbox
+status: published
 tags: [设计评审, 协作, 方法论, 沟通]
 domain: leadership
-source_title: 
-source_author: 
-source_url: 
-published_at: 
+source_title:
+source_author:
+source_url:
+published_at: 2026-06-30
 related: []
 ---
 

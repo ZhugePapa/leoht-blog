@@ -1,110 +1,204 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getPublishedNumbered, cardSlug, volNo } from "../lib/cards";
+import { getPublishedNumbered, cardSlug, formatStamp } from "../lib/cards";
+import { base } from "../lib/base";
+import { getDomain } from "../lib/domains";
+
+const TYPE_ZH: Record<string, string> = {
+  article: "文章",
+  principle: "原理",
+  effect: "效应",
+};
+const typeZh = (t: string) => TYPE_ZH[t] ?? t;
+const domainZh = (d: string) => getDomain(d)?.name ?? (d === "general" ? "通用" : d);
 
 const cards = await getPublishedNumbered();
-const base = import.meta.env.BASE_URL;
 const domains = [...new Set(cards.map((c) => c.data.domain ?? "general"))].sort();
 const types = [...new Set(cards.map((c) => c.data.type))].sort();
+const tagCount = new Map<string, number>();
+for (const c of cards) for (const t of c.data.tags ?? []) tagCount.set(t, (tagCount.get(t) ?? 0) + 1);
+const topTags = [...tagCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([t]) => t);
+const lastDate = cards[0]?.data.published_at;
+const lastUpdateShort = lastDate ? `${String(lastDate.getMonth() + 1).padStart(2, "0")}/${String(lastDate.getDate()).padStart(2, "0")}` : "";
 ---
 
 <Base title="library — leoht" section="lib" no="index">
-  <section class="lib-head">
-    <h1 class="display-xl">library — 全部条目</h1>
-    <p class="meta">№ {cards.length} entries</p>
+  <section class="lib-hero">
+    <div class="lib-hero-text">
+      <h1 class="lib-title">全部条目文章</h1>
+      <p class="lib-subtitle">把分散的设计问题、方法与案例，整理成可反复查阅的知识索引</p>
+    </div>
+    <p class="lib-count meta">{cards.length} 文章 · 最近更新于 {lastUpdateShort}</p>
+    <div class="lib-hero-image"><div class="lib-hero-fade"></div></div>
   </section>
 
-  <div class="filters meta">
-    <div class="filter-row">
-      <span class="filter-label">filter ·</span>
-      <span class="filter-opt" data-filter="all">all</span>
-      {domains.map((d) => <span class="filter-opt" data-filter={d}>{d}</span>)}
+  <div class="filters">
+    <div class="filters-head">
+      <span class="filters-title">筛选</span>
+      <button class="filters-reset" id="filter-reset" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        <span>重置</span>
+      </button>
     </div>
-    <div class="filter-row">
-      <span class="filter-label">type ·</span>
-      <span class="filter-opt" data-type="all">all</span>
-      {types.map((t) => <span class="filter-opt" data-type={t}>{t}</span>)}
+    <hr class="rule" />
+    <div class="filter-group">
+      <span class="filter-label meta">领域</span>
+      <div class="filter-chips">
+        <button class="tag-chip chip active" data-filter="all" data-group="domain" type="button">全部</button>
+        {domains.map((d) => <button class="tag-chip chip" data-filter={d} data-group="domain" type="button">{domainZh(d)}</button>)}
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label meta">标签</span>
+      <div class="filter-chips">
+        <button class="tag-chip chip active" data-filter="all" data-group="tag" type="button">全部</button>
+        {topTags.map((t) => <button class="tag-chip chip" data-filter={t} data-group="tag" type="button">{t}</button>)}
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label meta">类型</span>
+      <div class="filter-chips">
+        <button class="tag-chip chip active" data-type="all" data-group="type" type="button">全部</button>
+        {types.map((t) => <button class="tag-chip chip" data-type={t} data-group="type" type="button">{typeZh(t)}</button>)}
+      </div>
     </div>
   </div>
 
-  <hr class="rule" />
+  <div class="entry-section">
+    <p class="entry-count meta" id="entry-count">共 {cards.length} 篇文章</p>
+    <ul class="entry-list">
+      {cards.map((card) => (
+        <li class="entry" data-domain={card.data.domain ?? "general"} data-type={card.data.type} data-tags={(card.data.tags ?? []).join(",")}>
+          <div class="entry-main">
+            <div class="entry-head">
+              <a class="entry-title" href={`${base}c/${cardSlug(card)}`}>{card.data.title}</a>
+              {card.data.summary && <p class="entry-summary">{card.data.summary}</p>}
+            </div>
+            <p class="entry-meta meta">
+              <span class="entry-domain">{domainZh(card.data.domain ?? "general")}</span> · {(card.data.tags ?? []).slice(0, 3).join(" / ")}
+            </p>
+          </div>
+          <div class="entry-side">
+            <span class="entry-type">{typeZh(card.data.type)}</span>
+            <span class="meta">{formatStamp(card.data.published_at).replace(/\./g, "/")}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
 
-  <ul class="entry-list">
-    {cards.map((card) => (
-      <li class="entry" data-domain={card.data.domain ?? "general"} data-type={card.data.type}>
-        <span class="entry-num meta">№ {card.number.global}.{card.number.domain}.{card.number.domainSeq}</span>
-        <div class="entry-body">
-          <a class="entry-title" href={`${base}c/${cardSlug(card)}`}>{card.data.title}</a>
-          <span class="entry-meta meta">
-            {card.data.domain ?? "general"} · {(card.data.tags ?? []).slice(0, 3).join(" / ")}
-          </span>
-        </div>
-        <span class="entry-vol meta">{volNo(card.data.published_at)}</span>
-        <span class="status-stamp solid published">pub</span>
-      </li>
-    ))}
-  </ul>
-
-  {cards.length === 0 && <p class="meta empty">尚无已发布条目。把 content/ 下的文章 status 改为 published 即可显示。</p>}
+  {cards.length === 0 && <p class="meta empty">尚无已发布条目。</p>}
 </Base>
 
 <style>
-  .lib-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 24px; }
+  .lib-hero { position: relative; padding: 48px 0 32px; }
+  .lib-hero-text { display: flex; flex-direction: column; gap: 8px; }
+  .lib-title { font-family: var(--font-display); font-weight: 600; font-size: var(--size-l); line-height: 1.12; margin: 0; color: var(--color-charcoal); }
+  .lib-subtitle { font-family: var(--font-body); font-size: var(--size-body); line-height: 1.65; color: var(--color-charcoal-soft); margin: 0; max-width: 535px; }
+  .lib-count { margin: 20px 0 0; color: var(--color-charcoal-faint); }
+  .lib-hero-image {
+    position: absolute;
+    right: 0;
+    top: -22px;
+    width: 562px;
+    height: 253px;
+    background-image: var(--img-content-library);
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: darken;
+  }
+  :root[data-theme="dark"] .lib-hero-image { mix-blend-mode: lighten; }
+  .lib-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 77%, var(--color-bone) 90%);
+  }
 
-  .filters { padding: 16px 0; display: flex; flex-direction: column; gap: 8px; }
-  .filter-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: baseline; }
-  .filter-label { color: var(--color-charcoal-faint); }
-  .filter-opt { cursor: pointer; color: var(--color-charcoal-soft); }
-  .filter-opt:hover { color: var(--color-vintage-red); }
-  .filter-opt.active { color: var(--color-charcoal); border-bottom: 1px solid var(--color-muted-gold); }
+  .filters { background: var(--color-vellum); border: 1px solid var(--rule); padding: 17px 21px; display: flex; flex-direction: column; gap: 16px; }
+  .filters-head { display: flex; align-items: center; justify-content: space-between; }
+  .filters-title { font-family: var(--font-body); font-weight: 400; font-size: var(--size-body-sm); color: var(--color-charcoal); text-transform: capitalize; }
+  .filters-reset { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; cursor: pointer; padding: 0; font-family: var(--font-meta); font-size: var(--size-meta); color: var(--color-vintage-red); }
+  .filters-reset:hover { text-decoration: underline; }
+  .filter-group { display: flex; align-items: center; gap: 20px; }
+  .filter-label { color: var(--color-charcoal); min-width: 36px; }
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { cursor: pointer; }
+  .chip.active { background: var(--color-vintage-red); color: #f9f7f2; border-color: transparent; }
 
+  .entry-section { margin-top: 32px; }
+  .entry-count { margin: 0 0 16px; color: var(--color-charcoal-soft); }
   .entry-list { list-style: none; margin: 0; padding: 0; }
   .entry {
-    display: grid;
-    grid-template-columns: 160px 1fr auto auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 24px;
-    align-items: baseline;
-    padding: 18px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--rule);
   }
-  .entry-num { color: var(--color-charcoal-faint); }
-  .entry-body { display: flex; flex-direction: column; gap: 4px; }
-  .entry-title { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; text-decoration: none; }
+  .entry-main { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+  .entry-head { display: flex; flex-direction: column; gap: 2px; }
+  .entry-title { font-family: var(--font-display); font-weight: 600; font-size: var(--size-s); line-height: 1.25; text-decoration: none; color: var(--color-charcoal); }
   .entry-title:hover { color: var(--color-vintage-red); }
+  .entry-summary { font-family: var(--font-body); font-size: var(--size-body-sm); line-height: 1.6; color: var(--color-charcoal-soft); margin: 0; text-transform: capitalize; }
   .entry-meta { color: var(--color-charcoal-faint); }
-  .entry-vol { color: var(--color-charcoal-faint); }
+  .entry-domain { color: var(--color-vintage-red); }
+  .entry-side { display: flex; flex-direction: row; align-items: center; gap: 16px; flex-shrink: 0; padding-top: 4px; }
+  .entry-type { font-family: var(--font-body); font-size: var(--size-body-sm); color: var(--color-vintage-red); text-transform: capitalize; }
+  .entry-side .meta { color: var(--color-charcoal-faint); white-space: nowrap; }
   .empty { padding: 48px 0; }
 
+  @media (max-width: 900px) {
+    .lib-hero-image { display: none; }
+  }
   @media (max-width: 720px) {
-    .entry { grid-template-columns: 1fr auto; row-gap: 4px; }
-    .entry-num { grid-column: 1; }
-    .entry-body { grid-column: 1 / -1; }
-    .entry-vol { grid-column: 2; }
+    .entry { flex-direction: column; gap: 8px; }
+    .entry-side { flex-direction: row; gap: 12px; }
   }
 </style>
 
 <script>
   const rows = document.querySelectorAll<HTMLElement>(".entry");
-  const domainOpts = document.querySelectorAll<HTMLElement>(".filter-opt[data-filter]");
-  const typeOpts = document.querySelectorAll<HTMLElement>(".filter-opt[data-type]");
+  const chips = document.querySelectorAll<HTMLElement>(".chip");
+  const countEl = document.getElementById("entry-count");
+  const resetBtn = document.getElementById("filter-reset");
   let activeDomain = "all";
+  let activeTag = "all";
   let activeType = "all";
+  const total = rows.length;
 
   function apply() {
+    let shown = 0;
     rows.forEach((r) => {
       const okD = activeDomain === "all" || r.dataset.domain === activeDomain;
       const okT = activeType === "all" || r.dataset.type === activeType;
-      r.style.display = okD && okT ? "" : "none";
+      const okTag = activeTag === "all" || (r.dataset.tags || "").split(",").includes(activeTag);
+      const show = okD && okT && okTag;
+      r.style.display = show ? "" : "none";
+      if (show) shown++;
     });
+    if (countEl) countEl.textContent = `共 ${shown} 篇文章`;
   }
-  domainOpts.forEach((o) => o.addEventListener("click", () => {
-    activeDomain = o.dataset.filter!;
-    domainOpts.forEach((x) => x.classList.toggle("active", x === o));
+  chips.forEach((c) => c.addEventListener("click", () => {
+    const group = c.dataset.group;
+    if (group === "domain") {
+      activeDomain = c.dataset.filter!;
+      document.querySelectorAll<HTMLElement>(".chip[data-group='domain']").forEach((x) => x.classList.toggle("active", x === c));
+    } else if (group === "tag") {
+      activeTag = c.dataset.filter!;
+      document.querySelectorAll<HTMLElement>(".chip[data-group='tag']").forEach((x) => x.classList.toggle("active", x === c));
+    } else {
+      activeType = c.dataset.type!;
+      document.querySelectorAll<HTMLElement>(".chip[data-group='type']").forEach((x) => x.classList.toggle("active", x === c));
+    }
     apply();
   }));
-  typeOpts.forEach((o) => o.addEventListener("click", () => {
-    activeType = o.dataset.type!;
-    typeOpts.forEach((x) => x.classList.toggle("active", x === o));
+  resetBtn?.addEventListener("click", () => {
+    activeDomain = "all"; activeTag = "all"; activeType = "all";
+    document.querySelectorAll<HTMLElement>(".chip").forEach((c) => {
+      const isAll = c.dataset.filter === "all" || c.dataset.type === "all";
+      c.classList.toggle("active", isAll);
+    });
     apply();
-  }));
+  });
 </script>

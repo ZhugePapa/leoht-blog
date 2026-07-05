@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { base } from "../lib/base";
+---
+
+<Base title="关于 — leoht" section="about" no="ⅳ">
+  <section class="placeholder">
+    <p class="meta crumb">index / about</p>
+    <p class="meta num-line">ⅳ · 关于</p>
+    <h1 class="display-xl title">关于 leoht</h1>
+    <p class="display-m sub"><em>一本被反复翻阅的 ux 知识手册。</em></p>
+
+    <hr class="rule" />
+
+    <div class="placeholder-body">
+      <div class="placeholder-stamp">
+        <p class="display-s">待上线</p>
+        <p class="meta">forthcoming · vol ⅳ</p>
+      </div>
+      <p class="placeholder-text">
+        leoht 是体验设计师的个人知识系统——沉淀心理学、增长、产品、方法论与案例,把零散的输入变成可调用的认知资产。关于页正在撰写中,将讲述这份 revue 的来由、方法与作者。
+      </p>
+      <p class="meta placeholder-back"><a href={base}>← 回到首页</a> · <a href={`${base}library`}>浏览内容库 →</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .placeholder { max-width: var(--container-text); margin: 0 auto; }
+  .crumb { margin: 0 0 8px; color: var(--color-charcoal-faint); }
+  .num-line { margin: 0 0 16px; color: var(--color-charcoal-soft); }
+  .title { margin: 0 0 12px; }
+  .sub { color: var(--color-charcoal-soft); margin: 0; }
+  .rule { margin: 32px 0; }
+  .placeholder-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding: 32px 0;
+  }
+  .placeholder-stamp {
+    border: 1px solid var(--rule-strong);
+    padding: 20px 28px;
+    background: var(--color-vellum);
+    box-shadow: inset 1px 1px 0 var(--rule);
+    transform: rotate(-1.5deg);
+  }
+  .placeholder-stamp .display-s { margin: 0; font-size: var(--size-m); }
+  .placeholder-stamp .meta { margin: 6px 0 0; color: var(--color-charcoal-faint); }
+  .placeholder-text {
+    max-width: var(--container-text);
+    font-family: var(--font-body);
+    font-style: normal;
+    color: var(--color-charcoal-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .placeholder-back { margin: 8px 0 0; }
+  .placeholder-back a { color: var(--color-ink-blue); text-decoration: none; }
+  .placeholder-back a:hover { color: var(--color-vintage-red); }
+</style>

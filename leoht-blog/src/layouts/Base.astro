@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { base } from "../lib/base";
 
 interface Props {
   title: string;
@@ -8,25 +9,73 @@ interface Props {
 }
 
 const { title, section = "home", no = "ⅰ" } = Astro.props;
-const year = 2026;
+const year = new Date().getFullYear();
+const imgBase = `${base}images`;
+const imgVars = `
+:root {
+  --img-hero: url("${imgBase}/hero.jpg");
+  --img-behavior: url("${imgBase}/人与行为.jpg");
+  --img-ux: url("${imgBase}/体验设计.jpg");
+  --img-growth: url("${imgBase}/产品增长.jpg");
+  --img-product: url("${imgBase}/设计系统.jpg");
+  --img-footer: url("${imgBase}/footer.jpg");
+  --img-content-library: url("${imgBase}/content-library.jpg");
+}
+:root[data-theme="dark"] {
+  --img-hero: url("${imgBase}/hero-暗黑.jpg");
+  --img-behavior: url("${imgBase}/人与行为-暗黑.jpg");
+  --img-ux: url("${imgBase}/体验设计-暗黑.jpg");
+  --img-growth: url("${imgBase}/产品增长-暗黑.jpg");
+  --img-product: url("${imgBase}/设计系统-暗黑.jpg");
+  --img-footer: url("${imgBase}/footer.jpg");
+  --img-content-library: url("${imgBase}/content-library.jpg");
+}
+`;
 ---
 
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("leoht-theme");
+        const sys = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", stored || sys);
+      })();
+    </script>
+    <style is:inline set:html={imgVars}></style>
   </head>
   <body>
     <div class="page">
       <header class="page-head">
         <div class="rule-strong"></div>
-        <div class="meta head-row">
-          <span><a href={`${import.meta.env.BASE_URL}`}>leoht</a> — revue</span>
-          <span>{section} / no {no}</span>
+        <div class="head-row">
+          <a class="brand" href={base}>
+            <img class="brand-logo" src={`${base}images/logo.svg`} alt="" width="28" height="28" />
+            <span class="brand-name">Leoht <em>Library</em></span>
+          </a>
+          <div class="head-right">
+            <nav class="head-menu meta" aria-label="主导航">
+              <a href={base} data-nav="home">首页</a>
+              <a href={`${base}library`} data-nav="library">内容库</a>
+              <a href={`${base}explore`} data-nav="explore">探索</a>
+              <a href={`${base}about`} data-nav="about">关于</a>
+            </nav>
+            <div class="head-actions">
+              <button class="icon-btn theme-toggle" data-theme-toggle aria-label="切换亮暗主题">
+                <span class="theme-icon-light" aria-hidden="true">◐</span>
+                <span class="theme-icon-dark" aria-hidden="true">◑</span>
+              </button>
+              <button class="icon-btn login-btn" data-login aria-label="登录">
+                <span class="login-label meta">登录</span>
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -35,19 +84,74 @@ const year = 2026;
       </main>
 
       <footer class="page-foot">
-        <div class="rule-strong"></div>
-        <div class="meta head-row">
-          <span>leoht v0.2 · printed {year}</span>
-          <span>fin / no {no}</span>
+        <div class="foot-top-rule"></div>
+        <div class="foot-top">
+          <div class="foot-brand">
+            <p class="foot-name">Leoht Library</p>
+            <p class="foot-desc">一本被反复翻阅的 UX 知识手册 · 沉淀心理学、增长、产品、方法论与案例</p>
+            <div class="foot-spacer"></div>
+            <p class="foot-copy meta">© 2026 Leoht  ·  体验设计师的个人知识库</p>
+          </div>
+
+          <div class="foot-nav-group">
+            <nav class="foot-nav" aria-label="页脚导航">
+              <p class="foot-col-h">index</p>
+              <ul>
+                <li><a href={base}>首页</a></li>
+                <li><a href={`${base}library`}>内容库</a></li>
+                <li><a href={`${base}explore`}>探索</a></li>
+                <li><a href={`${base}about`}>关于</a></li>
+              </ul>
+            </nav>
+
+            <nav class="foot-nav" aria-label="友情链接">
+              <p class="foot-col-h">links</p>
+              <ul>
+                <li><a href="#" data-placeholder>友情链接一</a></li>
+                <li><a href="#" data-placeholder>友情链接二</a></li>
+                <li><a href="#" data-placeholder>友情链接三</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="foot-stamp">
+            <div class="foot-stamp-image"></div>
+            <span class="foot-stamp-title">UX &amp; UI</span>
+            <span class="foot-stamp-vol meta">Leoht·2026</span>
+          </div>
         </div>
       </footer>
     </div>
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+        toggle?.addEventListener("click", () => {
+          const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          localStorage.setItem("leoht-theme", next);
+        });
+
+        const login = document.querySelector<HTMLButtonElement>("[data-login]");
+        login?.addEventListener("click", () => {
+          alert("登录功能待上线");
+        });
+
+        const here = window.location.pathname.replace(/\/+$/, "");
+        document.querySelectorAll<HTMLAnchorElement>(".head-menu a").forEach((a) => {
+          const p = new URL(a.href, window.location.origin).pathname.replace(/\/+$/, "");
+          const same = here === p || (p !== "" && here.startsWith(p + "/"));
+          if (same) a.setAttribute("aria-current", "page");
+        });
+      })();
+    </script>
 
     <style>
       .page {
         max-width: var(--container);
         margin: 0 auto;
-        padding: 24px 32px 48px;
+        padding: 24px 48px 48px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -59,20 +163,237 @@ const year = 2026;
       .head-row {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        padding-top: 12px;
-        gap: 16px;
+        align-items: center;
+        padding-top: 14px;
+        gap: 24px;
       }
-      .head-row a {
+      .brand {
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--color-charcoal);
+      }
+      .brand:hover { color: var(--color-vintage-red); }
+      .brand:hover .brand-name em { color: var(--color-vintage-red); }
+      .brand-logo {
+        width: 28px;
+        height: 28px;
+        display: block;
+      }
+      .brand-name {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: var(--size-s);
+        line-height: 1.25;
+      }
+      .brand-name em {
+        font-style: normal;
+        font-weight: 600;
+        color: var(--color-charcoal);
+      }
+
+      .head-right {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .head-menu {
+        display: flex;
+        gap: 24px;
+        align-self: stretch;
+        align-items: stretch;
+      }
+      .head-menu a {
+        text-decoration: none;
+        color: var(--color-charcoal);
+        position: relative;
+        transition: color 120ms ease;
+        display: flex;
+        align-items: center;
+      }
+      .head-menu a:hover { color: var(--color-vintage-red); }
+      .head-menu a[aria-current="page"] {
+        color: var(--color-vintage-red);
+      }
+      .head-menu a[aria-current="page"]::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-top: 1px solid var(--color-vintage-red);
+      }
+
+      .head-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 30px;
+        box-sizing: border-box;
+        background: transparent;
+        border: 1px solid var(--rule);
+        color: var(--color-charcoal-soft);
+        font-family: var(--font-meta);
+        font-size: var(--size-meta);
+        letter-spacing: 0.04em;
+        padding: 0 10px;
+        cursor: pointer;
+        line-height: 1;
+        transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+      }
+      .icon-btn:hover {
+        background: var(--color-vellum);
+        color: var(--color-charcoal);
+        border-color: var(--rule-strong);
+      }
+      .login-btn {
+        padding: 4px 12px;
+        color: var(--color-charcoal);
+      }
+      .icon-btn span { line-height: 1; }
+      .theme-toggle .theme-icon-dark { display: none; }
+      :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: none; }
+      :root[data-theme="dark"] .theme-toggle .theme-icon-dark { display: inline; }
+      .login-icon {
+        font-size: var(--size-meta);
+        line-height: 1;
+      }
+
+      @media (max-width: 760px) {
+        .head-menu { display: none; }
+        .head-right { gap: 10px; }
+        .login-label { display: none; }
+      }
+
+      .page-foot {
+        margin: 64px 0 0;
+      }
+      .foot-top-rule {
+        height: 1px;
+        background: var(--rule-strong);
+      }
+      .foot-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 48px 0;
+        gap: 48px;
+        flex-wrap: wrap;
+      }
+      .foot-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 380px;
+        align-self: stretch;
+      }
+      .foot-name {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: var(--size-l);
+        line-height: 1.12;
+        margin: 0;
+        color: var(--color-charcoal);
+      }
+      .foot-desc {
+        font-family: var(--font-body);
+        font-size: var(--size-body-sm);
+        line-height: 1.6;
+        color: var(--color-charcoal-soft);
+        text-transform: capitalize;
+        margin: 0;
+      }
+      .foot-spacer { flex: 1; min-height: 1px; }
+      .foot-copy { color: var(--color-charcoal-faint); }
+      .foot-nav-group {
+        display: flex;
+        gap: 48px;
+      }
+      .foot-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 240px;
+      }
+      .foot-col-h {
+        font-family: var(--font-body);
+        font-size: var(--size-body-sm);
+        line-height: 1.6;
+        color: var(--color-charcoal-faint);
+        text-transform: capitalize;
+        margin: 0;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .foot-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .foot-nav a {
+        font-family: var(--font-meta);
+        font-size: var(--size-meta);
         color: var(--color-charcoal-soft);
         text-decoration: none;
+        line-height: 1.4;
       }
-      .head-row a:hover {
-        color: var(--color-vintage-red);
+      .foot-nav a:hover { color: var(--color-vintage-red); }
+      .foot-stamp {
+        width: 200px;
+        height: 160px;
+        position: relative;
+        flex-shrink: 0;
+      }
+      .foot-stamp-image {
+        position: absolute;
+        inset: 0;
+        background-image: var(--img-footer);
+        background-size: cover;
+        background-position: center;
+        mix-blend-mode: darken;
+      }
+      :root[data-theme="dark"] .foot-stamp-image { mix-blend-mode: lighten; }
+      .foot-stamp-title {
+        position: absolute;
+        top: 52px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: var(--font-body);
+        font-size: var(--size-body-sm);
+        color: var(--color-charcoal);
+        transform: rotate(0.98deg);
+      }
+      .foot-stamp-vol {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: var(--color-charcoal-faint);
+        transform: rotate(0.98deg);
+      }
+
+      @media (max-width: 900px) {
+        .foot-top { gap: 28px; }
+        .foot-brand { width: 100%; }
       }
       @media (max-width: 640px) {
         .page { padding: 16px 20px 32px; }
         .page-main { padding-top: 32px; }
+        .page-foot { margin: 32px 0 0; }
+        .foot-top { padding: 32px 0; flex-direction: column; gap: 24px; }
+        .foot-nav-group { flex-direction: column; gap: 24px; }
       }
     </style>
   </body>

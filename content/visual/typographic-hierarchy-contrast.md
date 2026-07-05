@@ -3,13 +3,13 @@ title: 排版的层级靠对比,不靠大小
 slug: typographic-hierarchy-contrast
 summary: 视觉层级不是"标题大正文小"那么简单——字号、字重、字族、色彩、间距五个维度的对比组合才构成可读的层级
 type: article
-status: inbox
+status: published
 tags: [排版, 视觉, 层级, 对比]
 domain: visual
-source_title: 
-source_author: 
-source_url: 
-published_at: 
+source_title:
+source_author:
+source_url:
+published_at: 2026-06-30
 related: []
 ---
 
