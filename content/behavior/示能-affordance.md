@@ -4,7 +4,7 @@ slug: 示能-affordance
 summary: 示能（Affordance）是指物体的属性与使用者决定该物体应如何被使用的能力之间的关系。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite

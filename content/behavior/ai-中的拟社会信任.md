@@ -4,7 +4,7 @@ slug: ai-中的拟社会信任
 summary: 作为一家行为设计智库，我们将决策科学、数字化创新和精益方法论应用于政策、商业和社会正义中的紧迫问题。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 行为, 信任, 方法论, AI对话, 心理学, 认知]
 domain: behavior
 source_title: The Decision Lab
 source_author: The Decision Lab

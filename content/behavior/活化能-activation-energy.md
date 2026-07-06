@@ -4,7 +4,7 @@ slug: 活化能-activation-energy
 summary: 活化能解释了为什么在人类决策和行为中，开始往往是成功的一半。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 行为, 心理学, 认知]
 domain: behavior
 source_title: The Decision Lab
 source_author: The Decision Lab

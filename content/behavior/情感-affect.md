@@ -4,7 +4,7 @@ slug: 情感-affect
 summary: 情感（Affect）是一个人与环境互动后产生的内在情绪状态。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [情绪, 心理学, 认知, 决策]
 domain: behavior
 source_title: The Decision Lab
 source_author: The Decision Lab

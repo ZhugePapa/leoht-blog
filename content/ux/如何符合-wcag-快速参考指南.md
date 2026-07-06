@@ -4,7 +4,7 @@ slug: 如何符合-wcag-快速参考指南
 summary: ""
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可访问性, 可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""

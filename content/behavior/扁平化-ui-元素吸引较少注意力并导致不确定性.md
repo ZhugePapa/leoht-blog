@@ -4,7 +4,7 @@ slug: 扁平化-ui-元素吸引较少注意力并导致不确定性
 summary: 在对比不同可点击性线索的眼动追踪实验中，微弱且扁平的示能表示比强烈的示能表示需要用户付出更多努力。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [注意力, 数据, 视觉设计, 心理学, 认知, 决策]
 domain: behavior
 source_title: Kate Moran
 source_author: Kate Moran

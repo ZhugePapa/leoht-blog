@@ -4,7 +4,7 @@ slug: 显著性偏差-salience-bias
 summary: 显著性偏差是指个体更容易关注更突出的事物，而忽略那些不那么突出的事物。
 type: effect
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

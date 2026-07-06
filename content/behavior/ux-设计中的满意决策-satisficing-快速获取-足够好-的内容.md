@@ -4,7 +4,7 @@ slug: ux-设计中的满意决策-satisficing-快速获取-足够好-的内容
 summary: 大多数网站访问者不会阅读提供的所有内容，而是满足于“足够好”的答案。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 心理学, 认知]
 domain: behavior
 source_title: Kathryn Whitenton
 source_author: Kathryn Whitenton

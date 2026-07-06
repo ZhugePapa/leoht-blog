@@ -4,7 +4,7 @@ slug: 心智模型-mental-models
 summary: 心智模型是指个体为了理解、解释和在周围世界中导航，而对外部现实所建立的内部表征。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 导航设计]
+tags: [认知, 方法论, 导航设计, 心理学, 决策]
 domain: behavior
 source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite

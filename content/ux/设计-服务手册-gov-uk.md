@@ -4,7 +4,7 @@ slug: 设计-服务手册-gov-uk
 summary: 为你的服务命名、构建结构和界定范围，原型设计，使用设计模式以及设计培训。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""

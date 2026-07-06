@@ -4,7 +4,7 @@ slug: ux-中的视觉层级-定义
 summary: 清晰的视觉层级能引导视线看向页面上最重要的元素。它可以通过颜色与对比度、比例大小以及分组的变化来创建。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [视觉设计, 可访问性, 心理学, 认知, 决策]
 domain: behavior
 source_title: Kelley Gordon
 source_author: Kelley Gordon

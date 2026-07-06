@@ -4,7 +4,7 @@ slug: 可访问性概述-material-design-3
 summary: 可访问性设计使具有不同能力的用户能够导航、理解并享受用户界面。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性, 可访问性, 导航设计]
+tags: [可访问性, 导航设计, 认知, 可用性, 交互设计]
 domain: ux
 source_title: Material Design
 source_author: Material Design

@@ -4,7 +4,7 @@ slug: 拟物化-skeuomorphism
 summary: 拟物化是一种设计概念，指将数字元素设计得在外观、触感和功能上都像其现实世界中的对应物。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Mariana Ontañón
 source_author: Mariana Ontañón

@@ -4,7 +4,7 @@ slug: 树测试-tree-testing
 summary: 树测试是一种用户体验（UX）研究方法，用于评估用户在网站或应用程序中找到关键资源和信息的难易程度。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [方法论, 研究, 验证, 评估, 可用性, 交互设计]
 domain: ux
 source_title: Kira Warje
 source_author: Kira Warje

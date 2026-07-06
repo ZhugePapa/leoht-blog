@@ -4,7 +4,7 @@ slug: 优先展示智能而非感知-以增强用户对-ai-的信任
 summary: 相比于让 AI 显得有感知力，当 AI 显得更聪明时，人们更容易信任它。AI 表现出情绪可能会降低用户在事实性、任务导向型工作中的信任度，并降低 AI 的可靠性。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 信任]
+tags: [情绪, 信任, AI对话, 心理学, 认知, 决策]
 domain: behavior
 source_title: Evan Sunwall
 source_author: Evan Sunwall

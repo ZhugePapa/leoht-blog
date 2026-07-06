@@ -4,7 +4,7 @@ slug: 用户研究-服务手册-gov-uk
 summary: 理解用户需求：规划研究、为测试做准备、分享并分析研究结果。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [研究, 验证, 认知, 可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""

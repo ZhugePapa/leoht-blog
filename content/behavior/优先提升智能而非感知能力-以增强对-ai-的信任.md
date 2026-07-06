@@ -4,7 +4,7 @@ slug: 优先提升智能而非感知能力-以增强对-ai-的信任
 summary: 人们更信任显得更聪明而非具有感知能力的 AI。AI 的情感流露会降低用户对其处理事实性、任务导向型工作的信任，并降低 AI 的可靠性。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 信任]
+tags: [情绪, 信任, AI对话, 心理学, 认知, 决策]
 domain: behavior
 source_title: Evan Sunwall
 source_author: Evan Sunwall

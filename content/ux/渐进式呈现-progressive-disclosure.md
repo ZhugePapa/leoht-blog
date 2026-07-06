@@ -4,7 +4,7 @@ slug: 渐进式呈现-progressive-disclosure
 summary: 用户界面 (UI) 设计中的渐进式呈现通过策略性的数据组织来促进直观的导航。它的核心在于将内容细致地分组为易于管理的模块，并仅在用户需要时才展示它们。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性, 导航设计]
+tags: [导航设计, 数据, Onboarding, 可用性, 交互设计]
 domain: ux
 source_title: Mariana Ontañón
 source_author: Mariana Ontañón

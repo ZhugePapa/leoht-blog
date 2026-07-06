@@ -4,7 +4,7 @@ slug: 用户流程-user-flow
 summary: 用户流程（User Flow）是一种流程图，用于规划用户在应用程序或网站上完成某项任务所遵循的路径。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [方法论, 可用性, 交互设计]
 domain: ux
 source_title: Samantha Lau
 source_author: Samantha Lau

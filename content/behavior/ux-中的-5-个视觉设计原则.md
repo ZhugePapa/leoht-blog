@@ -4,7 +4,7 @@ slug: ux-中的-5-个视觉设计原则
 summary: 比例、视觉层级、平衡、对比和格式塔原则如果应用得当，不仅能创造出美观的设计，还能提升易用性。
 type: principle
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [视觉设计, 原则, 可用性, 心理学, 认知, 决策]
 domain: behavior
 source_title: Kelley Gordon
 source_author: Kelley Gordon

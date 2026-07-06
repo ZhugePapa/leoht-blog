@@ -4,7 +4,7 @@ slug: ai-interaction-patterns
 summary: AI 产品的交互模式正在收敛为三种——指令式、代理式、协作式——每种对应不同的用户控制感与信任设计
 type: article
 status: published
-tags: [AI 对话, 决策, 信任, 交互设计]
+tags: [AI对话, 信任, 交互设计]
 domain: ai-product
 source_title: ""
 source_author: ""

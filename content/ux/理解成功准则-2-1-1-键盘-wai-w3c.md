@@ -4,7 +4,7 @@ slug: 理解成功准则-2-1-1-键盘-wai-w3c
 summary: ""
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可访问性, 原则, 认知, AI对话, 可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""

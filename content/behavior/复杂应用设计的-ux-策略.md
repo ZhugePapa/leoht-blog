@@ -4,7 +4,7 @@ slug: 复杂应用设计的-ux-策略
 summary: 在复杂、专业的领域中进行 UX（用户体验）设计，需要调整设计生命周期中常用的方法，以应对领域限制和专家用户的需求。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [方法论, 心理学, 认知, 决策]
 domain: behavior
 source_title: Kate Kaplan
 source_author: Kate Kaplan

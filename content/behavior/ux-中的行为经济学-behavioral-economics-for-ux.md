@@ -4,7 +4,7 @@ slug: ux-中的行为经济学-behavioral-economics-for-ux
 summary: 使用行为经济学框架发现体验中隐藏的摩擦，并设计能更好地支持用户行动的 UX 解决方案。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 行为, 方法论, 认知, 决策]
 domain: behavior
 source_title: Sarah Thompson
 source_author: Sarah Thompson

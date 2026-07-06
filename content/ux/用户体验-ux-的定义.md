@@ -4,7 +4,7 @@ slug: 用户体验-ux-的定义
 summary: “用户体验”（UX）涵盖了终端用户与公司、其服务以及其产品交互的所有方面。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [交互设计, 可用性]
 domain: ux
 source_title: Don Norman, Jakob Nielsen
 source_author: Don Norman, Jakob Nielsen

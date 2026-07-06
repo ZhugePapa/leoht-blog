@@ -4,7 +4,7 @@ slug: 助推-nudges
 summary: 助推是指利用认知偏差进行的干预，但它们是以一种非强制性的方式进行的，既不限制人们的选择，也不强迫他们。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 助推]
+tags: [心理学, 认知, 决策, 行为]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

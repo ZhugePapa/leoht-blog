@@ -4,7 +4,7 @@ slug: snackbar-material-design-3
 summary: Snackbar (底部消息条) 在屏幕底部显示关于应用进程的简短更新。它们可以自动消失，也可以保留在屏幕上直到用户采取行动。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: Material Design
 source_author: Material Design

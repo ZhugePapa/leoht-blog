@@ -4,7 +4,7 @@ slug: 将伦理-ai-视为市场差异化优势-而非应付合规的过场
 summary: 将负责任的 AI 视为产品优势，而非官僚主义的红线。构建更安全的模型，降低法律责任风险，并吸引愿意长期留任的人才。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 方法论, AI对话, 心理学, 认知]
 domain: behavior
 source_title: Zakir Jamal
 source_author: Zakir Jamal

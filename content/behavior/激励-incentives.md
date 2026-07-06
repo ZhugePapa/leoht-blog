@@ -4,7 +4,7 @@ slug: 激励-incentives
 summary: 简而言之，激励是能够激发人们动机的事物——它可以是报酬性的、道德性的或强制性的。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [动机, 心理学, 认知, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

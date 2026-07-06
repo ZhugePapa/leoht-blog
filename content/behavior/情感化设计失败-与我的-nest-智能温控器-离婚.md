@@ -4,7 +4,7 @@ slug: 情感化设计失败-与我的-nest-智能温控器-离婚
 summary: 我曾是 Nest 的自豪早期采用者：它节省了能源，并向我展示了节省的成果。然而在一场情感化设计的失败中，它让我失望了：在行为、反思，以及最终在本能层面上。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [行为, 情绪, 心理学, 认知, 决策]
 domain: behavior
 source_title: Kara Pernice
 source_author: Kara Pernice

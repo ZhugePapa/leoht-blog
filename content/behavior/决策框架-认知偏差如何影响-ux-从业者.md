@@ -4,7 +4,7 @@ slug: 决策框架-认知偏差如何影响-ux-从业者
 summary: 设计师与用户一样，都容易受到认知偏差的影响。呈现问题的上下文会使你的设计选择产生偏差。
 type: effect
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策, 方法论]
 domain: behavior
 source_title: Kathryn Whitenton
 source_author: Kathryn Whitenton

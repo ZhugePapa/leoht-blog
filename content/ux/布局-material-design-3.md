@@ -4,7 +4,7 @@ slug: 布局-material-design-3
 summary: 布局是屏幕上元素的视觉排列。它能引导人们关注最重要的信息，并使用户能够轻松采取行动。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [视觉设计, 可用性, 交互设计]
 domain: ux
 source_title: Material Design
 source_author: Material Design

@@ -4,7 +4,7 @@ slug: 概念转变-conceptual-change
 summary: 概念转变是指重构知识，并相应地修正对给定概念的解释。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

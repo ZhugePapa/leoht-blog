@@ -4,7 +4,7 @@ slug: 文本字段-material-design-3
 summary: 文本字段允许用户在界面中输入文本。它们通常出现在表单和对话框中。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [AI对话, 表单设计, 可用性, 交互设计]
 domain: ux
 source_title: Material Design
 source_author: Material Design

@@ -4,7 +4,7 @@ slug: typographic-hierarchy-contrast
 summary: 视觉层级不是"标题大正文小"那么简单——字号、字重、字族、色彩、间距五个维度的对比组合才构成可读的层级
 type: article
 status: published
-tags: [排版, 视觉, 层级, 对比]
+tags: [视觉设计, 排版]
 domain: visual
 source_title: ""
 source_author: ""

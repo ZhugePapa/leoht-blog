@@ -4,7 +4,7 @@ slug: 共情鸿沟-empathy-gap
 summary: 共情鸿沟是指我们倾向于低估情绪状态对决策的影响，并高估理智对决策的影响。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 情绪, 心理学, 认知]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

@@ -4,7 +4,7 @@ slug: ux-原则
 summary: UX 原则是基础性的指南和概念，可帮助设计师创建直观、用户友好且令人满意的产品和服务。
 type: principle
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [原则, 可用性, 交互设计]
 domain: ux
 source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite

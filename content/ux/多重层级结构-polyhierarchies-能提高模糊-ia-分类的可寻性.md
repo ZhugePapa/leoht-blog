@@ -4,7 +4,7 @@ slug: 多重层级结构-polyhierarchies-能提高模糊-ia-分类的可寻性
 summary: 当一个项目适合多个分类时，你的信息架构（IA）结构可以为该项目包含多个父级分类，以避免流失用户。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性, 信息架构]
+tags: [信息架构, 视觉设计, 可用性, 交互设计]
 domain: ux
 source_title: Page Laubheimer
 source_author: Page Laubheimer

@@ -4,7 +4,7 @@ slug: 情感启发式-affect-heuristic
 summary: 一种主要在进行自动决策时使用的思维捷径，即我们在决策过程中严重依赖自己的情感反应（我们的“情感”/“情绪”）。
 type: principle
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 情绪, 方法论, 原则, 心理学, 认知]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

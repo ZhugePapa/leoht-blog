@@ -4,7 +4,7 @@ slug: 意向性-intentionality
 summary: 意向性指的是人心智表征某事物的能力。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

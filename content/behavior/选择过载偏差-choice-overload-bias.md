@@ -4,7 +4,7 @@ slug: 选择过载偏差-choice-overload-bias
 summary: 选择过载（Choice overload），或称“过度选择”（overchoice），是指当面临众多选项时，我们倾向于难以做出选择的现象。
 type: effect
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 决策, 认知]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

@@ -4,7 +4,7 @@ slug: status-quo-bias
 summary: 在理解决策制定时，必须考虑的一个选项是‘什么都不做’，即维持现状——这也被称为现状偏差。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [心理学, 认知, 决策]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

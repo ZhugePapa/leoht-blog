@@ -4,7 +4,7 @@ slug: 用户控制与自由-usability-heuristic-3
 summary: 用户经常会犯错或改变主意。允许他们退出流程或撤销上一步操作，并返回到系统的上一个状态。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [交互设计, 方法论, 可用性]
 domain: ux
 source_title: Maria Rosala
 source_author: Maria Rosala

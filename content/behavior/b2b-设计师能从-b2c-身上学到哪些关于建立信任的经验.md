@@ -4,7 +4,7 @@ slug: b2b-设计师能从-b2c-身上学到哪些关于建立信任的经验
 summary: 尽管 B2B 和 B2C 电子商务网站拥有不同类型的用户，但两类网站都可以使用类似的策略来简化购买流程并增加消费者信任。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 信任]
+tags: [信任, 方法论, 心理学, 认知, 决策]
 domain: behavior
 source_title: Therese Fessenden
 source_author: Therese Fessenden

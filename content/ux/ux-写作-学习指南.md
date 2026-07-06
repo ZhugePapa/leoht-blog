@@ -4,7 +4,7 @@ slug: ux-写作-学习指南
 summary: 不知道从哪里开始？使用我们文章和视频的链接集合，学习如何编写和呈现符合用户需求和在线阅读行为的信息。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [认知, 行为, 可用性, 交互设计]
 domain: ux
 source_title: Anna Kaley
 source_author: Anna Kaley

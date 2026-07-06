@@ -4,7 +4,7 @@ slug: ux-中的心理安全感-促进信任与参与度
 summary: 即使在数字世界中，我们的大脑也渴望安全感。了解 UX 设计如何通过让用户感到安全去探索和冒险，从而建立信任并提高参与度。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策, 信任]
+tags: [信任, 心理学, 认知, 决策]
 domain: behavior
 source_title: Maricela Arizaga
 source_author: Maricela Arizaga

@@ -4,7 +4,7 @@ slug: 如何在-ai-驱动的未来中保持自主权
 summary: 了解如何在日益自动化的世界中重新夺回控制权。本文探讨了自动化对自主性带来的挑战，以及以人为本的 AI 设计等可行策略。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [AI对话, 心理学, 认知, 决策]
 domain: behavior
 source_title: Dr. Sekoul Krastev
 source_author: Dr. Sekoul Krastev

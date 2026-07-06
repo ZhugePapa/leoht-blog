@@ -4,7 +4,7 @@ slug: wcag-合规性
 summary: WCAG 合规性可确保所有用户都能无障碍访问网站，在降低法律风险的同时促进包容性并提升用户体验。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可访问性, 决策, 可用性, 交互设计]
 domain: ux
 source_title: Mariana Ontañón
 source_author: Mariana Ontañón

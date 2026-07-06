@@ -4,7 +4,7 @@ slug: 悬浮菜单-fly-out-menus
 summary: 来自国际标准组织 W3C Web Accessibility Initiative (WAI) 的免费在线可访问性资源。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性, 可访问性]
+tags: [可访问性, 导航设计, AI对话, 可用性, 交互设计]
 domain: ux
 source_title: W3C Web Accessibility Initiative (WAI)
 source_author: W3C Web Accessibility Initiative (WAI)

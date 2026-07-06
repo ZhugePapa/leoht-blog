@@ -4,7 +4,7 @@ slug: entering-data
 summary: When you need information from people, design ways that make it easy for them to provide it without making mistakes.
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation

@@ -4,7 +4,7 @@ slug: alerts
 summary: An alert gives people critical information they need right away.
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation

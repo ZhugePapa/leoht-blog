@@ -4,7 +4,7 @@ slug: ux-中的变化盲-定义
 summary: 由于人类注意力的局限性，当网页上的重大变化缺乏强烈的视觉提示时，这些变化可能会被忽略。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [注意力, 视觉设计, 心理学, 认知, 决策]
 domain: behavior
 source_title: Raluca Budiu
 source_author: Raluca Budiu

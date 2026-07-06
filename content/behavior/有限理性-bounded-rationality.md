@@ -4,7 +4,7 @@ slug: 有限理性-bounded-rationality
 summary: 从有限理性观点来看，人们使用有限的信息和资源来进行日常决策。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [决策, 心理学, 认知]
 domain: behavior
 source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev

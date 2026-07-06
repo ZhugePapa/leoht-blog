@@ -4,7 +4,7 @@ slug: 说服式设计-新-captology-书评
 summary: 对 B.J. Fogg 新书《说服技术》（Persuasive Technology）的评述。该书为如何思考构建说服式设计提供了有用的原则，但极少给出具体的设计指南。唯一例外的是关于提升网站可信度的章节。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [原则, 心理学, 认知, 决策]
 domain: behavior
 source_title: Jakob Nielsen
 source_author: Jakob Nielsen

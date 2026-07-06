@@ -4,7 +4,7 @@ slug: 尼尔森可用性启发式原则-nielsen-s-heuristics
 summary: 尼尔森可用性启发式原则是基于真实用户在实用数字化系统时面临的问题而确立的 10 条数字界面设计通用原则。
 type: principle
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 原则, 交互设计]
 domain: ux
 source_title: Kira Warje
 source_author: Kira Warje

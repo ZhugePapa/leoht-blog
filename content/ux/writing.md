@@ -4,7 +4,7 @@ slug: writing
 summary: The words you choose within your app are an essential part of its user experience.
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation

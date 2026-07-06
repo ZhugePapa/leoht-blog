@@ -4,7 +4,7 @@ slug: ux-中的视觉设计-学习指南
 summary: 不知道从哪里开始？使用本篇收集的 NN/g 文章和视频链接，学习 UX 中的视觉设计。
 type: article
 status: published
-tags: [行为经济学, 认知偏差, 决策]
+tags: [认知, 视觉设计, 心理学, 决策]
 domain: behavior
 source_title: Kelley Gordon
 source_author: Kelley Gordon

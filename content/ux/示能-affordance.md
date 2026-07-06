@@ -4,7 +4,7 @@ slug: 示能-affordance
 summary: 示能是物体的物理属性与用户确定该物体应如何使用的能力之间的关系。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite

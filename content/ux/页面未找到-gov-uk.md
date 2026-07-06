@@ -4,7 +4,7 @@ slug: 页面未找到-gov-uk
 summary: 页面未找到（404 错误页面）。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性, 错误预防]
+tags: [可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""

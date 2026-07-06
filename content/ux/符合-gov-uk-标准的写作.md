@@ -4,7 +4,7 @@ slug: 符合-gov-uk-标准的写作
 summary: 学习如何为 GOV.UK 设计内容。
 type: article
 status: published
-tags: [体验设计, 交互设计, 可用性]
+tags: [认知, 可用性, 交互设计]
 domain: ux
 source_title: ""
 source_author: ""
