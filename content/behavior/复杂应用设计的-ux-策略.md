@@ -2,17 +2,15 @@
 title: 复杂应用设计的 UX 策略
 slug: 复杂应用设计的-ux-策略
 summary: 在复杂、专业的领域中进行 UX（用户体验）设计，需要调整设计生命周期中常用的方法，以应对领域限制和专家用户的需求。
-type: article
+type: knowledge
 status: published
-tags: [方法论, 心理学, 认知, 决策]
+tags: ["约束", "心智模型", "方法论"]
 domain: behavior
-source_title: Kate Kaplan
 source_author: Kate Kaplan
 source_url: https://www.nngroup.com/articles/strategies-complex-application-design/
 published_at: 2025-07-26
 related: []
 ---
-
 摘要：在复杂、专业的领域中，UX（用户体验）需要调整设计生命周期中常用的方法，以应对领域限制和专家用户的需求。
 
 [复杂应用](https://www.nngroup.com/articles/complex-application-design-framework/) —— 比如医疗保健、金融或物流等专业领域中使用的应用 —— 支持非线性工作流、专家用户以及高风险的决策。设计此类应用给传统 [UX 方法](https://www.nngroup.com/articles/research-methods-glossary/)带来了新的挑战。虽然这些方法依然很有价值，但通常需要进行深思熟虑的调整。在复杂领域中，有效的 UX 依赖于在整个设计过程中进行微妙且刻意的调整。

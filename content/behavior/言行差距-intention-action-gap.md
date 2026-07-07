@@ -2,17 +2,15 @@
 title: 言行差距（Intention-Action Gap）
 slug: 言行差距-intention-action-gap
 summary: 言行差距（intention-action gap），又称价值-行动差距（value-action gap）或知识-态度-实践差距（knowledge-attitudes-practice gap），是指一个人的价值观念、态度 or 意图与其实际行动不一致的现象。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["心智模型"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/psychology/intention-action-gap
 published_at: 2021-12-15
 related: []
 ---
-
 ## 什么是言行差距？
 
 *言行差距（intention-action gap）* 描述了我们的意图（即我们计划实现的目标）与我们的实际行动（即我们最终所做的事情）之间的偏差。发生这种情况是因为我们天生倾向于即时满足，这会导致我们优先考虑短期回报，而忽视了我们深层的态度、信念和价值观。

@@ -2,17 +2,15 @@
 title: 网页阅读的 F 形视线轨迹：被误解，但依然有效（即使在移动端）
 slug: 网页阅读的-f-形视线轨迹-被误解-但依然有效-即使在移动端
 summary: 在发现 F 形阅读轨迹十一年后，我们重新探讨它在今天的意义。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["眼动追踪", "心智模型", "移动端"]
 domain: behavior
-source_title: Kara Pernice
 source_author: Kara Pernice
 source_url: https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/
 published_at: 2017-11-13
 related: []
 ---
-
 摘要：眼动追踪研究表明，人们在浏览网页和手机屏幕时会呈现出多种不同的视线轨迹，其中一种呈现出字母“F”的形状。在发现这一模式十一年后，我们重新探讨它在今天的意义。
 
 ## 引言

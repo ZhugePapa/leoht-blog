@@ -2,17 +2,15 @@
 title: 显著性偏差 (Salience Bias)
 slug: 显著性偏差-salience-bias
 summary: 显著性偏差是指个体更容易关注更突出的事物，而忽略那些不那么突出的事物。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["认知偏差", "心智模型", "信息架构"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/salience-bias
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们更容易关注更突出的事物或信息，而忽略那些不突出的事物或信息？
 
 关于

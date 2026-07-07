@@ -2,17 +2,15 @@
 title: 少即是好效应 (Less-is-better effect)
 slug: 少即是好效应-less-is-better-effect
 summary: 少即是好效应（Less-is-better Effect）是指人们在单独选择时倾向于选择较小或较次的选项，但在共同评估时不倾向于如此的现象。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 决策, 评估, 认知]
+tags: ["认知偏差", "心智模型", "方法论"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/less-is-better-effect
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们的偏好会随着我们是共同还是单独评估选项而改变？
 
 关于

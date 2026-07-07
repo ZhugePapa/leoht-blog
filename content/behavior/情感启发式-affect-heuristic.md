@@ -2,17 +2,15 @@
 title: 情感启发式 (Affect Heuristic)
 slug: 情感启发式-affect-heuristic
 summary: 一种主要在进行自动决策时使用的思维捷径，即我们在决策过程中严重依赖自己的情感反应（我们的“情感”/“情绪”）。
-type: principle
+type: knowledge
 status: published
-tags: [决策, 情绪, 方法论, 原则, 心理学, 认知]
+tags: ["情绪", "心智模型", "决策疲劳", "设计原则", "方法论"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/affect-heuristic
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们在快速决策时会依赖当下的情绪？
 
 关于

@@ -2,17 +2,15 @@
 title: 概念转变 (Conceptual Change)
 slug: 概念转变-conceptual-change
 summary: 概念转变是指重构知识，并相应地修正对给定概念的解释。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["心智模型"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/philosophy/conceptual-change
 published_at: 2021-12-13
 related: []
 ---
-
 ## 基本观点
 
 你是否曾读过一本富有洞察力的书，或者看了一部扣人心弦的纪录片，从而改变了你的世界观？这种现象可以被称为**概念转变**（conceptual change），即知识被重新构建，对给定概念（无论是观点、信仰、意识形态还是想法）的解释也随之被修正。

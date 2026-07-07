@@ -2,17 +2,15 @@
 title: UX 设计中的满意决策（Satisficing）：快速获取“足够好”的内容
 slug: ux-设计中的满意决策-satisficing-快速获取-足够好-的内容
 summary: 大多数网站访问者不会阅读提供的所有内容，而是满足于“足够好”的答案。
-type: article
+type: knowledge
 status: published
-tags: [决策, 心理学, 认知]
+tags: ["认知偏差", "心智模型", "决策疲劳", "Web端"]
 domain: behavior
-source_title: Kathryn Whitenton
 source_author: Kathryn Whitenton
 source_url: https://www.nngroup.com/articles/satisficing/
 published_at: 2014-03-31
 related: []
 ---
-
 摘要：大多数网站访问者不会阅读提供的所有内容，而是满足于“足够好”的答案。
 
 一个人愿意在网站上花费的时间[因其所处的环境而异](https://www.nngroup.com/articles/interaction-elasticity/)，也取决于他们试图解决的问题以及他们的个人特征。有些人天生倾向于字斟句酌，而即使是那些最不注重细节的人，当他们对某件事特别有热情或者这涉及到重大后果时，也往往会花更多时间去阅读。

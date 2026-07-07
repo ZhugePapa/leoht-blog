@@ -2,17 +2,15 @@
 title: 亲和图 (Affinity Diagram)
 slug: 亲和图-affinity-diagram
 summary: 亲和图（也称为 KJ 法）是一种视觉化的组织工具，用于将大量的想法分类整理到更小的、相关的组别中。
-type: article
+type: knowledge
 status: published
-tags: [信息架构, 视觉设计, 可用性, 交互设计]
+tags: ["信息架构", "可用性", "布局"]
 domain: ux
-source_title: Emilie Rose Jones
 source_author: Emilie Rose Jones
 source_url: https://thedecisionlab.com/reference-guide/organizational-behavior/affinity-diagram
 published_at: 2024-07-03
 related: []
 ---
-
 ## 什么是亲和图？
 
 亲和图（Affinity Diagram），也被称为 KJ 法，是一种视觉化的组织工具，用于将大量的想法分类整理到更小的、相关的组别中。它有助于识别想法之间的关系，使信息的组织 and 整合变得更加容易，尤其是在头脑风暴会议期间。这种技术在将复杂信息分解为易于管理的部分、增强团队成员之间的清晰度与协作方面具有重要价值。

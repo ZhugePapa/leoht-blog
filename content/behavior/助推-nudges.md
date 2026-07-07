@@ -2,17 +2,15 @@
 title: 助推 (Nudges)
 slug: 助推-nudges
 summary: 助推是指利用认知偏差进行的干预，但它们是以一种非强制性的方式进行的，既不限制人们的选择，也不强迫他们。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策, 行为]
+tags: ["认知偏差", "约束", "行为经济学"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/economics/nudges
 published_at: 2021-12-13
 related: []
 ---
-
 ## 基本概念
 
 2012 年，时任纽约市市长迈克尔·布隆伯格（Michael Bloomberg）宣布对该市的《健康法典》进行修正，禁止销售任何容量超过 16 盎司的软饮料。该措施出于对公众健康的担忧，但却激怒了民众，他们纷纷痛斥这是一个越界的“保姆国家”（nanny state）。<sup>1</sup> 2015 年，在法院裁定该市超出了其监管权限后，该修正案被废除。然而数年后，研究人员在麦当劳门店测试了一项干预措施，以观察是否能仅仅通过改变菜单上饮料的出现顺序，来引导人们选择含糖量较低的饮料。结果证明他们做到了：在 12 周后，可口可乐的消费量下降了 8%，零度可乐上升了 30%，而且没有人因此感到愤怒。<sup>2</sup>

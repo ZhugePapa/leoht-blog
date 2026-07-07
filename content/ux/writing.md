@@ -2,17 +2,15 @@
 title: Writing
 slug: writing
 summary: The words you choose within your app are an essential part of its user experience.
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["信息架构", "可用性", "移动端"]
 domain: ux
-source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation
 source_url: https://developer.apple.com/design/human-interface-guidelines/writing
 # published_at:
 related: []
 ---
-
 [Skip Navigation](https://developer.apple.com/design/human-interface-guidelines/#app-main)
 
 [以中文查看](https://developer.apple.com/cn/design/human-interface-guidelines/writing)

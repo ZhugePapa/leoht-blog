@@ -2,17 +2,15 @@
 title: 文本框 – Material Design 3
 slug: 文本框-material-design-3
 summary: 文本框允许用户将文本输入到 UI 中。它们通常出现在表单和对话框中。
-type: article
+type: knowledge
 status: published
-tags: [AI对话, 表单设计, 可用性, 交互设计]
+tags: ["信息架构", "可用性", "表单", "组件", "AI应用"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/components/text-fields/overview
 # published_at:
 related: []
 ---
-
 - 确保文本框看起来具有交互性
 - 两种变体：填充式（Filled）和描边式（Outlined）。填充式文本框比描边式文本框具有更多的视觉强调。它们通常用于对话框和简短表单，因为它们的样式能吸引更多注意力。描边式文本框比填充式文本框具有较少的视觉强调。它们通常用于长表单，其减少的强调有助于简化布局。
 - 文本框的状态。状态显示了组件或 UI 元素的交互状态。[更多关于状态的信息](https://m3.material.io/m3/pages/interaction-states/overview)（空白、有输入、错误等）应该一目了然

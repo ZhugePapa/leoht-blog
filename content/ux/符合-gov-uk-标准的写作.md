@@ -2,17 +2,15 @@
 title: 符合 GOV.UK 标准的写作
 slug: 符合-gov-uk-标准的写作
 summary: 学习如何为 GOV.UK 设计内容。
-type: article
+type: knowledge
 status: published
-tags: [认知, 可用性, 交互设计]
+tags: ["可用性", "设计指南"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/
 # published_at:
 related: []
 ---
-
 ## GOV.UK 内容及发布指南中的 Cookie 使用说明
 
 我们希望使用分析类 Cookie，以便了解您如何使用 GOV.UK 内容及发布指南并进行改进。

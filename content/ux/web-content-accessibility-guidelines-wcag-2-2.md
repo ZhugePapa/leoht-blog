@@ -2,17 +2,15 @@
 title: Web Content Accessibility Guidelines (WCAG) 2.2
 slug: web-content-accessibility-guidelines-wcag-2-2
 summary: 《Web 内容无障碍指南 (WCAG) 2.2》涵盖了使 Web 内容更具可访问性的一系列广泛建议。遵循这些指南将使处于更广泛残疾范围的人士能够更方便地访问内容，包括为盲人和低视力、耳聋和听力丧失、行动受限、言语残疾、光敏性及其组合人群提供便利，并为学习障碍和认知局限提供一些便利；但无法解决这群残疾人士的所有用户需求。这些指南解决了任何类型的设备（包括台式机、笔记本电脑、信息亭和移动设备）上 Web 内容的可访问性问题。遵循这些指南通常也会使 Web 内容对普通用户更具可用性。
-type: article
+type: knowledge
 status: published
-tags: [可用性, 可访问性, 认知, 交互设计]
+tags: ["可访问性", "可用性", "设计指南", "Web端"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.w3.org/TR/WCAG22/
 published_at: 2024-12-12
 related: []
 ---
-
 [W3C 推荐标准](https://www.w3.org/standards/types#REC)
 
 关于本文档的更多细节

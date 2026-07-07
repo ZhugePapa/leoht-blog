@@ -2,17 +2,15 @@
 title: 情感化设计失败：与我的 Nest 智能温控器“离婚”
 slug: 情感化设计失败-与我的-nest-智能温控器-离婚
 summary: 我曾是 Nest 的自豪早期采用者：它节省了能源，并向我展示了节省的成果。然而在一场情感化设计的失败中，它让我失望了：在行为、反思，以及最终在本能层面上。
-type: article
+type: knowledge
 status: published
-tags: [行为, 情绪, 心理学, 认知, 决策]
+tags: ["情绪", "行为经济学", "心智模型", "案例分析"]
 domain: behavior
-source_title: Kara Pernice
 source_author: Kara Pernice
 source_url: https://www.nngroup.com/articles/emotional-design-fail/
 published_at: 2015-02-23
 related: []
 ---
-
 **摘要**：唐·诺曼（Don Norman）的情感化设计三个层面（本能、行为和反思）帮助我理解了，我对 Nest 温控器纯粹的爱是如何演变成厌恶的。我曾是这款独特、酷炫且美观的设备的自豪早期采用者。它帮我节约了能源，并且与我进行互动。然而，当它在情感上让我失望时，一切都变糟了。
 
 几年前，在[唐·诺曼（Don Norman）](http://www.nngroup.com/people/don-norman/)对其大加赞赏之后，我购买了一个 Nest——一款“基于云”的可编程半智能温控器。唐的评价非常准确（就像他之前对 iRobot 吸尘器和菲利普·斯塔克的“柠檬榨汁机” Juicy Salif 的评价一样）。那是一段令人兴奋的追求期——从开箱，到我第一次在国外调整家里的温度——我确实非常喜欢它。

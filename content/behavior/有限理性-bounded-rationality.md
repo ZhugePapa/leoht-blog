@@ -2,17 +2,15 @@
 title: 有限理性 (Bounded Rationality)
 slug: 有限理性-bounded-rationality
 summary: 从有限理性观点来看，人们使用有限的信息和资源来进行日常决策。
-type: article
+type: knowledge
 status: published
-tags: [决策, 心理学, 认知]
+tags: ["心智模型", "决策疲劳"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/psychology/bounded-rationality
 published_at: 2021-12-14
 related: []
 ---
-
 ## 有限理性 (Bounded Rationality)
 
 ## 基本概念

@@ -2,17 +2,15 @@
 title: 渐进式呈现 (Progressive Disclosure)
 slug: 渐进式呈现-progressive-disclosure
 summary: 用户界面 (UI) 设计中的渐进式呈现通过策略性的数据组织来促进直观的导航。它的核心在于将内容细致地分组为易于管理的模块，并仅在用户需要时才展示它们。
-type: article
+type: knowledge
 status: published
-tags: [导航设计, 数据, Onboarding, 可用性, 交互设计]
+tags: ["渐进式呈现", "可用性", "新手引导", "导航"]
 domain: ux
-source_title: Mariana Ontañón
 source_author: Mariana Ontañón
 source_url: https://thedecisionlab.com/reference-guide/design/progressive-disclosure
 published_at: 2024-04-08
 related: []
 ---
-
 ## 渐进式呈现 (Progressive Disclosure)
 
 ## 基本概念

@@ -2,17 +2,15 @@
 title: Accessibility
 slug: accessibility
 summary: Accessible user interfaces empower everyone to have a great experience with your app or game.
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可访问性", "可用性", "移动端"]
 domain: ux
-source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation
 source_url: https://developer.apple.com/design/human-interface-guidelines/accessibility
 # published_at:
 related: []
 ---
-
 [Skip Navigation](https://developer.apple.com/design/human-interface-guidelines/#app-main)
 
 [以中文查看](https://developer.apple.com/cn/design/human-interface-guidelines/accessibility)

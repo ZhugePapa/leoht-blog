@@ -2,17 +2,15 @@
 title: 用户研究 - 服务手册 - GOV.UK
 slug: 用户研究-服务手册-gov-uk
 summary: 理解用户需求：规划研究、为测试做准备、分享并分析研究结果。
-type: article
+type: knowledge
 status: published
-tags: [研究, 验证, 认知, 可用性, 交互设计]
+tags: ["可用性", "参考资料", "最佳实践", "设计指南"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.gov.uk/service-manual/user-research
 # published_at:
 related: []
 ---
-
 引言、用户需求、需要线上帮助的用户。
 
 - [政府服务用户研究简介](https://www.gov.uk/service-manual/user-research/how-user-research-improves-service-design)

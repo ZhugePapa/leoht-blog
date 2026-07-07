@@ -2,17 +2,15 @@
 title: 启发式评估 (Heuristic Evaluation)
 slug: 启发式评估-heuristic-evaluation
 summary: 启发式评估是一种用于识别用户界面中问题的检查方法。在评估过程中，一小群系统专家使用一组被称为“启发式”（heuristics）的预定义原则或指南来评估界面的用户友好度。
-type: principle
+type: knowledge
 status: published
-tags: [可用性, 原则, 方法论, 评估, 交互设计]
+tags: ["可用性", "设计原则", "方法论", "设计指南"]
 domain: ux
-source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite
 source_url: https://thedecisionlab.com/reference-guide/design/heuristic-evaluation
 published_at: 2024-01-27
 related: []
 ---
-
 ## 核心思想
 
 试想一下，一个设计精良的网站登录页面是多么简单。你可以毫不费力地输入凭证并访问自己的账户。现在回想一下，你曾与设计糟糕的网站登录页面“斗智斗勇”的经历。很有可能，你最后要么感到沮丧地完成了这个过程，要么干脆放弃了。数字界面的成功取决于在其设计和开发过程中对其易用性（usability）进行了多么彻底的测试。而这种测试的一个关键方面就是启发式评估。

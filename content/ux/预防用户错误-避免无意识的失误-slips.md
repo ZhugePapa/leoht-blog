@@ -2,17 +2,15 @@
 title: 预防用户错误：避免无意识的失误（Slips）
 slug: 预防用户错误-避免无意识的失误-slips
 summary: 用户在执行任务时往往容易分心，因此应通过提供建议、利用约束条件以及保持灵活性来预防无意识的错误。
-type: article
+type: knowledge
 status: published
-tags: [注意力, 可用性, 交互设计]
+tags: ["约束", "注意力", "可用性"]
 domain: ux
-source_title: Page Laubheimer
 source_author: Page Laubheimer
 source_url: https://www.nngroup.com/articles/slips/
 published_at: 2015-08-24
 related: []
 ---
-
 摘要：用户在执行当前任务时往往容易分心，因此应通过提供建议、利用约束条件以及保持灵活性来预防无意识的错误。
 
 *在本文底部下载 Jakob 易用性启发式评估（Usability Heuristic）第 5 条的免费海报。*

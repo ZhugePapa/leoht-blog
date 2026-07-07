@@ -2,17 +2,15 @@
 title: Entering data
 slug: entering-data
 summary: When you need information from people, design ways that make it easy for them to provide it without making mistakes.
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可用性", "表单"]
 domain: ux
-source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation
 source_url: https://developer.apple.com/design/human-interface-guidelines/entering-data
 # published_at:
 related: []
 ---
-
 [Skip Navigation](https://developer.apple.com/design/human-interface-guidelines/#app-main)
 
 [以中文查看](https://developer.apple.com/cn/design/human-interface-guidelines/entering-data)

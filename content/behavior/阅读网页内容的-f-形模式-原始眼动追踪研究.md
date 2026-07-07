@@ -2,17 +2,15 @@
 title: 阅读网页内容的 F 形模式（原始眼动追踪研究）
 slug: 阅读网页内容的-f-形模式-原始眼动追踪研究
 summary: 眼动追踪可视化结果表明，用户在阅读网页时通常呈 F 形模式：先是两条水平条带，接着是一条垂直条带。
-type: article
+type: knowledge
 status: published
-tags: [注意力, 研究, 心理学, 认知, 决策]
+tags: ["眼动追踪", "心智模型", "注意力", "参考资料", "设计模式"]
 domain: behavior
-source_title: Jakob Nielsen
 source_author: Jakob Nielsen
 source_url: https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/
 published_at: 2006-04-17
 related: []
 ---
-
 摘要：眼动追踪可视化结果表明，用户在阅读网页时通常呈 F 形模式：先是两条水平条带，接着是一条垂直条带。
 
 ***更新**：我们 [11 年后的眼动追踪研究](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/) 证实了这些发现。*

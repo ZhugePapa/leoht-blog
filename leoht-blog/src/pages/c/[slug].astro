@@ -1,8 +1,9 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import { cardSlug, toRoman, formatStamp, volNo } from "../../lib/cards";
+import { cardSlug } from "../../lib/cards";
 import { base } from "../../lib/base";
+import { getDomain } from "../../lib/domains";
 
 export async function getStaticPaths() {
   const all = await getCollection("cards");
@@ -15,11 +16,20 @@ interface Props { card: CollectionEntry<"cards">; }
 const { card } = Astro.props;
 const slug = cardSlug(card);
 
+const TYPE_ZH: Record<string, string> = { original: "原创", knowledge: "知识整理", quote: "引用" };
+const typeZh = (t: string) => TYPE_ZH[t] ?? t;
+const domainZh = (d?: string) => getDomain(d)?.name ?? (d === "general" ? "通用" : d ?? "通用");
+
+const fmtDate = (d?: Date) => {
+  if (!d) return "—";
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}/${m}/${day}`;
+};
+
 const all = await getCollection("cards");
 const published = all.filter((c) => c.data.status === "published");
-const total = published.length;
-const idx = published.findIndex((c) => cardSlug(c) === slug);
-const globalNo = toRoman(total - idx);
 
 const related = (card.data.related ?? [])
   .map((r) => published.find((c) => cardSlug(c) === r))
@@ -32,127 +42,289 @@ const sameTag = published
     shared: (c.data.tags ?? []).filter((t) => (card.data.tags ?? []).includes(t)).length,
   }))
   .filter((x) => x.shared > 0)
-  .sort((a, b) => b.shared - a.shared)
-  .slice(0, 3);
+  .sort((a, b) => b.shared - a.shared);
+
+const recommendations = [...related, ...sameTag.map(({ card: c }) => c)].slice(0, 3);
 
 const { Content } = await render(card);
-const domainAbbr = (card.data.domain ?? "gen").slice(0, 3).toUpperCase();
-const domainSeq = idx >= 0 ? idx + 1 : 0;
+const tags3 = (card.data.tags ?? []).slice(0, 3).join(" / ");
 ---
 
-<Base title={`${card.data.title} — leoht`} section="lib" no={`${globalNo}.${domainAbbr}.${domainSeq}`}>
+<Base title={`${card.data.title} — leoht`} section="lib">
   <article class="article">
     <div class="article-main">
-      <p class="meta crumb">index / {card.data.domain ?? "general"}{card.data.type ? ` / ${card.data.type}` : ""}</p>
-      <p class="meta num-line">{globalNo} · {domainAbbr} · {domainSeq}</p>
-      <h1 class="display-xl title">{card.data.title}</h1>
-      {card.data.summary && <p class="display-m sub"><em>{card.data.summary}</em></p>}
+      <nav class="crumb meta" aria-label="面包屑">
+        <a href={base}>首页</a>
+        <span class="crumb-sep">/</span>
+        <a href={`${base}library?domain=${card.data.domain ?? "general"}`}>{domainZh(card.data.domain)}</a>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-current">{typeZh(card.data.type)}</span>
+      </nav>
 
-      <hr class="rule" />
+      <h1 class="title">{card.data.title}</h1>
 
-      {(card.data.source_title || card.data.source_author) && (
-        <p class="meta source">
-          source ─ {card.data.source_title}{card.data.source_author ? ` · ${card.data.source_author}` : ""}
-        </p>
-      )}
-      <p class="meta stamp">stamp ─ {card.data.status} · {formatStamp(card.data.published_at)} · {volNo(card.data.published_at)}</p>
+      {card.data.summary && <p class="sub">{card.data.summary}</p>}
 
-      <hr class="rule" />
+      <div class="byline meta">
+        <div class="byline-group">
+          <span class="byline-label">作者</span>
+          <span class="byline-value">{card.data.source_author || "（待补）"}</span>
+        </div>
+        <div class="byline-group">
+          <span class="byline-label">发布时间</span>
+          <span class="byline-value">{fmtDate(card.data.published_at)}</span>
+        </div>
+      </div>
 
-      <div class="prose dropcap">
+      <div class="action-row-wrap">
+        <hr class="rule" />
+        <div class="action-row">
+          <div class="action-tags meta">
+            <span class="action-domain">{domainZh(card.data.domain)}</span>
+            <span class="action-sep">·</span>
+            <span class="action-tags-text">{tags3 || "—"}</span>
+          </div>
+          <div class="action-spacer"></div>
+          <span class="action-static">
+            <svg class="action-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.66732 14.6667V7.33334M1.33398 8.66668V13.3333C1.33398 14.0697 1.93094 14.6667 2.66732 14.6667H11.6181C12.6053 14.6667 13.4448 13.9465 13.5949 12.9708L14.3128 8.30412C14.4992 7.09261 13.5619 6.00001 12.3361 6.00001H10.0007C9.63246 6.00001 9.33398 5.70153 9.33398 5.33334V2.97724C9.33398 2.06934 8.59799 1.33334 7.69009 1.33334C7.47354 1.33334 7.2773 1.46087 7.18936 1.65876L4.84328 6.93744C4.73628 7.17819 4.49753 7.33334 4.23407 7.33334H2.66732C1.93094 7.33334 1.33398 7.9303 1.33398 8.66668Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>0</span>
+          </span>
+          <span class="action-static">
+            <svg class="action-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.33398 5.2C3.33398 4.0799 3.33398 3.51984 3.55197 3.09202C3.74372 2.71569 4.04968 2.40973 4.426 2.21799C4.85383 2 5.41388 2 6.53398 2H9.46732C10.5874 2 11.1475 2 11.5753 2.21799C11.9516 2.40973 12.2576 2.71569 12.4493 3.09202C12.6673 3.51984 12.6673 4.0799 12.6673 5.2V14L8.00065 11.3333L3.33398 14V5.2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>0</span>
+          </span>
+          {card.data.source_url && (
+            <a class="action-link" href={card.data.source_url} target="_blank" rel="noopener noreferrer">
+              <svg class="action-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 2H14L14 6M14 2L8.66667 7.33333M6.66667 3.33333H5.2C4.0799 3.33333 3.51984 3.33333 3.09202 3.55132C2.71569 3.74307 2.40973 4.04903 2.21799 4.42535C2 4.85318 2 5.41323 2 6.53333V10.8C2 11.9201 2 12.4802 2.21799 12.908C2.40973 13.2843 2.71569 13.5903 3.09202 13.782C3.51984 14 4.0799 14 5.2 14H9.46667C10.5868 14 11.1468 14 11.5746 13.782C11.951 13.5903 12.2569 13.2843 12.4487 12.908C12.6667 12.4802 12.6667 11.9201 12.6667 10.8V9.33333" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>查看原文</span>
+            </a>
+          )}
+        </div>
+        <hr class="rule" />
+      </div>
+
+      <div class="prose">
         <Content />
       </div>
 
-      <hr class="rule" />
-
-      {card.data.tags.length > 0 && (
-        <div class="tags-row">
-          <span class="meta">tags ·</span>
-          {card.data.tags.map((t) => <span class="tag-chip">{t}</span>)}
-        </div>
-      )}
-    </div>
-
-    <aside class="article-side">
-      <div class="signature-stamp">
-        <p class="display-s sig-num">{globalNo} · {domainAbbr} · {domainSeq}</p>
-        <p class="meta sig-slug">{slug}</p>
-        <p class="meta sig-vol">revue · {volNo(card.data.published_at)}</p>
-      </div>
-
-      {(related.length > 0 || sameTag.length > 0) && (
-        <div class="related">
-          <p class="meta related-h">related entries</p>
-          <ul>
-            {related.map((r) => (
-              <li><a href={`${base}c/${cardSlug(r)}`}>→ {r.data.title}</a><span class="meta related-k">related · explicit</span></li>
-            ))}
-            {sameTag.map(({ card: c, shared }) => (
-              <li><a href={`${base}c/${cardSlug(c)}`}>→ {c.data.title}</a><span class="meta related-k">shares · {shared}</span></li>
+      {recommendations.length > 0 && (
+        <section class="related-section">
+          <div class="related-head">相关推荐</div>
+          <ul class="related-list">
+            {recommendations.map((c) => (
+              <li class="rel-item">
+                <div class="rel-item-main">
+                  <a class="rel-item-title" href={`${base}c/${cardSlug(c)}`}>{c.data.title}</a>
+                  <div class="rel-item-meta meta">
+                    <span class="rel-domain">{domainZh(c.data.domain)}</span>
+                    <span class="rel-sep">·</span>
+                    <span class="rel-tags">{(c.data.tags ?? []).slice(0, 3).join(" / ") || "—"}</span>
+                  </div>
+                </div>
+                <div class="rel-item-side">
+                  <span class="rel-type">{typeZh(c.data.type)}</span>
+                  <span class="meta rel-date">{fmtDate(c.data.published_at)}</span>
+                </div>
+              </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
-    </aside>
+    </div>
   </article>
 </Base>
 
 <style>
   .article {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 0 48px;
   }
   .article-main { min-width: 0; }
-  .crumb { margin: 0 0 8px; color: var(--color-charcoal-faint); }
-  .num-line { margin: 0 0 16px; color: var(--color-charcoal-soft); }
-  .title { margin: 0 0 12px; }
-  .sub { color: var(--color-charcoal-soft); margin: 0 0 24px; }
-  .sub em { font-style: normal; }
-  .source, .stamp { margin: 8px 0; color: var(--color-charcoal-soft); }
 
-  .prose { margin-top: 24px; font-size: 1.0625rem; line-height: 1.75; }
-  .prose :global(p) { margin: 0 0 1.25em; }
+  /* breadcrumb */
+  .crumb { display: flex; gap: 8px; align-items: center; margin: 0 0 20px; }
+  .crumb a, .crumb span { color: var(--color-charcoal-faint); text-decoration: none; }
+  .crumb a:hover { color: var(--color-charcoal-soft); }
+  .crumb-current { color: var(--color-charcoal) !important; }
+
+  /* title */
+  .title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--size-xl);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--color-charcoal);
+    margin: 0 0 16px;
+  }
+
+  /* subtitle / lede */
+  .sub {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: 1.65;
+    letter-spacing: 0.006em;
+    color: var(--color-charcoal-soft);
+    margin: 0 0 16px;
+  }
+
+  /* byline */
+  .byline { display: flex; gap: 20px; align-items: center; margin: 0; }
+  .byline-group { display: flex; gap: 12px; align-items: center; }
+  .byline-label { color: var(--color-charcoal-soft); }
+  .byline-value { color: var(--color-charcoal); }
+
+  /* action row between rules */
+  .action-row-wrap { margin: 20px 0; }
+  .action-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 12px 0;
+  }
+  .action-tags { display: flex; gap: 4px; align-items: baseline; }
+  .action-domain { color: var(--color-vintage-red); }
+  .action-sep { color: var(--color-charcoal-faint); }
+  .action-tags-text { color: var(--color-charcoal-soft); }
+  .action-spacer { flex: 1 0 0; min-width: 1px; }
+  .action-static {
+    display: flex; gap: 8px; align-items: center;
+    font-family: var(--font-meta); font-size: var(--size-meta); line-height: 1.4; letter-spacing: 0.04em;
+    color: var(--color-charcoal-soft);
+  }
+  .action-link {
+    display: flex; gap: 8px; align-items: center;
+    font-family: var(--font-meta); font-size: var(--size-meta); line-height: 1.4; letter-spacing: 0.04em;
+    color: var(--color-ink-blue); text-decoration: none;
+  }
+  .action-link:hover { text-decoration: underline; }
+  .action-icon { width: 16px; height: 16px; flex-shrink: 0; color: inherit; }
+
+  /* prose */
+  .prose { padding-top: 24px; }
+  .prose :global(p) {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    color: var(--color-charcoal-soft);
+    margin: 0 0 21.25px;
+  }
   .prose :global(h2) {
-    font-family: var(--font-display); font-weight: 600;
-    font-size: var(--size-m); line-height: 1.2; margin: 2em 0 0.6em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--size-m);
+    line-height: 1.2;
+    color: var(--color-charcoal);
+    margin: 21.25px 0;
   }
   .prose :global(h3) {
-    font-family: var(--font-display); font-weight: 600;
-    font-size: var(--size-s); margin: 1.5em 0 0.5em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--size-s);
+    line-height: 1.25;
+    color: var(--color-charcoal);
+    margin: 16px 0;
   }
-  .prose :global(ul), .prose :global(ol) { margin: 0 0 1.25em; padding-left: 1.4em; }
-  .prose :global(li) { margin: 0.3em 0; }
+  .prose :global(ul), .prose :global(ol) {
+    margin: 0 0 21.25px;
+    padding-left: 23.8px;
+  }
+  .prose :global(li) {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.6;
+    color: var(--color-charcoal-soft);
+  }
+  .prose :global(li + li) { margin-top: 5.1px; }
   .prose :global(blockquote) {
-    margin: 1.5em 0; padding-left: 1rem;
+    margin: 21.25px 0;
+    padding-left: 1rem;
     border-left: 2px solid var(--color-vintage-red);
-    font-family: var(--font-display); font-style: normal;
-    font-size: var(--size-s); line-height: 1.55; color: var(--color-charcoal-soft);
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.6;
+    color: var(--color-charcoal-soft);
   }
   .prose :global(a) { color: var(--color-ink-blue); }
   .prose :global(code) {
-    font-family: var(--font-meta); font-size: 0.9em;
-    background: var(--color-vellum); padding: 1px 5px; border-radius: 2px;
+    font-family: var(--font-meta);
+    font-size: 0.9em;
+    background: var(--color-vellum);
+    padding: 1px 5px;
+    border-radius: 2px;
+  }
+  /* 图片：限制宽度，防止溢出 960px 容器 */
+  .prose :global(img) { max-width: 100%; height: auto; display: block; margin: 0 0 21.25px; }
+  /* 斜体：Chill 字体无斜体字面，em 改用 Songti SC（有斜体） */
+  .prose :global(em) { font-family: "Songti SC", serif; font-style: italic; }
+  /* 分隔线：上下 16px 间距 */
+  .prose :global(hr) { margin: 16px 0; }
+  /* 表格 */
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 21.25px;
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.6;
+    color: var(--color-charcoal-soft);
+  }
+  .prose :global(th), .prose :global(td) {
+    border: 1px solid var(--rule);
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose :global(th) {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-charcoal);
+    background: var(--color-vellum);
   }
 
-  .tags-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 16px 0; }
-
-  .article-side { position: absolute; top: 0; right: 0; width: 260px; display: flex; flex-direction: column; gap: 32px; }
-  .sig-num { margin: 0; }
-  .sig-slug { margin: 6px 0 0; word-break: break-all; }
-  .sig-vol { margin: 2px 0 0; color: var(--color-charcoal-faint); }
-
-  .related ul { list-style: none; margin: 12px 0 0; padding: 0; }
-  .related li {
-    display: flex; flex-direction: column; gap: 2px;
-    padding: 12px 0; border-top: 1px solid var(--rule);
+  /* related recommendations */
+  .related-section { padding: 32px 0; }
+  .related-head {
+    font-family: var(--font-body);
+    font-size: var(--size-body-sm);
+    line-height: 1.6;
+    text-transform: capitalize;
+    color: var(--color-charcoal-soft);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
   }
-  .related li a { font-family: var(--font-display); font-size: var(--size-body); text-decoration: none; }
-  .related-k { color: var(--color-charcoal-faint); }
+  .related-list { list-style: none; margin: 0; padding: 0; }
+  .rel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rel-item-main { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+  .rel-item-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--size-s);
+    line-height: 1.25;
+    text-decoration: none;
+    color: var(--color-charcoal);
+  }
+  .rel-item-title:hover { color: var(--color-vintage-red); text-decoration: underline; }
+  .rel-item-meta { display: flex; gap: 4px; align-items: baseline; }
+  .rel-domain { color: var(--color-vintage-red); }
+  .rel-sep { color: var(--color-charcoal-faint); }
+  .rel-tags { color: var(--color-charcoal-soft); }
+  .rel-item-side { display: flex; flex-direction: row; align-items: center; gap: 24px; flex-shrink: 0; padding-top: 4px; }
+  .rel-type { font-family: var(--font-body); font-size: var(--size-body-sm); color: var(--color-vintage-red); text-transform: capitalize; }
+  .rel-date { color: var(--color-charcoal-faint); white-space: nowrap; }
 
-  @media (max-width: 900px) {
-    .article { grid-template-columns: 1fr; padding-right: 0; }
-    .article-side { position: static; width: auto; }
+  @media (max-width: 720px) {
+    .rel-item { flex-direction: column; gap: 8px; }
+    .rel-item-side { flex-direction: row; gap: 12px; }
+    .byline { flex-wrap: wrap; }
   }
 </style>

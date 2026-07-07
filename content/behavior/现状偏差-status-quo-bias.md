@@ -2,17 +2,15 @@
 title: 现状偏差 (Status Quo Bias)
 slug: 现状偏差-status-quo-bias
 summary: 在理解决策制定时，必须考虑的一个选项就是什么都不做，即保持现状——这也被称为现状偏差。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["认知偏差", "心智模型", "信息架构", "决策疲劳"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/status-quo-bias
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们倾向于保持事物的原状？
 
 关于

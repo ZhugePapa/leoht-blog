@@ -2,17 +2,15 @@
 title: 认知识别而非回忆 (Recognition rather than Recall)
 slug: 认知识别而非回忆-recognition-rather-than-recall
 summary: 行为科学如何改善 UX 设计？了解我们的认知偏差如何影响“认知识别而非回忆”，这是尼尔森十大可用性启发式原则之一。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 行为, 原则, 可用性, 决策]
+tags: ["认知偏差", "行为经济学", "心智模型", "可用性", "设计原则"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/design/recognition-rather-than-recall
 published_at: 2023-09-18
 related: []
 ---
-
 ## 行为设计：认知识别而非回忆
 
 什么是尼尔森十大可用性启发式原则（Nielsen’s 10 Usability Heuristics）？在分析了可用性研究后，UX 专家雅各布·尼尔森（Jakob Nielsen）为用户界面设计提出了建议，旨在提高产品的可用性和用户体验。

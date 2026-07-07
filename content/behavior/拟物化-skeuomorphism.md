@@ -2,17 +2,15 @@
 title: 拟物化 (Skeuomorphism)
 slug: 拟物化-skeuomorphism
 summary: 拟物化是一种设计概念，指将数字元素设计得在外观、触感和功能上都像其现实世界中的对应物。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["心智模型"]
 domain: behavior
-source_title: Mariana Ontañón
 source_author: Mariana Ontañón
 source_url: https://thedecisionlab.com/reference-guide/design/skeuomorphism
 published_at: 2024-02-15
 related: []
 ---
-
 ## 基本概念
 
 你是否注意到在电脑上删除文件是一件多么容易的事？这似乎是一种本能——你只需要找到垃圾桶。或者，你是否想过，虽然我们是打字写电子邮件，但新建邮件的图标却是一支笔？或者计算器应用为什么长得像一个真实的计算器，有时甚至带有三维的“触感”？这些都是拟物化（skeuomorphism）的日常例子。拟物化是一种设计概念，指将数字元素设计得在外观、触感和功能上都像其现实世界中的对应物。

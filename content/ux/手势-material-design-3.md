@@ -2,17 +2,15 @@
 title: 手势 – Material Design 3
 slug: 手势-material-design-3
 summary: 手势可让用户通过触摸与屏幕元素进行交互
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 可用性]
+tags: ["信息架构", "可用性", "交互"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/foundations/interaction/gestures
 # published_at:
 related: []
 ---
-
 ## 资源
 
 | 类型 | 链接 | 状态 |

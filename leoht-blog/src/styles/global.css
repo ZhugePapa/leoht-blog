@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-/* Display + Body: Noto Serif SC 400/500/600 — 标题与正文同族衬线（CJK 兼容） */
-@import "@fontsource/noto-serif-sc/400.css";
-@import "@fontsource/noto-serif-sc/500.css";
-@import "@fontsource/noto-serif-sc/600.css";
+/* Display + Body: Chill Duan Hei Song — 本地字体，display 用 Medium、body 用 Regular */
+/* @font-face 在 Base.astro 里用 ${base}font/... 注入，以适配 GitHub Pages base 路径 */
 /* Meta: Noto Sans SC 400/500 — 小写 + 字间距 + 灰阶 机构感（不再等宽） */
 @import "@fontsource/noto-sans-sc/400.css";
 @import "@fontsource/noto-sans-sc/500.css";
@@ -15,12 +13,12 @@
   --color-charcoal: #1a1a19;
   --color-charcoal-soft: #545450;
   --color-charcoal-faint: #7a7873;
-  --color-ink-blue: #094280;
+  --color-ink-blue: #1B5A9A;
   --color-vintage-red: #A82E2A;
   --color-muted-gold: #b08d57;
 
-  --font-display: "Noto Serif SC", "Songti SC", serif;
-  --font-body: "Noto Serif SC", "Songti SC", serif;
+  --font-display: "Chill Duan Hei Song", "Songti SC", serif;
+  --font-body: "Chill Duan Hei Song", "Songti SC", serif;
   --font-meta: "Noto Sans SC", "Songti SC", sans-serif;
   /* 覆盖 Tailwind v4 默认 --font-mono，使其跟踪 meta token（不再等宽） */
   --font-mono: "Noto Sans SC", "Songti SC", sans-serif;
@@ -30,7 +28,7 @@
   --rule: rgb(26 26 26 / 22%);
   --rule-strong: rgb(26 26 26 / 48%);
   --rule-gold: rgb(176 141 87 / 60%);
-  --ink-blue-soft: rgb(9 66 128 / 12%);
+  --ink-blue-soft: rgb(27 90 154 / 12%);
   --vintage-red-soft: rgb(168 46 42 / 10%);
 
   --container-text: 680px;
@@ -43,13 +41,13 @@
   --fg-soft: var(--color-charcoal-soft);
   --fg-faint: var(--color-charcoal-faint);
 
-  /* 字号阶梯 — design-system.md §2.2，1rem=16px */
-  --size-xxl: 4.2rem;      /* 67px Display XXL — Home Hero、章节首页 */
-  --size-xl: 3.2rem;       /* 51px Display XL — 文章 H1 */
-  --size-l: 2.4rem;        /* 38px Display L — H2、区块标题 */
+  /* 字号阶梯 — 同步自 Figma 变量，1rem=16px */
+  --size-xxl: 4rem;        /* 64px Display XXL — Home Hero、章节首页 */
+  --size-xl: 3rem;         /* 48px Display XL — 文章 H1 */
+  --size-l: 2.25rem;       /* 36px Display L — H2、区块标题 */
   --size-m: 1.75rem;       /* 28px Display M — H3、目录条主语 */
-  --size-s: 1.4375rem;     /* 23px Display S — H4、卡片标题 */
-  --size-body: 1.1875rem;  /* 19px Body L — 正文（杂志型偏大） */
+  --size-s: 1.375rem;      /* 22px Display S — H4、卡片标题 */
+  --size-body: 1.125rem;   /* 18px Body L — 正文（杂志型偏大） */
   --size-body-sm: 1rem;    /* 16px Body — 次级正文、callout */
   --size-meta: 0.875rem;   /* 14px Meta — 等宽元数据 */
 
@@ -82,7 +80,7 @@
   --rule: rgb(236 230 216 / 18%);
   --rule-strong: rgb(236 230 216 / 36%);
   --rule-gold: rgb(176 141 87 / 50%);
-  --ink-blue-soft: rgb(9 66 128 / 40%);
+  --ink-blue-soft: rgb(27 90 154 / 40%);
   --vintage-red-soft: rgb(168 46 42 / 22%);
 
   --color-charcoal: var(--fg);
@@ -94,7 +92,8 @@
   --color-ink-blue: #6ba8d8;
   --color-vintage-red: #A82E2A;
 }
-:root[data-theme="dark"] .brand-logo { filter: invert(1); }
+:root[data-theme="dark"] .brand-logo { background-color: var(--fg); }
+:root[data-theme="dark"] .brand:hover .brand-logo { background-color: var(--color-vintage-red); }
 :root[data-theme="dark"] .newsletter-icon { filter: invert(1); }
 
 html {
@@ -112,6 +111,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  /* 字体只有 Regular/Medium 两个字重，禁止浏览器合成加粗/斜体 */
+  font-synthesis: none;
 }
 
 ::selection {

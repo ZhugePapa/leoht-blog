@@ -2,17 +2,15 @@
 title: 注意力偏差 (Attentional Bias)
 slug: 注意力偏差-attentional-bias
 summary: 注意力偏差（Attentional bias）是一种认知偏差，指我们的感知受到当前——通常是反复出现的——思路的影响，从而忽视了其他事物。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 认知, 注意力, 决策]
+tags: ["认知偏差", "心智模型", "信息架构"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/attentional-bias
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们对某些事物的关注多于其他事物？
 
 注意力偏差（Attentional Bias）详解。

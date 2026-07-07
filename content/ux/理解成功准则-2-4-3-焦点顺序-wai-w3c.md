@@ -2,17 +2,15 @@
 title: 理解成功准则 2.4.3：焦点顺序 | WAI | W3C
 slug: 理解成功准则-2-4-3-焦点顺序-wai-w3c
 summary: 理解成功准则 2.4.3：焦点顺序。该准则的意图是确保当用户按顺序导航内容时，他们遇到的信息顺序与内容的含义一致，并且可以通过键盘进行操作。
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 可访问性, 导航设计, 原则, 认知, AI对话, 可用性]
+tags: ["可访问性", "可用性", "设计原则", "导航", "AI应用"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html
 # published_at:
 related: []
 ---
-
 ## 理解焦点顺序 (级别 A)
 
 ## 成功准则 (SC)

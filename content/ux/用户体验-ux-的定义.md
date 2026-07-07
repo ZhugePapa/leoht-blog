@@ -2,17 +2,15 @@
 title: 用户体验（UX）的定义
 slug: 用户体验-ux-的定义
 summary: “用户体验”（UX）涵盖了终端用户与公司、其服务以及其产品交互的所有方面。
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 可用性]
+tags: ["可用性", "交互"]
 domain: ux
-source_title: Don Norman, Jakob Nielsen
 source_author: Don Norman, Jakob Nielsen
 source_url: https://www.nngroup.com/articles/definition-user-experience/
 published_at: 1998-08-09
 related: []
 ---
-
 摘要：“用户体验”涵盖了终端用户与公司、其服务以及其产品交互的所有方面。
 
 优秀用户体验的首要要求是顺畅且丝毫不差地满足客户的确切需求。其次是产品的简洁与优雅，使其成为人们乐于拥有、乐于使用的产品。真正的用户体验远不止于给客户提供他们口头上说想要的东西，或是提供一份功能清单。为了在公司的产品和服务中实现高质量的用户体验，必须无缝整合多个学科的服务，包括工程、市场营销、图形与工业设计，以及界面设计。

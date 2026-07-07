@@ -2,17 +2,15 @@
 title: UX 中的视觉层级：定义
 slug: ux-中的视觉层级-定义
 summary: 清晰的视觉层级能引导视线看向页面上最重要的元素。它可以通过颜色与对比度、比例大小以及分组的变化来创建。
-type: article
+type: knowledge
 status: published
-tags: [视觉设计, 可访问性, 心理学, 认知, 决策]
+tags: ["信息层级", "眼动追踪", "心智模型", "可访问性", "清晰度"]
 domain: behavior
-source_title: Kelley Gordon
 source_author: Kelley Gordon
 source_url: https://www.nngroup.com/articles/visual-hierarchy-ux-definition/
 published_at: 2021-01-18
 related: []
 ---
-
 摘要：清晰的视觉层级能引导视线看向页面上最重要的元素。它可以通过颜色与对比度、比例大小以及分组的变化来创建。
 
 你是否曾遇到过这样一个网页：它充斥着各种繁杂的设计元素，以至于你完全不知道该从哪里开始看起？如果你在屏幕上很难找到焦点，这很可能是因为页面布局缺乏清晰的视觉层级。

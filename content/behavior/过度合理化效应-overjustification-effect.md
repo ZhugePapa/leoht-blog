@@ -2,17 +2,15 @@
 title: 过度合理化效应 (Overjustification Effect)
 slug: 过度合理化效应-overjustification-effect
 summary: 过度合理化效应描述了这样一种倾向：当我们被给予金钱或奖励等外部激励时，对于过去喜欢参与的活动，我们的内部动机反而会降低。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 动机, 认知, 决策]
+tags: ["认知偏差", "动机", "心智模型"]
 domain: behavior
-source_title: Kira Warje
 source_author: Kira Warje
 source_url: https://thedecisionlab.com/biases/overjustification-effect
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么在获得奖励后，我们会对某项活动失去兴趣？
 
 关于

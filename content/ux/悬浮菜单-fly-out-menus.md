@@ -2,17 +2,15 @@
 title: 悬浮菜单 (Fly-out Menus)
 slug: 悬浮菜单-fly-out-menus
 summary: 来自国际标准组织 W3C Web Accessibility Initiative (WAI) 的免费在线可访问性资源。
-type: article
+type: knowledge
 status: published
-tags: [可访问性, 导航设计, AI对话, 可用性, 交互设计]
+tags: ["信息架构", "可访问性", "可用性", "设计指南", "导航"]
 domain: ux
-source_title: W3C Web Accessibility Initiative (WAI)
 source_author: W3C Web Accessibility Initiative (WAI)
 source_url: https://www.w3.org/WAI/tutorials/menus/flyout/#keyboard-users
 # published_at:
 related: []
 ---
-
 通过视觉效果和标记（Markup）来指示带有子菜单的导航菜单项。在以下示例中，子菜单通过图标进行视觉指示。WAI-ARIA 标记 `aria-expanded="false"` 声明该子菜单导航目前处于隐藏或“折叠”状态。
 
 ## 悬浮菜单功能 (Fly-out functionality)

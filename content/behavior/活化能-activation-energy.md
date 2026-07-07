@@ -2,17 +2,15 @@
 title: 活化能（Activation Energy）
 slug: 活化能-activation-energy
 summary: 活化能解释了为什么在人类决策和行为中，开始往往是成功的一半。
-type: article
+type: knowledge
 status: published
-tags: [决策, 行为, 心理学, 认知]
+tags: ["行为经济学", "心智模型", "激活度", "决策疲劳"]
 domain: behavior
-source_title: The Decision Lab
 source_author: The Decision Lab
 source_url: https://thedecisionlab.com/reference-guide/psychology/activation-energy
 published_at: 2021-12-15
 related: []
 ---
-
 ## 活化能（Activation Energy）
 
 ## 基本概念

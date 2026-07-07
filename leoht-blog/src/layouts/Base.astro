@@ -11,13 +11,34 @@ interface Props {
 const { title, section = "home", no = "ⅰ" } = Astro.props;
 const year = new Date().getFullYear();
 const imgBase = `${base}images`;
+const fontBase = `${base}font`;
+const fontFaces = `
+@font-face {
+  font-family: "Chill Duan Hei Song";
+  src: url("${fontBase}/ChillDuanHeiSongRegular.woff2") format("woff2");
+  font-weight: 100 400;
+  font-style: normal;
+  font-display: swap;
+  /* 该字体拉丁字形 advance width 异常，仅服务 CJK 范围，拉丁字符回退到 Songti SC / serif */
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+3000-303F, U+FF00-FFEF, U+2014, U+2026, U+00B7;
+}
+@font-face {
+  font-family: "Chill Duan Hei Song";
+  src: url("${fontBase}/ChillDuanHeiSongMedium.woff2") format("woff2");
+  font-weight: 401 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+3000-303F, U+FF00-FFEF, U+2014, U+2026, U+00B7;
+}
+`;
 const imgVars = `
 :root {
+  --logo-url: url("${imgBase}/logo.svg");
   --img-hero: url("${imgBase}/hero.jpg");
   --img-behavior: url("${imgBase}/人与行为.jpg");
   --img-ux: url("${imgBase}/体验设计.jpg");
   --img-growth: url("${imgBase}/产品增长.jpg");
-  --img-product: url("${imgBase}/设计系统.jpg");
+  --img-design-system: url("${imgBase}/设计系统.jpg");
   --img-footer: url("${imgBase}/footer.jpg");
   --img-content-library: url("${imgBase}/content-library.jpg");
 }
@@ -26,9 +47,9 @@ const imgVars = `
   --img-behavior: url("${imgBase}/人与行为-暗黑.jpg");
   --img-ux: url("${imgBase}/体验设计-暗黑.jpg");
   --img-growth: url("${imgBase}/产品增长-暗黑.jpg");
-  --img-product: url("${imgBase}/设计系统-暗黑.jpg");
-  --img-footer: url("${imgBase}/footer.jpg");
-  --img-content-library: url("${imgBase}/content-library.jpg");
+  --img-design-system: url("${imgBase}/设计系统-暗黑.jpg");
+  --img-footer: url("${imgBase}/footer-暗黑.jpg");
+  --img-content-library: url("${imgBase}/content-library-暗黑.jpg");
 }
 `;
 ---
@@ -48,6 +69,7 @@ const imgVars = `
         document.documentElement.setAttribute("data-theme", stored || sys);
       })();
     </script>
+    <style is:inline set:html={fontFaces}></style>
     <style is:inline set:html={imgVars}></style>
   </head>
   <body>
@@ -56,7 +78,7 @@ const imgVars = `
         <div class="rule-strong"></div>
         <div class="head-row">
           <a class="brand" href={base}>
-            <img class="brand-logo" src={`${base}images/logo.svg`} alt="" width="28" height="28" />
+            <span class="brand-logo" aria-hidden="true"></span>
             <span class="brand-name">Leoht <em>Library</em></span>
           </a>
           <div class="head-right">
@@ -175,13 +197,20 @@ const imgVars = `
         text-decoration: none;
         color: var(--color-charcoal);
       }
+      .brand { color: var(--color-charcoal); }
       .brand:hover { color: var(--color-vintage-red); }
       .brand:hover .brand-name em { color: var(--color-vintage-red); }
       .brand-logo {
         width: 28px;
         height: 28px;
         display: block;
+        flex-shrink: 0;
+        background-color: var(--color-charcoal);
+        -webkit-mask: var(--logo-url) no-repeat center / contain;
+        mask: var(--logo-url) no-repeat center / contain;
+        transition: background-color 140ms ease;
       }
+      .brand:hover .brand-logo { background-color: var(--color-vintage-red); }
       .brand-name {
         font-family: var(--font-display);
         font-weight: 600;
@@ -284,7 +313,7 @@ const imgVars = `
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        padding: 48px 0;
+        padding: 48px 0 0;
         gap: 48px;
         flex-wrap: wrap;
       }

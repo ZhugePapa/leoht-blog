@@ -2,17 +2,15 @@
 title: 激励 (Incentives)
 slug: 激励-incentives
 summary: 简而言之，激励是能够激发人们动机的事物——它可以是报酬性的、道德性的或强制性的。
-type: article
+type: knowledge
 status: published
-tags: [动机, 心理学, 认知, 决策]
+tags: ["动机", "心智模型"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/economics/incentives
 published_at: 2021-12-15
 related: []
 ---
-
 ## 基本概念
 
 如果你曾遇到过销售员极力劝说你购买某样东西，那么你对“激励”就一定不会陌生。通常，销售员能赚多少额外收入取决于他们能卖出多少产品——这是一种被称为“拿提成”的[激励](https://thedecisionlab.com/biases/incentivization)策略。简而言之，激励就是能够激发人们动机的事物——在销售案例中，就是促使销售员尽可能多地卖出产品。

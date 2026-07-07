@@ -2,17 +2,15 @@
 title: 页面未找到 - GOV.UK
 slug: 页面未找到-gov-uk
 summary: 页面未找到（404 错误页面）。
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可用性"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.gov.uk/service-manual/content
 # published_at:
 related: []
 ---
-
 ## 页面未找到
 
 如果您输入了网页地址，请检查其是否正确。

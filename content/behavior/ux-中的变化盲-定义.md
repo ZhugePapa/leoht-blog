@@ -2,17 +2,15 @@
 title: UX 中的变化盲：定义
 slug: ux-中的变化盲-定义
 summary: 由于人类注意力的局限性，当网页上的重大变化缺乏强烈的视觉提示时，这些变化可能会被忽略。
-type: article
+type: knowledge
 status: published
-tags: [注意力, 视觉设计, 心理学, 认知, 决策]
+tags: ["心智模型", "注意力", "布局"]
 domain: behavior
-source_title: Raluca Budiu
 source_author: Raluca Budiu
 source_url: https://www.nngroup.com/articles/change-blindness-definition/
 published_at: 2018-09-24
 related: []
 ---
-
 摘要：由于人类注意力的局限性，当网页上的重大变化缺乏强烈的视觉提示时，这些变化可能会被忽略。
 
 在可用性测试中，我们经常观察到用户忽略了屏幕上的某些变化，而设计师却认为这些变化是显而易见且极其引人注目的。在可用性研究中，一条铁律是：如果你参与了某个设计，你就知道要寻找*什么*、在*哪里*寻找、它*何时*出现以及它*意味着*什么。所以，是的，这**对你来说是显而易见的**，当你在审查自己的设计时，你不会错过任何一条重要消息或数据对象的出现。但是，用户却经常漏掉。为什么？因为**变化盲（change blindness）**，这是人类（甚至早期人类）知觉中存在了数百万年的客观事实，并且在短期内不可能消失。

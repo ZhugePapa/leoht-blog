@@ -2,17 +2,15 @@
 title: Feedback
 slug: feedback
 summary: Feedback helps people know what’s happening, discover what they can do next, understand the results of actions, and avoid mistakes.
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["反馈", "可用性", "移动端"]
 domain: ux
-source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation
 source_url: https://developer.apple.com/design/human-interface-guidelines/feedback
 # published_at:
 related: []
 ---
-
 [Skip Navigation](https://developer.apple.com/design/human-interface-guidelines/#app-main)
 
 [以中文查看](https://developer.apple.com/cn/design/human-interface-guidelines/feedback)

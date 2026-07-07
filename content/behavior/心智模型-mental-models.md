@@ -2,17 +2,15 @@
 title: 心智模型 (Mental Models)
 slug: 心智模型-mental-models
 summary: 心智模型是指个体为了理解、解释和在周围世界中导航，而对外部现实所建立的内部表征。
-type: article
+type: knowledge
 status: published
-tags: [认知, 方法论, 导航设计, 心理学, 决策]
+tags: ["心智模型", "方法论", "导航"]
 domain: behavior
-source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite
 source_url: https://thedecisionlab.com/reference-guide/design/mental-models
 published_at: 2024-03-14
 related: []
 ---
-
 ## 基本概念
 
 你是否曾用谷歌地图查找路线，结果到达目的地后却发现那里并不存在？或者因为两个地铁站在地图上看起来很近，而决定步行前往，最后却发现它们实际上相隔数英里？地图有时真的很能欺骗人。

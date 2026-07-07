@@ -2,17 +2,15 @@
 title: 激励性不确定性效应 (Motivating-Uncertainty Effect)
 slug: 激励性不确定性效应-motivating-uncertainty-effect
 summary: 激励性不确定性效应是一种心理现象，指与确定大小的奖励相比，人们更容易受到不确定奖励的激励。
-type: effect
+type: knowledge
 status: published
-tags: [心理学, 动机, 认知, 决策]
+tags: ["认知偏差", "动机", "心智模型", "AI应用"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/biases/motivating-uncertainty-effect
 published_at: 2021-12-16
 related: []
 ---
-
 ## 为什么我们更容易受到未知大小奖励的激励？
 
 对

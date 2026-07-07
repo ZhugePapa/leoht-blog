@@ -2,17 +2,15 @@
 title: 人机交互 (Human-Computer Interaction)
 slug: 人机交互-human-computer-interaction
 summary: 人机交互（HCI）是指致力于理解和改善人与计算机之间交互的研究领域。
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 研究, 认知, 可用性]
+tags: ["可用性", "参考资料", "交互"]
 domain: ux
-source_title: Kira Warje
 source_author: Kira Warje
 source_url: https://thedecisionlab.com/reference-guide/design/human-computer-interaction
 published_at: 2024-03-14
 related: []
 ---
-
 ## 基本概念
 
 我们大多数人每天都在与计算机进行交互。无论你是用笔记本电脑发送电子邮件、用手机查找路线、在智能电视上播放电影，还是在自助结账机上扫描购买的食品，你都在与计算机进行某种形式的双向沟通。随着社会迅速数字化，这类互动的频率只会不断增加。

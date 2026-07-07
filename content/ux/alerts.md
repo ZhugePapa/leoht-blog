@@ -2,17 +2,15 @@
 title: Alerts
 slug: alerts
 summary: An alert gives people critical information they need right away.
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可用性", "表单", "组件"]
 domain: ux
-source_title: Apple Developer Documentation
 source_author: Apple Developer Documentation
 source_url: https://developer.apple.com/design/human-interface-guidelines/alerts
 # published_at:
 related: []
 ---
-
 [Skip Navigation](https://developer.apple.com/design/human-interface-guidelines/#app-main)
 
 [以中文查看](https://developer.apple.com/cn/design/human-interface-guidelines/alerts)

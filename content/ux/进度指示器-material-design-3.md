@@ -2,17 +2,15 @@
 title: 进度指示器 – Material Design 3
 slug: 进度指示器-material-design-3
 summary: 进度指示器向用户告知正在进行的过程的状态，例如加载应用。它实时显示过程的状态。
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["信息架构", "可用性"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/components/progress-indicators/overview
 # published_at:
 related: []
 ---
-
 - 两种变体：线性和圆形
 - 为同一过程的所有实例（如加载）使用相同的配置
 - 它们通过动态效果吸引注意力

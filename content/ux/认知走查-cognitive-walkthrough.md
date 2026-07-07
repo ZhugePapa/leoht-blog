@@ -2,17 +2,15 @@
 title: 认知走查（Cognitive Walkthrough）
 slug: 认知走查-cognitive-walkthrough
 summary: 认知走查是一种 UX 评估方法，旨在分析用户在与产品或系统交互期间的思维过程。
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 方法论, 评估, 认知, 可用性]
+tags: ["可用性", "方法论", "交互"]
 domain: ux
-source_title: Mariana Ontañón
 source_author: Mariana Ontañón
 source_url: https://thedecisionlab.com/reference-guide/design/cognitive-walkthrough
 published_at: 2024-04-19
 related: []
 ---
-
 ## 基本概念
 
 Taylor 刚刚注册了一个新的在线项目管理工具，以提高与团队协作时的生产力。急于开始的 Taylor 创建了账号，但立刻迎面而来的是各种不同的功能、按钮和菜单。几乎是同时，一个弹窗建议她在独自使用该工具前先阅读教程。Taylor 心想“这能有多难？”，于是关掉了弹窗。她认为与其把时间浪费在看教程和各种说明上，不如自己摸索着玩一会儿。

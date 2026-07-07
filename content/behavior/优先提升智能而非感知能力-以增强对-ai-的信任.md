@@ -2,17 +2,15 @@
 title: 优先提升智能而非感知能力，以增强对 AI 的信任
 slug: 优先提升智能而非感知能力-以增强对-ai-的信任
 summary: 人们更信任显得更聪明而非具有感知能力的 AI。AI 的情感流露会降低用户对其处理事实性、任务导向型工作的信任，并降低 AI 的可靠性。
-type: article
+type: knowledge
 status: published
-tags: [情绪, 信任, AI对话, 心理学, 认知, 决策]
+tags: ["情绪", "心智模型", "信任感", "AI应用"]
 domain: behavior
-source_title: Evan Sunwall
 source_author: Evan Sunwall
 source_url: https://www.nngroup.com/articles/smarts-emotion-trust-ai/
 published_at: 2025-09-20
 related: []
 ---
-
 摘要：当 AI 显得更聪明而非具有感知能力时，人们会更信任它。AI 的情感流露会降低用户在面对事实性、任务导向型工作时的信任，并降低 AI 的可靠性。
 
 我们 [设计 AI 体验（Designing AI Experiences）](https://www.nngroup.com/courses/designing-ai-experiences/) 课程的学员经常关注的一个共同问题是，如何帮助用户建立对人工智能（AI）的信任。设计师经常想要使用的一种技术是 [拟人化（anthropomorphism）](https://www.nngroup.com/articles/eliza-effect-ai/)。其背后的基本逻辑是：用户越是将 AI 视为一个有意识的、像人类一样的实体，就越有可能信任它。

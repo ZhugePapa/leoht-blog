@@ -2,17 +2,15 @@
 title: 扁平化 UI 元素吸引较少注意力并导致不确定性
 slug: 扁平化-ui-元素吸引较少注意力并导致不确定性
 summary: 在对比不同可点击性线索的眼动追踪实验中，微弱且扁平的示能表示比强烈的示能表示需要用户付出更多努力。
-type: article
+type: knowledge
 status: published
-tags: [注意力, 数据, 视觉设计, 心理学, 认知, 决策]
+tags: ["眼动追踪", "心智模型", "注意力", "交互", "布局"]
 domain: behavior
-source_title: Kate Moran
 source_author: Kate Moran
 source_url: https://www.nngroup.com/articles/flat-ui-less-attention-cause-uncertainty/
 published_at: 2017-09-04
 related: []
 ---
-
 摘要：扁平化界面通常使用微弱的示能（signifiers）。在对比不同类型可点击性线索的眼动追踪实验中，具有微弱示能的 UI 比具有强烈示能的 UI 需要用户付出更多努力。
 
 [扁平化设计](https://www.nngroup.com/articles/flat-design/)在数字界面中的流行，伴随着[示能（signifiers）](http://jnd.org/dn.mss/signifiers_not_affordances.html)的匮乏。许多现代 UI 剥离了用户赖以理解哪些内容可点击的可感知线索。

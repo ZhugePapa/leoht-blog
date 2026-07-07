@@ -2,17 +2,15 @@
 title: 可访问性概述 – Material Design 3
 slug: 可访问性概述-material-design-3
 summary: 可访问性设计使具有不同能力的用户能够导航、理解并享受用户界面。
-type: article
+type: knowledge
 status: published
-tags: [可访问性, 导航设计, 认知, 可用性, 交互设计]
+tags: ["信息架构", "可访问性", "可用性", "导航"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/foundations/overview/principles
 # published_at:
 related: []
 ---
-
 ## 可访问性与 Material Design
 
 **默认支持可访问性（Accessibility by default）** 是 Material 的核心设计价值观。Material 的可访问性要求和目标在各个组件页面和指南中都有详细记录。了解您产品的可访问性可以提升所有用户的可用性，包括视力低下、失明、听力障碍、认知障碍、运动障碍或情境性障碍（例如手臂骨折）的用户。

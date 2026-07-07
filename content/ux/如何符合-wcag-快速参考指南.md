@@ -2,17 +2,15 @@
 title: 如何符合 WCAG（快速参考指南）
 slug: 如何符合-wcag-快速参考指南
 summary: ""
-type: article
+type: knowledge
 status: published
-tags: [可访问性, 可用性, 交互设计]
+tags: ["可访问性", "可用性", "设计指南"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.w3.org/WAI/WCAG22/quickref/
 # published_at:
 related: []
 ---
-
 已选筛选条件：**WCAG 2.2：**所有成功准则和所有技术。
 
 信息和用户界面组件必须以用户可以感知的方式呈现给他们。

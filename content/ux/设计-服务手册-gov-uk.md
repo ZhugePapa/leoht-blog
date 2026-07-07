@@ -2,17 +2,15 @@
 title: 设计 - 服务手册 - GOV.UK
 slug: 设计-服务手册-gov-uk
 summary: 为你的服务命名、构建结构和界定范围，原型设计，使用设计模式以及设计培训。
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可用性", "设计模式", "设计指南"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.gov.uk/service-manual/design
 # published_at:
 related: []
 ---
-
 您已接受额外的 Cookie。您可以随时[更改您的 Cookie 设置](https://www.gov.uk/help/cookies)。
 
 为你的服务命名、构建结构和界定范围，原型设计，使用设计模式以及设计培训。

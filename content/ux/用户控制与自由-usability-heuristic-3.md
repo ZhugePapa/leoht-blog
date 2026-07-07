@@ -2,17 +2,15 @@
 title: 用户控制与自由 (Usability Heuristic #3)
 slug: 用户控制与自由-usability-heuristic-3
 summary: 用户经常会犯错或改变主意。允许他们退出流程或撤销上一步操作，并返回到系统的上一个状态。
-type: article
+type: knowledge
 status: published
-tags: [交互设计, 方法论, 可用性]
+tags: ["可用性", "方法论"]
 domain: ux
-source_title: Maria Rosala
 source_author: Maria Rosala
 source_url: https://www.nngroup.com/articles/user-control-and-freedom/
 published_at: 2020-11-30
 related: []
 ---
-
 摘要：用户经常会犯错或改变主意。允许他们退出流程或撤销上一步操作，并返回到系统的上一个状态。
 
 雅各布·尼尔森（Jakob Nielsen）针对用户界面设计的第三项[易用性启发式原则](https://www.nngroup.com/articles/ten-usability-heuristics/)是[用户控制与自由](https://www.nngroup.com/videos/usability-heuristic-user-control-freedom/)。该原则指出：

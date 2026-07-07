@@ -2,17 +2,15 @@
 title: UX 写作：从业者的常见问题解答
 slug: ux-写作-从业者的常见问题解答
 summary: 获取 NN/G 的《撰写引人入胜的数字文案》课程参与者关于 UX 写作的常见问题解答。
-type: article
+type: knowledge
 status: published
-tags: [内容设计, 可用性, 交互设计]
+tags: ["可用性", "排版"]
 domain: ux
-source_title: Anna Kaley
 source_author: Anna Kaley
 source_url: https://www.nngroup.com/articles/ux-writing-faqs/
 published_at: 2026-05-09
 related: []
 ---
-
 摘要：获取 NN/G 的《撰写引人入胜的数字文案》课程参与者关于 UX 写作的常见问题解答。
 
 作为 NN/G [《撰写引人入胜的数字文案》](https://www.nngroup.com/courses/writing/)课程的授课教师之一，我在每次培训课中都会解答重要且及时的提问，教大家写什么、如何构建文案结构，以及如何支持他们正在做交互设计体验。

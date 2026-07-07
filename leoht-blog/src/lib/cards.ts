@@ -6,12 +6,10 @@ const DOMAIN_ABBR: Record<string, string> = {
   behavior: "BEH",
   ux: "UX",
   growth: "GRO",
-  product: "PRO",
+  "design-system": "DS",
   thinking: "THK",
   "ai-product": "AIP",
-  leadership: "LDR",
-  visual: "VIS",
-  "case-study": "CAS",
+  org: "ORG",
 };
 
 export function domainAbbr(domain?: string): string {

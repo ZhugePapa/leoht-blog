@@ -36,7 +36,7 @@ const showTags = topTags.length >= 3;
     <div class="hero-image"></div>
     <div class="hero-left">
       <h1 class="display-xxl hero-title">
-        Revue for the<br />Experience<br />Designer
+        Revue for the<br />UX Experience<br />Designer
       </h1>
       <div class="hero-lede">
         <p>一本被反复翻阅的 UX 知识手册，</p>
@@ -78,7 +78,7 @@ const showTags = topTags.length >= 3;
           </div>
           <div class="chips">
             {topTags.length > 0 ? (
-              topTags.map(([t]) => <span class="tag-chip">{t}</span>)
+              topTags.map(([t]) => <a class="tag-chip" href={`${base}library?tag=${encodeURIComponent(t)}`} target="_blank" rel="noopener">{t}</a>)
             ) : (
               <span class="meta">暂无标签</span>
             )}
@@ -409,12 +409,10 @@ const showTags = topTags.length >= 3;
     font-family: var(--font-display);
     font-size: var(--size-m);
     color: var(--color-charcoal-soft);
-    border-bottom: 1px solid var(--color-charcoal-soft);
-    padding-bottom: 4px;
     flex-shrink: 0;
     height: fit-content;
   }
-  .coll-item-body { flex: 1; min-width: 0; padding-right: 140px; }
+  .coll-item-body { flex: 1; min-width: 0; padding-right: 170px; }
   .coll-item-title {
     font-family: var(--font-display);
     font-weight: 600;
@@ -432,9 +430,9 @@ const showTags = topTags.length >= 3;
   .coll-item-thumb {
     position: absolute;
     right: 20px;
-    top: 21px;
-    width: 120px;
-    height: 80px;
+    top: 10px;
+    width: 150px;
+    height: 100px;
     background-size: cover;
     background-position: center;
     mix-blend-mode: darken;

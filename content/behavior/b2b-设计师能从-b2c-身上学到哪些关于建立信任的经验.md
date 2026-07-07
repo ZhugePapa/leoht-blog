@@ -2,17 +2,15 @@
 title: B2B 设计师能从 B2C 身上学到哪些关于建立信任的经验
 slug: b2b-设计师能从-b2c-身上学到哪些关于建立信任的经验
 summary: 尽管 B2B 和 B2C 电子商务网站拥有不同类型的用户，但两类网站都可以使用类似的策略来简化购买流程并增加消费者信任。
-type: article
+type: knowledge
 status: published
-tags: [信任, 方法论, 心理学, 认知, 决策]
+tags: ["心智模型", "信任感", "结账", "方法论", "Web端"]
 domain: behavior
-source_title: Therese Fessenden
 source_author: Therese Fessenden
 source_url: https://www.nngroup.com/articles/b2b-trust-from-b2c/
 published_at: 2019-09-02
 related: []
 ---
-
 摘要：与 B2C 用户不同，B2B 消费者有着独特的考量，例如严格的预算、与销售代表的接触以及迎合多方利益相关者需求的必要性。然而，在 B2B 电子商务网站上，降低购买复杂度和增加信任感与在 B2C 网站上同样重要。
 
 关于企业对企业（B2B）网站的一个普遍误解是，它们可以不受适用于企业对消费者（B2C）网站[电子商务](https://www.nngroup.com/reports/ecommerce-user-experience/)的规则和易用性标准的约束。事实上，B2B 设计团队应该考虑用户的需求，并遵循易用性原则来解决客户的顾虑并建立信任。使用 B2B 网站的商业专业人士也会在大量的 B2C 网站上购物，而[雅各布互联网用户体验定律（Jakob's Law of the Internet User Experience）](https://www.nngroup.com/videos/jakobs-law-internet-ux/)指出，人们会根据他们访问的大多数网站来形成自己的预期。常见的电子商务 UX 建议能够帮助 B2B 网页设计团队与用户建立信任。

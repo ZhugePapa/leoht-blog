@@ -2,17 +2,15 @@
 title: 选项卡模式 (Tabs Pattern)
 slug: 选项卡模式-tabs-pattern
 summary: 来自国际标准组织 W3C Web 可访问性倡议 (WAI) 的免费在线可访问性资源。
-type: article
+type: knowledge
 status: published
-tags: [可访问性, 决策, AI对话, 可用性, 交互设计]
+tags: ["可访问性", "可用性", "设计模式", "设计指南", "组件"]
 domain: ux
-source_title: W3C Web Accessibility Initiative (WAI)
 source_author: W3C Web Accessibility Initiative (WAI)
 source_url: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
 # published_at:
 related: []
 ---
-
 选项卡模式 (Tabs Pattern)
 
 ## 关于此模式

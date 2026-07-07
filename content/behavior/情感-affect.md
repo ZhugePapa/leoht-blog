@@ -2,17 +2,15 @@
 title: 情感 (Affect)
 slug: 情感-affect
 summary: 情感（Affect）是一个人与环境互动后产生的内在情绪状态。
-type: article
+type: knowledge
 status: published
-tags: [情绪, 心理学, 认知, 决策]
+tags: ["情绪", "心智模型"]
 domain: behavior
-source_title: The Decision Lab
 source_author: The Decision Lab
 source_url: https://thedecisionlab.com/reference-guide/psychology/affect
 published_at: 2021-12-15
 related: []
 ---
-
 ## 基本概念
 
 你有一张很好的扑克脸吗？还是说，当分到一手好牌时，你会感到脸上露出一丝窃笑，胃里一阵紧张？当我们试图隐瞒某事却最终通过肢体语言或面部表情泄露秘密时，我们就在与“情感（affect）”的力量打交道。作为社会心理学的一个关键方面，**情感（affect）**广泛地描述了我们在与人、情境或刺激互动时，内部情绪、心境和感受的底层主观体验。

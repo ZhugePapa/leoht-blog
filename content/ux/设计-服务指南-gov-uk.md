@@ -2,17 +2,15 @@
 title: 设计 - 服务指南 - GOV.UK
 slug: 设计-服务指南-gov-uk
 summary: 命名、结构化和界定您的服务范围，原型设计，使用设计模式以及设计培训。
-type: article
+type: knowledge
 status: published
-tags: [方法论, 可用性, 交互设计]
+tags: ["可用性", "设计模式", "方法论", "设计指南"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.gov.uk/service-manual/design
 # published_at:
 related: []
 ---
-
 命名、结构化和界定您的服务范围，原型设计，使用设计模式以及设计培训。
 
 简介、范围界定、命名与原型设计。

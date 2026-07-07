@@ -2,17 +2,15 @@
 title: 卡片分类 (Card Sorting)
 slug: 卡片分类-card-sorting
 summary: 卡片分类是识别和对比用户如何理解不同概念和想法的绝佳工具。
-type: article
+type: knowledge
 status: published
-tags: [信息架构, 视觉设计, 认知, 可用性, 交互设计]
+tags: ["信息架构", "可用性", "方法论", "布局"]
 domain: ux
-source_title: Mariana Ontañón
 source_author: Mariana Ontañón
 source_url: https://thedecisionlab.com/reference-guide/design/card-sorting
 published_at: 2024-03-14
 related: []
 ---
-
 ## 基本概念
 
 想象一下，你正在图书馆打卡上班，馆长要求你按照你觉得 *合适* 的方式对所有图书进行分类和整理。你开始按流派整理，然后按字母 A 到 Z 的顺序排列。但是，当你向同事征求意见时，他们告诉你，他们会按颜色和作者姓氏的字母顺序来整理这些书。那天晚些时候，你的一个朋友告诉你有一家书店是根据故事发生所在的国家来整理图书的（是的，这种图书馆实际上是存在的）。这让你开始思考顾客的期望——对你来说合乎逻辑的事情，对他们来说可能并不合乎逻辑。

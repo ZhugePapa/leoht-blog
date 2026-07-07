@@ -2,17 +2,15 @@
 title: 文本字段 – Material Design 3
 slug: 文本字段-material-design-3
 summary: 文本字段允许用户在界面中输入文本。它们通常出现在表单和对话框中。
-type: article
+type: knowledge
 status: published
-tags: [AI对话, 表单设计, 可用性, 交互设计]
+tags: ["信息架构", "可用性", "表单", "组件", "AI应用"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/components/text-fields/overview
 # published_at:
 related: []
 ---
-
 - 确保文本字段看起来具有交互性
 - 两种变体：实心型（filled）——实心文本字段比描边文本字段具有更强的视觉强调。它们通常用于对话框和简短表单中，其样式能够吸引更多注意力；以及描边型（outlined）——描边文本字段的视觉强调比实心文本字段弱。它们通常用于长表单中，其减弱的强调有助于简化布局。
 - 文本字段的状态（状态展示了组件或 UI 元素的交互状态。[了解更多关于状态的信息](https://m3.material.io/m3/pages/interaction-states/overview)）（空白、已输入、错误等）应该一目了然

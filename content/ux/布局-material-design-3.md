@@ -2,17 +2,15 @@
 title: 布局 – Material Design 3
 slug: 布局-material-design-3
 summary: 布局是屏幕上元素的视觉排列。它能引导人们关注最重要的信息，并使用户能够轻松采取行动。
-type: article
+type: knowledge
 status: published
-tags: [视觉设计, 可用性, 交互设计]
+tags: ["信息架构", "可用性", "新手引导", "布局"]
 domain: ux
-source_title: Material Design
 source_author: Material Design
 source_url: https://m3.material.io/foundations/layout/layout-overview/overview
 # published_at:
 related: []
 ---
-
 - 使用布局来组织屏幕中的所有元素、传递层级关系，并吸引用户对关键操作的关注
 - 使布局适应紧凑（compact）、中等（medium）、扩展（expanded）、大型（large）和超大型（extra-large）屏幕尺寸（此前称为窗口大小类别 window size classes）
 - 基于已建立的[典型布局示例](https://m3.material.io/m3/pages/canonical-examples)进行构建

@@ -2,17 +2,15 @@
 title: 优先展示智能而非感知，以增强用户对 AI 的信任
 slug: 优先展示智能而非感知-以增强用户对-ai-的信任
 summary: 相比于让 AI 显得有感知力，当 AI 显得更聪明时，人们更容易信任它。AI 表现出情绪可能会降低用户在事实性、任务导向型工作中的信任度，并降低 AI 的可靠性。
-type: article
+type: knowledge
 status: published
-tags: [情绪, 信任, AI对话, 心理学, 认知, 决策]
+tags: ["情绪", "心智模型", "信任感", "AI应用"]
 domain: behavior
-source_title: Evan Sunwall
 source_author: Evan Sunwall
 source_url: https://www.nngroup.com/articles/smarts-emotion-trust-ai/
 published_at: 2025-09-20
 related: []
 ---
-
 概要：相比于让 AI 显得有感知力，当 AI 显得更聪明时，人们更容易信任它。AI 表现出情绪可能会降低用户在事实性、任务导向型工作中的信任度，并降低 AI 的可靠性。
 
 我们[《设计 AI 体验》](https://www.nngroup.com/courses/designing-ai-experiences/)课程的学员经常关注的一个共同问题是，如何帮助用户建立对人工智能（AI）的信任。设计师们经常倾向于使用的一种技术是[拟人化 (anthropomorphism)](https://www.nngroup.com/articles/eliza-effect-ai/)。其背后的基本逻辑是：用户越是把 AI 看作一个有意识的、类似人类的实体，就越有可能信任它。

@@ -2,17 +2,15 @@
 title: 可用性问题的严重性评级：Jakob Nielsen 的文章
 slug: 可用性问题的严重性评级-jakob-nielsen-的文章
 summary: 根据可用性问题的严重程度对其进行评级，有助于分配资源以解决最严重的问题。严重性评级结合了发生频率、影响程度和持续性。
-type: article
+type: knowledge
 status: published
-tags: [可用性, 交互设计]
+tags: ["可用性"]
 domain: ux
-source_title: Jakob Nielsen
 source_author: Jakob Nielsen
 source_url: https://www.nngroup.com/articles/how-to-rate-the-severity-of-usability-problems/
 published_at: 1994-11-02
 related: []
 ---
-
 摘要：严重性评级可用于将最多的资源分配给解决最严重的问题，同时也能粗略评估是否需要额外的可用性工作。如果严重性评级表明界面中仍存在若干灾难性的可用性问题，那么发布该产品可能是不可取的。但如果系统中的若干可用性问题都被判定为仅仅是表面视觉上的问题，则可以决定继续发布。
 
 严重性评级可用于将最多的资源分配给解决最严重的问题，同时也能粗略评估是否需要额外的可用性工作。如果严重性评级表明界面中仍存在若干灾难性的可用性问题，那么发布该产品可能是不可取的。但如果系统中的若干可用性问题都被判定为仅仅是表面视觉上的问题，则可以决定继续发布。

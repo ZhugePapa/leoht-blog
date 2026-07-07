@@ -2,17 +2,15 @@
 title: 说服式设计：新 Captology 书评
 slug: 说服式设计-新-captology-书评
 summary: 对 B.J. Fogg 新书《说服技术》（Persuasive Technology）的评述。该书为如何思考构建说服式设计提供了有用的原则，但极少给出具体的设计指南。唯一例外的是关于提升网站可信度的章节。
-type: article
+type: knowledge
 status: published
-tags: [原则, 心理学, 认知, 决策]
+tags: ["心智模型", "信任感", "设计原则", "设计指南", "Web端"]
 domain: behavior
-source_title: Jakob Nielsen
 source_author: Jakob Nielsen
 source_url: https://www.nngroup.com/articles/persuasive-design-new-captology-book/
 published_at: 2003-03-03
 related: []
 ---
-
 摘要：对 B.J. Fogg 新书《说服技术》（Persuasive Technology）的评述。该书为如何思考构建说服式设计提供了有用的原则，但极少给出具体的设计指南。唯一例外的是关于提升网站可信度的章节。
 
 一部能定义一个新学科或**从根本上改变我们对技术和工作的看法**的书是罕见的。B.J. Fogg 博士的新书《[说服技术：利用计算机改变我们的想法与行为](http://www.amazon.com/dp/1558606432?tag=useitcomusablein "Amazon.com: buy book online")》（*Persuasive Technology: Using Computers to Change What We Think and Do*）做到了这一切。我**强烈推荐**你阅读这本书，原因有两个：

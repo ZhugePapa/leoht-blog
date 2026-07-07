@@ -2,17 +2,15 @@
 title: AI 中的拟社会信任
 slug: ai-中的拟社会信任
 summary: 作为一家行为设计智库，我们将决策科学、数字化创新和精益方法论应用于政策、商业和社会正义中的紧迫问题。
-type: article
+type: knowledge
 status: published
-tags: [决策, 行为, 信任, 方法论, AI对话, 心理学, 认知]
+tags: ["行为经济学", "心智模型", "决策疲劳", "信任感", "方法论"]
 domain: behavior
-source_title: The Decision Lab
 source_author: The Decision Lab
 source_url: https://thedecisionlab.com/biases/parasocial-trust-in-ai
 published_at: 2026-02-16
 related: []
 ---
-
 ## 什么是 AI 中的拟社会信任？
 
 **AI 中的拟社会信任**（Parasocial trust in AI）是指人们倾向于将拟人化的聊天机器人和助手视为值得信赖的社交伙伴，而非单纯的工具。当一个 AI 系统以温暖、对话式的语气交谈，能记住细节并展现出同理心时，人们就会开始产生一种关系感和安全感。这种感觉让自我表露（self-disclosure）变得更加容易，并使 AI 的建议听起来更像是来自知己的指导，而不是统计模型的输出。AI 中的拟社会信任建立在人与媒体人物之间传统的拟社会交往（parasocial interactions）基础之上，但如今它通过针对每位用户量身定制的交互式个性化对话而展开。

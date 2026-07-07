@@ -2,17 +2,15 @@
 title: 意向性 (Intentionality)
 slug: 意向性-intentionality
 summary: 意向性指的是人心智表征某事物的能力。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["心智模型"]
 domain: behavior
-source_title: Dan Pilat, Dr. Sekoul Krastev
 source_author: Dan Pilat, Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/reference-guide/neuroscience/intentionality
 published_at: 2021-12-14
 related: []
 ---
-
 ## 意向性 (Intentionality)
 
 ## 基本概念

@@ -2,17 +2,15 @@
 title: 示能（Affordance）
 slug: 示能-affordance
 summary: 示能（Affordance）是指物体的属性与使用者决定该物体应如何被使用的能力之间的关系。
-type: article
+type: knowledge
 status: published
-tags: [心理学, 认知, 决策]
+tags: ["心智模型", "可负担性"]
 domain: behavior
-source_title: Dr. Lauren Braithwaite
 source_author: Dr. Lauren Braithwaite
 source_url: https://thedecisionlab.com/reference-guide/psychology/affordance
 published_at: 2024-02-24
 related: []
 ---
-
 ## 基本概念
 
 想象一下人、狗和一只鞋。对于人类来说，鞋子可以让他们进行一系列活动，包括行走、跑步、踢球、跳跃和踩踏。对于狗来说，鞋子可能允许它们完成其他动作，比如咀嚼、撕咬、接物或靠着头休息（这完全取决于狗当时的心情）。

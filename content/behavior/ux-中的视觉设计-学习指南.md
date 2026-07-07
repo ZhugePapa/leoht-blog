@@ -2,17 +2,15 @@
 title: UX 中的视觉设计：学习指南
 slug: ux-中的视觉设计-学习指南
 summary: 不知道从哪里开始？使用本篇收集的 NN/g 文章和视频链接，学习 UX 中的视觉设计。
-type: article
+type: knowledge
 status: published
-tags: [认知, 视觉设计, 心理学, 决策]
+tags: ["心智模型", "设计指南", "布局"]
 domain: behavior
-source_title: Kelley Gordon
 source_author: Kelley Gordon
 source_url: https://www.nngroup.com/articles/visual-design-in-ux-study-guide/
 published_at: 2022-11-07
 related: []
 ---
-
 摘要：不知道从哪里开始？使用本篇收集的 NN/g 文章和视频链接，学习 UX 中的视觉设计。
 
 视觉设计不仅仅是让排版和设计看起来美观愉悦。如果应用得当，它可以提高易用性、唤起情感并强化品牌认知。

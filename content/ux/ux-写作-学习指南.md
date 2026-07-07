@@ -2,17 +2,15 @@
 title: UX 写作：学习指南
 slug: ux-写作-学习指南
 summary: 不知道从哪里开始？使用我们文章和视频的链接集合，学习如何编写和呈现符合用户需求和在线阅读行为的信息。
-type: article
+type: knowledge
 status: published
-tags: [认知, 行为, 可用性, 交互设计]
+tags: ["行为经济学", "可用性", "设计指南"]
 domain: ux
-source_title: Anna Kaley
 source_author: Anna Kaley
 source_url: https://www.nngroup.com/articles/ux-writing-study-guide/
 published_at: 2024-05-09
 related: []
 ---
-
 摘要：不知道从哪里开始？使用我们文章和视频的链接集合，学习如何编写和呈现符合用户需求 and 在线阅读行为的信息。
 
 UX 写作是指编写**经过仔细考虑的**信息以应对人们的**情境、需求和行为**的实践。撰写文案涉及许多与[视觉设计](https://www.nngroup.com/articles/visual-design-cheat-sheet/)或[交互设计](https://www.nngroup.com/articles/interaction-branding/)相同的技能，只不过撰写者在整个体验过程中是使用文字而非像素与用户进行沟通。

@@ -14,7 +14,7 @@ const slug = cardSlug(card);
 const href = `${base}c/${slug}`;
 const typeLabel = card.data.type.charAt(0).toUpperCase() + card.data.type.slice(1);
 const domainName = getDomain(card.data.domain)?.name ?? card.data.domain ?? "general";
-const typeTopLine = card.data.type === "effect" || card.data.type === "principle" ? "gold" : "charcoal";
+const typeTopLine = card.data.type === "original" ? "gold" : "charcoal";
 const tags = card.data.tags.slice(0, 3).join(" / ");
 ---
 
@@ -66,20 +66,18 @@ const tags = card.data.tags.slice(0, 3).join(" / ");
   .card-title {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: var(--size-s);
+    font-size: var(--size-m);
     line-height: 1.25;
     margin: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
   .card-title a {
     color: var(--color-charcoal);
     text-decoration: none;
-    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    min-height: 2.5em;
   }
   .card-title a:hover {
     color: var(--color-vintage-red);

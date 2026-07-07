@@ -2,17 +2,15 @@
 title: 如何在 AI 驱动的未来中保持自主权
 slug: 如何在-ai-驱动的未来中保持自主权
 summary: 了解如何在日益自动化的世界中重新夺回控制权。本文探讨了自动化对自主性带来的挑战，以及以人为本的 AI 设计等可行策略。
-type: article
+type: knowledge
 status: published
-tags: [AI对话, 心理学, 认知, 决策]
+tags: ["心智模型", "AI应用"]
 domain: behavior
-source_title: Dr. Sekoul Krastev
 source_author: Dr. Sekoul Krastev
 source_url: https://thedecisionlab.com/insights/society/autonomy-in-ai-driven-future
 published_at: 2025-01-09
 related: []
 ---
-
 ![](https://thedecisionlab.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fthedecisionlab%2FZ3-9c5bqstJ99O6a_AI10.jpg%3Fauto%3Dformat%2Ccompress&w=1920&q=75)
 
 ## 如何在 AI 驱动的未来中保持自主权

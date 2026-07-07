@@ -2,17 +2,15 @@
 title: 树状测试 (Tree Testing)
 slug: 树状测试-tree-testing
 summary: 树状测试（Tree Testing）是一种用户体验（UX）研究方法，用于评估用户在网站或应用程序中查找关键资源和信息的难易程度。
-type: article
+type: knowledge
 status: published
-tags: [方法论, 研究, 验证, 评估, 可用性, 交互设计]
+tags: ["可用性", "参考资料", "最佳实践", "方法论", "Web端"]
 domain: ux
-source_title: Kira Warje
 source_author: Kira Warje
 source_url: https://thedecisionlab.com/reference-guide/design/tree-testing
 published_at: 2024-04-12
 related: []
 ---
-
 ## 基本概念
 
 想象一下，你正在计划去一个新城市度周末。你的搜索引导你进入了一个当地的旅游网站，你正在浏览有什么好玩的活动和住宿的地方。利用该网站的导航系统，你正在寻找能够帮助你规划行程的具体内容，例如餐厅推荐、即将举办的活动、酒店优惠和街区指南。

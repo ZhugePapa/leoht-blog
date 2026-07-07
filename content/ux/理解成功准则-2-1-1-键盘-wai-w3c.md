@@ -2,17 +2,15 @@
 title: 理解成功准则 2.1.1：键盘 | WAI | W3C
 slug: 理解成功准则-2-1-1-键盘-wai-w3c
 summary: ""
-type: article
+type: knowledge
 status: published
-tags: [可访问性, 原则, 认知, AI对话, 可用性, 交互设计]
+tags: ["可访问性", "可用性", "设计原则", "AI应用"]
 domain: ux
-source_title: ""
 source_author: ""
 source_url: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
 # published_at:
 related: []
 ---
-
 ## 理解键盘（级别 A）
 
 ## 简要介绍
